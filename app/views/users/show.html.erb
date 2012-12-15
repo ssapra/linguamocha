@@ -1,2 +1,8 @@
 <br />
 <%= "Hello #{@user.name}" %>
+
+<h2>Bio</h2>
+<%= @user.bio %><br /><br />
+
+
+<%= link_to "Edit Profile", edit_user_path(@user.id) %>

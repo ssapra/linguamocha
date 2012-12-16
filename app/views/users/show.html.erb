@@ -1,8 +1,15 @@
 <br />
 <%= "Hello #{@user.name}" %>
 
+<%= image_tag @user.avatar.url(:medium) %>
+
 <h2>Bio</h2>
 <%= @user.bio %><br /><br />
 
+
+<div class="ui-widget">
+    <label for="tags">Tags: </label>
+    <input id="tags">
+</div>
 
 <%= link_to "Edit Profile", edit_user_path(@user.id) %>

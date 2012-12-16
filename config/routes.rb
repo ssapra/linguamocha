@@ -8,4 +8,6 @@ Linguamocha::Application.routes.draw do
 
   get "dashboard/home"
   
+  match "/allskills" => "users#all_skills"
+  
 end

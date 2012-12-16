@@ -12,4 +12,32 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery-custom
+
+$(function() {
+       
+  	$.ajax({
+        url: "/allskills",
+        dataType:'json',
+ 		type: 'GET',
+	    success: function(data){
+			// alert(data);
+			$("#tags").autocomplete({
+				source: function( request, response ) {
+				    	var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+		            	response( $.grep( data, function( item ){
+		                	return matcher.test( item );
+		            	}) );
+		        	}	
+		    });
+	    },
+	    error: function(){
+	        alert('error');
+	    }
+	});
+
+});
+
+
+
+

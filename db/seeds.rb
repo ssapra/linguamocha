@@ -1,7 +1,28 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'open-uri'
+require 'nokogiri'
+
+Skill.destroy_all
+
+letters = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+           'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+print "Creating skills"           
+letters.each do |l|
+  doc = Nokogiri::HTML(open("http://www.linkedin.com/skills/directory/#{l}"))
+  length = doc.css('ul.directory li a').length
+  
+  (length-1).times do |t|
+    t+=1; d = l + t.to_s;
+    doc1 = Nokogiri::HTML(open("http://www.linkedin.com/skills/directory/#{d}"))
+    doc1.css('ul.directory li a').each do |link|
+      Skill.create(:tag => link.content)
+    end
+  end
+  print "."
+end
+
+puts ""
+puts "Skills created."
+
+
+

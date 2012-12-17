@@ -20,7 +20,21 @@
 	<%= f.file_field :avatar %>
   </div>
 
+  <%= f.fields_for :my_skills do |builder| %>
+
+	  <div class="ui-widget">
+	    <%= builder.label :skill %><br />
+		<%= builder.text_field :tag %>
+	  </div>
+
+	  <div class="field">
+		<%= builder.label :description %><br />
+		<%= builder.text_area :description, :size => "30x10" %>
+	  </div>
+  <% end %>
+
   <div class="actions">
      <%= f.submit "Update Profile" %>
   </div>
+
 <% end %>

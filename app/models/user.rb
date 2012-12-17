@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
                     :url => "/system/:attachment/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/:attachment/:id/:style/:basename.:extension"
-  attr_accessible :name, :bio
-  # attr_accessible :title, :body
+  attr_accessible :name, 
+                  :bio,
+                  :my_skills_attributes
+  
+  has_many :my_skills
+  accepts_nested_attributes_for :my_skills, :reject_if => lambda { |a| a[:tag].blank? }
 end

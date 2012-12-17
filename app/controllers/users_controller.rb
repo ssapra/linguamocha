@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find_by_id(params[:id])
+    @user.my_skills << MySkill.new
   end
   
   def update

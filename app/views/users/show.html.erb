@@ -1,5 +1,5 @@
 <br />
-<%= "Hello #{@user.name}" %>
+<%= @user.name %><br />
 
 <%= image_tag @user.avatar.url(:medium) %>
 
@@ -7,9 +7,15 @@
 <%= @user.bio %><br /><br />
 
 
-<div class="ui-widget">
-    <label for="tags">Tags: </label>
-    <input id="tags">
-</div>
+
+
+<h2>Skills</h2>
+<% @user.my_skills.each do |skill| %>
+    <h3><%= skill.tag %></h3> 
+    <%= skill.description %>
+<% end %>
+	 
+	
+<br />
 
 <%= link_to "Edit Profile", edit_user_path(@user.id) %>

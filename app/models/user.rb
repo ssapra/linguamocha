@@ -15,6 +15,6 @@ class User < ActiveRecord::Base
                   :bio,
                   :my_skills_attributes
   
-  has_many :my_skills
+  has_many :my_skills, dependent: :destroy
   accepts_nested_attributes_for :my_skills, :reject_if => lambda { |a| a[:tag].blank? }
 end

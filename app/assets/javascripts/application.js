@@ -22,7 +22,7 @@ $(function() {
  		type: 'GET',
 	    success: function(data){
 			// alert(data);
-			$("#tags").autocomplete({
+			$(".skill").autocomplete({
 				source: function( request, response ) {
 				    	var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
 		            	response( $.grep( data, function( item ){

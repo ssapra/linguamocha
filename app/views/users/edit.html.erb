@@ -15,23 +15,28 @@
      <%= f.label :bio %><br />
      <%= f.text_area :bio, :size => "30x10" %>
   </div>
-
+  <%= image_tag @user.avatar.url(:medium) %>
   <div class="field">
 	<%= f.file_field :avatar %>
   </div>
-
+	
+  <table>
+    <th>Skill</th>
+	<th>Description</th>
+	
   <%= f.fields_for :my_skills do |builder| %>
-
 	  <div class="ui-widget">
-	    <%= builder.label :skill %><br />
-		<%= builder.text_field :tag, :class => "skill" %>
+	   <tr><td><%= builder.label :skill %><br />
+		<%= builder.text_field :tag, :class => "skill" %></td>
 	  </div>
 
 	  <div class="field">
-		<%= builder.label :description %><br />
-		<%= builder.text_area :description, :size => "30x10" %>
+		<td><%= builder.label :description %><br />
+		<%= builder.text_area :description, :size => "30x10" %></td></tr>
 	  </div>
   <% end %>
+  
+  </table>
 
   <div class="actions">
      <%= f.submit "Update Profile" %>

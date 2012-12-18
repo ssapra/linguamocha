@@ -1,12 +1,11 @@
-<br />
-<%= @user.name %><br />
+
+<h1><%= @user.name %></h1>
+
 
 <%= image_tag @user.avatar.url(:medium) %>
 
 <h2>Bio</h2>
 <%= @user.bio %><br /><br />
-
-
 
 
 <h2>Skills</h2>
@@ -16,6 +15,8 @@
 <% end %>
 	 
 	
+<br />
+<br />
 <br />
 
 <%= link_to "Edit Profile", edit_user_path(@user.id) %>

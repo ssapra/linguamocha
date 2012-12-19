@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   def correct_user    
     if(params[:username])
-      unless current_user == User.find_by_id(params[:username]) 
+      unless current_user == User.find_by_username(params[:username]) 
         flash[:error] = "Unauthorized Access"
         redirect_to root_path
         false

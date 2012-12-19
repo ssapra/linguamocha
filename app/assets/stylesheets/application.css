@@ -8,6 +8,563 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require reset
  *= require_self
  *= require jquery-custom
  */
+
+/* 
+ ******************************
+      =header
+ ******************************
+*/
+#header_container { 
+	background-color: #B98357; 
+	left:0; 
+	position:fixed; 
+	width:100%; 
+	top:0; 
+	border-bottom: 10px solid #176017;
+}
+header{
+	height: 70px;
+}
+
+#logo {
+	padding: 15px;
+} 
+
+
+/* 
+ ******************************
+       =navigation
+ ******************************
+*/
+
+#nav_container {
+	position: fixed;
+	top: 70px;
+	right: 0px;
+	background-color: #469446;
+	float: right;
+	padding: 7px;
+	border-bottom: 10px solid #176017;
+	border-left: 10px solid #176017;
+}
+
+nav {
+	float: right;
+	position: relative;
+	bottom: 0px;
+	padding-right: 10px;
+}
+nav li {
+	display: inline;
+}
+nav li a {
+	font-family: Verdana, sans-serif;
+	color: white;
+	text-decoration: none;
+	font-size: 12px;
+	padding: 10px;
+}
+
+/* 
+ ******************************
+      =main
+ ******************************
+*/
+.main {
+	padding-top: 100px;
+	font-family: 'Droid Sans', sans-serif;
+}
+
+img {
+	width: 200px;
+}
+h1 {
+	font-family: 'Droid Sans', sans-serif;
+	font-size: 20px;
+	padding-bottom: 10px;
+}
+
+.name {
+	padding: none;
+	float: left;
+	margin: 0;
+}
+.info {
+	padding-top: 100px;
+	float: right;
+	margin: 0;
+}
+h2 {
+	text-align: left;
+	text-decoration: underline;
+}
+.label {
+	float: left;
+	padding-bottom: 0;
+}
+.label_responses {
+	float: right;
+}
+
+.education {
+	padding-top: 30px;
+}
+
+.occupation, .occupation_responses {
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+
+.occupation {
+	border-bottom: 2px solid black;
+}
+
+
+.skills{
+	padding-top: 40px;
+	margin: 0;
+	float: right;
+}
+
+.learning {
+	padding-top: 50px;
+	margin: 0;
+	float: right;
+}
+
+.skills h3, .skills p {
+	margin-left: 0px;
+}
+
+.learning h3, .learning p {
+	margin-left: 0px;
+}
+
+h3 {
+	padding-bottom: 10px;
+	text-decoration: underline;
+}
+
+h4 {
+	text-decoration: underline;
+}
+
+
+
+/* 
+ ******************************
+      =references
+ ******************************
+*/
+
+.reference_group {
+	padding-top: 80px;
+}
+.reference_group h4 {
+	margin-left: 20px;
+}
+.reference {
+	padding-top: 20px;
+	border-bottom: 2px solid black;
+	border-left: 2px solid black;
+	padding-bottom: 20px;
+	padding-left: 20px;
+}
+.reviewer a {
+	text-decoration: none;
+}
+
+.reviewer img {
+	width: 40px;
+	height: 40px;
+	margin-top: 5px;
+}
+
+.review p {
+	font-size: 14px;
+	padding-top:0px;
+}
+
+/* 
+ ******************************
+      =footer
+ ******************************
+*/
+footer {
+	padding-top: 50px;
+	padding-bottom: 10px;
+	text-align: center;
+	font-size: 14px;
+}
+
+/* 
+ ******************************
+      =miscellaneous
+ ******************************
+*/
+.container_12 {
+	padding-left: 100px;
+	border-left: 10px solid #79CA79;
+}
+
+/*
+  960 Grid System ~ Core CSS.
+  Learn more ~ http://960.gs/
+
+  Licensed under GPL and MIT.
+*/
+
+/*
+  Forces backgrounds to span full width,
+  even if there is horizontal scrolling.
+  Increase this if your layout is wider.
+
+  Note: IE6 works fine without this fix.
+*/
+
+body {
+  min-width: 960px;
+}
+
+/* `Container
+----------------------------------------------------------------------------------------------------*/
+
+.container_12 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+
+/* `Grid >> Global
+----------------------------------------------------------------------------------------------------*/
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12 {
+  display: inline;
+  float: left;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.push_1, .pull_1,
+.push_2, .pull_2,
+.push_3, .pull_3,
+.push_4, .pull_4,
+.push_5, .pull_5,
+.push_6, .pull_6,
+.push_7, .pull_7,
+.push_8, .pull_8,
+.push_9, .pull_9,
+.push_10, .pull_10,
+.push_11, .pull_11 {
+  position: relative;
+}
+
+/* `Grid >> Children (Alpha ~ First, Omega ~ Last)
+----------------------------------------------------------------------------------------------------*/
+
+.alpha {
+  margin-left: 0;
+}
+
+.omega {
+  margin-right: 0;
+}
+
+/* `Grid >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_12 .grid_1 {
+  width: 80px;
+}
+
+.container_12 .grid_2 {
+  width: 160px;
+}
+
+.container_12 .grid_3 {
+  width: 240px;
+}
+
+.container_12 .grid_4 {
+  width: 320px;
+}
+
+.container_12 .grid_5 {
+  width: 400px;
+}
+
+.container_12 .grid_6 {
+  width: 480px;
+}
+
+.container_12 .grid_7 {
+  width: 560px;
+}
+
+.container_12 .grid_8 {
+  width: 640px;
+}
+
+.container_12 .grid_9 {
+  width: 720px;
+}
+
+.container_12 .grid_10 {
+  width: 800px;
+}
+
+.container_12 .grid_11 {
+  width: 880px;
+}
+
+.container_12 .grid_12 {
+  width: 960px;
+}
+
+/* `Prefix Extra Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_12 .prefix_1 {
+  padding-left: 80px;
+}
+
+.container_12 .prefix_2 {
+  padding-left: 160px;
+}
+
+.container_12 .prefix_3 {
+  padding-left: 240px;
+}
+
+.container_12 .prefix_4 {
+  padding-left: 320px;
+}
+
+.container_12 .prefix_5 {
+  padding-left: 400px;
+}
+
+.container_12 .prefix_6 {
+  padding-left: 480px;
+}
+
+.container_12 .prefix_7 {
+  padding-left: 560px;
+}
+
+.container_12 .prefix_8 {
+  padding-left: 640px;
+}
+
+.container_12 .prefix_9 {
+  padding-left: 720px;
+}
+
+.container_12 .prefix_10 {
+  padding-left: 800px;
+}
+
+.container_12 .prefix_11 {
+  padding-left: 880px;
+}
+
+/* `Suffix Extra Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_12 .suffix_1 {
+  padding-right: 80px;
+}
+
+.container_12 .suffix_2 {
+  padding-right: 160px;
+}
+
+.container_12 .suffix_3 {
+  padding-right: 240px;
+}
+
+.container_12 .suffix_4 {
+  padding-right: 320px;
+}
+
+.container_12 .suffix_5 {
+  padding-right: 400px;
+}
+
+.container_12 .suffix_6 {
+  padding-right: 480px;
+}
+
+.container_12 .suffix_7 {
+  padding-right: 560px;
+}
+
+.container_12 .suffix_8 {
+  padding-right: 640px;
+}
+
+.container_12 .suffix_9 {
+  padding-right: 720px;
+}
+
+.container_12 .suffix_10 {
+  padding-right: 800px;
+}
+
+.container_12 .suffix_11 {
+  padding-right: 880px;
+}
+
+/* `Push Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_12 .push_1 {
+  left: 80px;
+}
+
+.container_12 .push_2 {
+  left: 160px;
+}
+
+.container_12 .push_3 {
+  left: 240px;
+}
+
+.container_12 .push_4 {
+  left: 320px;
+}
+
+.container_12 .push_5 {
+  left: 400px;
+}
+
+.container_12 .push_6 {
+  left: 480px;
+}
+
+.container_12 .push_7 {
+  left: 560px;
+}
+
+.container_12 .push_8 {
+  left: 640px;
+}
+
+.container_12 .push_9 {
+  left: 720px;
+}
+
+.container_12 .push_10 {
+  left: 800px;
+}
+
+.container_12 .push_11 {
+  left: 880px;
+}
+
+/* `Pull Space >> 12 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.container_12 .pull_1 {
+  left: -80px;
+}
+
+.container_12 .pull_2 {
+  left: -160px;
+}
+
+.container_12 .pull_3 {
+  left: -240px;
+}
+
+.container_12 .pull_4 {
+  left: -320px;
+}
+
+.container_12 .pull_5 {
+  left: -400px;
+}
+
+.container_12 .pull_6 {
+  left: -480px;
+}
+
+.container_12 .pull_7 {
+  left: -560px;
+}
+
+.container_12 .pull_8 {
+  left: -640px;
+}
+
+.container_12 .pull_9 {
+  left: -720px;
+}
+
+.container_12 .pull_10 {
+  left: -800px;
+}
+
+.container_12 .pull_11 {
+  left: -880px;
+}
+
+/* `Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+/* http://sonspring.com/journal/clearing-floats */
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+
+.clearfix:before,
+.clearfix:after,
+.container_12:before,
+.container_12:after {
+  content: '.';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  font-size: 0;
+  line-height: 0;
+  width: 0;
+  height: 0;
+}
+
+.clearfix:after,
+.container_12:after {
+  clear: both;
+}
+
+/*
+  The following zoom:1 rule is specifically for IE6 + IE7.
+  Move to separate stylesheet if invalid CSS is a problem.
+*/
+
+.clearfix,
+.container_12 {
+  zoom: 1;
+}

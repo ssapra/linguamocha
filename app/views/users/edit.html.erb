@@ -1,4 +1,4 @@
-<%= form_for(@user, :url => :user, :html => {:multipart => true}) do |f| %>
+<%= nested_form_for(@user, :url => :user, :html => {:multipart => true}) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -25,22 +25,20 @@
   <table>
     <th>Skill</th>
 	<th>Description</th>
+	<th> </th>
+  
 	
   <%= f.fields_for :my_skills do |builder| %>
-	  <div class="ui-widget">
-	   <tr><td><%= builder.label :skill %><br />
-		<%= builder.text_field :tag, :class => "skill" %></td>
-	  </div>
-
-	  <div class="field">
-		<td><%= builder.label :description %><br />
-		<%= builder.text_area :description, :size => "30x10" %></td></tr>
-	  </div>
+	  <%= render "users/skill", :builder => builder%>
   <% end %>
+
+  <p><%= f.link_to_add "Add a skill", :my_skills%></p>
   
   </table>
 
   <% f.hidden_field :username%>
+
+  <%#= link_to "Add new skill", new_skill, remote: :true%>
 
   <div class="actions">
      <%= f.submit "Update Profile" %>

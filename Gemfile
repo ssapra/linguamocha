@@ -9,6 +9,7 @@ gem 'rails', '3.2.8'
 gem 'devise'
 gem "paperclip", "~> 3.0"
 gem 'nokogiri'
+gem "nested_form"
 
 group :development do
 	gem 'sqlite3'

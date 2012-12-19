@@ -1,5 +1,9 @@
 Linguamocha::Application.routes.draw do
 
+  get "my_skills/new"
+
+  get "my_skills/destroy"
+
   root to: 'dashboard#home'
   
   devise_for :users  

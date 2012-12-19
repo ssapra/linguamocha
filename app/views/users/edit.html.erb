@@ -1,4 +1,4 @@
-<%= form_for(@user, :controller => :users, :action => :update, :html => {:multipart => true}) do |f| %>
+<%= form_for(@user, :url => :user, :html => {:multipart => true}) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -15,7 +15,9 @@
      <%= f.label :bio %><br />
      <%= f.text_area :bio, :size => "30x10" %>
   </div>
-  <%= image_tag @user.avatar.url(:medium) %>
+  <% if @user.avatar_file_name %>
+	<%= image_tag @user.avatar.url(:medium) %>
+  <% end %>
   <div class="field">
 	<%= f.file_field :avatar %>
   </div>
@@ -37,6 +39,8 @@
   <% end %>
   
   </table>
+
+  <% f.hidden_field :username%>
 
   <div class="actions">
      <%= f.submit "Update Profile" %>

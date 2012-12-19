@@ -2,12 +2,14 @@ Linguamocha::Application.routes.draw do
 
   root to: 'dashboard#home'
   
-  devise_for :users
+  devise_for :users  
+  get "/:username" => "users#show", as: :user
+  get "/:username/edit" => "users#edit", as: :edit_user
+  put "/:username" => "users#update", as: :user
+  delete "/:username" => "users#destroy", as: :user
   
-  resources :users
-
-  get "dashboard/home"
+  # resources :user
   
-  match "/allskills" => "users#all_skills"
+  # match "/allskills" => "users#all_skills"
   
 end

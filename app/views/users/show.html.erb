@@ -2,16 +2,26 @@
 <h1><%= @user.name %></h1>
 
 
-<%= image_tag @user.avatar.url(:medium) %>
+<% if @user.avatar_file_name %>
+	<%= image_tag @user.avatar.url(:medium) %>
+<% end %>
 
 <h2>Bio</h2>
-<%= @user.bio %><br /><br />
+<% if @user.bio %>
+	<%= @user.bio %><br /><br />
+<% else %>
+	<i>No bio given</i>
+<% end %>
 
 
 <h2>Skills</h2>
-<% @user.my_skills.each do |skill| %>
-    <h3><%= skill.tag %></h3> 
-    <%= skill.description %>
+<% if @user.my_skills != [] %>
+	<% @user.my_skills.each do |skill| %>
+	    <h3><%= skill.tag %></h3> 
+	    <%= skill.description %>
+	<% end %>
+<% else %>
+	<i>No skills listed</i>
 <% end %>
 	 
 	
@@ -19,4 +29,6 @@
 <br />
 <br />
 
-<%= link_to "Edit Profile", edit_user_path(@user.id) %>
+<% if @user == current_user %>
+	<%= link_to "Edit Profile", edit_user_path(@user.username) %>
+<% end %>

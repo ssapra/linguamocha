@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
                     :path => ":rails_root/public/system/:attachment/:id/:style/:basename.:extension"
   attr_accessible :name, 
                   :bio,
+                  :username,
                   :my_skills_attributes
   
   has_many :my_skills, dependent: :destroy

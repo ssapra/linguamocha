@@ -28,9 +28,9 @@
 				</div>
 
 				<div class="label_responses grid_6">
-					<p><strong>Who-gives-a-shit High School</strong><br>
-						<strong>University of Chicago 2015</strong><br>
-						<em>BA in Engineering</em>
+					<p><strong><%= @user.high_school%></strong><br>
+						<strong><%= @user.college %></strong><br>
+						<em><%= @user.degree %></em>
 					</p>
 				</div>
 			<div/>
@@ -41,7 +41,7 @@
 				</div>
 
 				<div class="label_responses grid_6">
-					<p><strong>Associate Professor of Underwater Basket-Weaving</strong></p>
+					<p><strong><%= @user.occupation %></strong></p>
 				</div>
 			</div>
 		</div>

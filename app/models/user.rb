@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   attr_accessible :name, 
                   :bio,
                   :username,
+                  :high_school,
+                  :college,
+                  :degree,
+                  :occupation,
                   :my_skills_attributes
   
   has_many :my_skills, dependent: :destroy

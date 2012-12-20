@@ -23,17 +23,17 @@
 	left:0; 
 	position:fixed; 
 	width:100%; 
-	top:0; 
+	top:0;
+	height: 40px; 
+	margin-bottom: 10px;
 	border-bottom: 10px solid #176017;
-}
-header{
-	height: 70px;
 }
 
 #logo {
-	padding: 15px;
+	position: relative;
+	top: 5px;
+	padding: 5px;
 } 
-
 
 /* 
  ******************************
@@ -43,7 +43,7 @@ header{
 
 #nav_container {
 	position: fixed;
-	top: 70px;
+	top: 40px;
 	right: 0px;
 	background-color: #469446;
 	float: right;
@@ -75,7 +75,7 @@ nav li a {
  ******************************
 */
 .main {
-	padding-top: 100px;
+	padding-top: 70px;
 	font-family: 'Droid Sans', sans-serif;
 }
 
@@ -206,10 +206,6 @@ footer {
       =miscellaneous
  ******************************
 */
-.container_12 {
-	padding-left: 100px;
-	border-left: 10px solid #79CA79;
-}
 
 /*
   960 Grid System ~ Core CSS.
@@ -228,6 +224,7 @@ footer {
 
 body {
   min-width: 960px;
+/*  min-height: 960px;	*/
 }
 
 /* `Container
@@ -237,6 +234,9 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 960px;
+  padding-top: 60px;
+  padding-left: 100px;
+  border-left: 10px solid #79CA79;
 }
 
 /* `Grid >> Global

@@ -12,31 +12,33 @@
       </ul>
     </div>
   <% end %>
-  
+ 
+  <% if @user.avatar_file_name %>
+	<%= image_tag @user.avatar.url(:medium) %>
+  <% end %><br />
+
+  <div class="field">
+	<%= f.file_field :avatar %>
+  </div>
+
   <div class="field">
      <%= f.label :bio %><br />
      <%= f.text_area :bio, :size => "30x10" %>
   </div>
-  <% if @user.avatar_file_name %>
-	<%= image_tag @user.avatar.url(:medium) %>
-  <% end %>
-  <div class="field">
-	<%= f.file_field :avatar %>
-  </div>
-	
+
+
   <table>
     <th>Skill</th>
 	<th>Description</th>
 	<th> </th>
-  
-	
+
   <%= f.fields_for :my_skills do |builder| %>
 	  <%= render "users/skill", :builder => builder%>
   <% end %>
-
-  <p><%= f.link_to_add "Add a skill", :my_skills%></p>
   
   </table>
+
+  <p><%= f.link_to_add "Add a skill", :my_skills%></p>
 
   <% f.hidden_field :username%>
 

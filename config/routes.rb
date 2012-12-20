@@ -12,6 +12,8 @@ Linguamocha::Application.routes.draw do
   put "/:username" => "users#update", as: :user
   delete "/:username" => "users#destroy", as: :user
   
+  delete "/my_skill" => "my_skills#destroy", as: :destroy_skill
+  
   # resources :user
   
   # match "/allskills" => "users#all_skills"

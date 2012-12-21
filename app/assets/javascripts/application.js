@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery-custom
+//= require jquery-custom	
 //= require jquery_nested_form
 
 $(function() {

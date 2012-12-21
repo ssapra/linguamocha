@@ -6,8 +6,8 @@
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
       <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <% @user.errors.each_with_index.each do |msg, i| %>
+        <li><%= msg[1] %></li>
       <% end %>
       </ul>
     </div>
@@ -52,7 +52,7 @@
 	<th> </th>
 
   <%= f.fields_for :my_skills do |builder| %>
-	  <%= render "users/skill", :builder => builder%>
+	<%= render "users/skill", :builder => builder%>
   <% end %>
   
   </table>
@@ -60,8 +60,6 @@
   <p><%= f.link_to_add "Add a skill", :my_skills%></p>
 
   <% f.hidden_field :username%>
-
-  <%#= link_to "Add new skill", new_skill, remote: :true%>
 
   <div class="actions">
      <%= f.submit "Update Profile" %>

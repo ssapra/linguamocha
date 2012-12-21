@@ -9,7 +9,7 @@
 	<nav>
 		<ul>
 			<% if user_signed_in? %>
-				<li><a href="#" class="selected">Profile</a></li>
+				<li><%= link_to "Profile", user_path(current_user.username)%></li>
 				<li><a href="#">Find People</a></li>
 				<li><a href="#">Requests</a></li>
 				<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>

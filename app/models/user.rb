@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
                     :url => "/system/:attachment/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/:attachment/:id/:style/:basename.:extension"
+                    
   attr_accessible :name, 
                   :bio,
                   :username,
@@ -21,5 +22,5 @@ class User < ActiveRecord::Base
                   :my_skills_attributes
   
   has_many :my_skills, dependent: :destroy
-  accepts_nested_attributes_for :my_skills, :reject_if => lambda { |a| a[:tag].blank? }
+  accepts_nested_attributes_for :my_skills, :allow_destroy => true
 end

@@ -6,7 +6,8 @@ class Request < ActiveRecord::Base
                   :receiver_id, 
                   :sender_confirmation, 
                   :sender_id, 
-                  :time,
+                  :start_time,
+                  :end_time,
                   :messages_attributes
                   
   has_many :messages, dependent: :destroy

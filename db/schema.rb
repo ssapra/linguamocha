@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222210509) do
+ActiveRecord::Schema.define(:version => 20121222215252) do
 
   create_table "conversations", :force => true do |t|
     t.string   "subject",    :default => ""
@@ -80,12 +80,13 @@ ActiveRecord::Schema.define(:version => 20121222210509) do
     t.integer  "receiver_id"
     t.boolean  "sender_confirmation"
     t.boolean  "receiver_confirmation"
-    t.time     "time"
     t.date     "date"
     t.string   "location"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
     t.string   "title"
+    t.time     "start_time"
+    t.time     "end_time"
   end
 
   create_table "skills", :force => true do |t|
@@ -118,6 +119,8 @@ ActiveRecord::Schema.define(:version => 20121222210509) do
     t.string   "college"
     t.string   "degree"
     t.string   "occupation"
+    t.time     "start_time"
+    t.time     "end_time"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

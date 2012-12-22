@@ -13,7 +13,10 @@ class RequestsController < ApplicationController
   
   def create
     @request = Request.new(params[:request])
-    
+    split_date = params[:request][:date].split("/")
+    date = split_date[1] + "/" + split_date[0] + "/" + split_date[2]
+    @request.date = Date.parse(date)
+
     respond_to do |format|
       if @request.save
         format.html { redirect_to @request, notice: 'Note was successfully created.' }
@@ -26,8 +29,8 @@ class RequestsController < ApplicationController
     end
   end
   
-  # def show
-  #   @request = Request.
-  # end
+  def show
+    @request = Request.find_by_id(params[:id])
+  end
   
 end

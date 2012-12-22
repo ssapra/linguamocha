@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery-custom	
 //= require jquery_nested_form
+//= require timepicker
 
 $(function() {
        
@@ -35,6 +36,10 @@ $(function() {
 	        alert('error');
 	    }
 	});
+	
+	$("input#request_date").datepicker();
+	$('input#request_start_time').timepicker({ 'step': 15 });
+	$('input#request_end_time').timepicker({ 'step': 15 });
   	
 });
 

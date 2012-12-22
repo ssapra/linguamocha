@@ -1,0 +1,14 @@
+<h1><%= @request.title %></h1>	
+
+<b>From: <%= @request.start_time.strftime('%l:%M %P') %></b><br />
+<b>To: <%= @request.end_time.strftime('%l:%M %P') %></b><br />
+<b>Date: <%= @request.date.strftime("%B %d, %Y") %></b><br />
+<b>Location: <%= @request.location %></b><br /><br />
+
+<h1>Messages</h1>
+
+
+
+<% @request.messages.each do |message| %>
+  <%= message.body %>
+<% end %>

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  
   attr_accessible :avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
                     :url => "/system/:attachment/:id/:style/:basename.:extension",
@@ -19,8 +20,11 @@ class User < ActiveRecord::Base
                   :college,
                   :degree,
                   :occupation,
-                  :my_skills_attributes
+                  :my_skills_attributes,
+                  :interests_attributes
   
   has_many :my_skills, dependent: :destroy
+  has_many :interests, dependent: :destroy
   accepts_nested_attributes_for :my_skills, :allow_destroy => true
+  accepts_nested_attributes_for :interests, :allow_destroy => true
 end

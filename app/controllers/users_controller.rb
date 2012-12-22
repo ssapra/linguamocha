@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def all_skills
     skills = Skill.pluck(:tag)
     respond_to do |format|
-      format.js {render :json => skills}
+      format.json {render :json => skills}
     end
   end
   

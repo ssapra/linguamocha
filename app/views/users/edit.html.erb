@@ -44,21 +44,17 @@
 	<%= f.text_field :occupation %>
   </div>
 
-  <div class="items">  
-
   <%= f.fields_for :my_skills do |builder| %>
-    <%= render "users/my_skill_fields", :f => builder%>
+    <%= render "skill", :f => builder%>
   <% end %>
-
-  </div>
   
-
   <p><%= f.link_to_add "Add a skill", :my_skills %></p>
 
-  <!-- <a href="#" class="add">Add Skill</a><br /><br /><br /> -->
-
-  <!-- <%#= link_to_add_association 'Add Skill', f, :my_skills %> -->
-  <%#= f.link_to_add "Add a skill", :my_skills %>
+  <%= f.fields_for :interests do |interest| %>
+    <%= render "interest", :f => interest%>
+  <% end %>
+  
+  <p><%= f.link_to_add "Add an interest", :interests %></p>
 
   <% f.hidden_field :username%>
 

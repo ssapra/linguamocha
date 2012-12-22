@@ -17,26 +17,25 @@
 
 $(function() {
        
-  	// $.ajax({
-  	//         url: "/allskills",
-  	//         dataType:'json',
-  	//  		type: 'GET',
-  	// 	    success: function(data){
-  	// 			// alert(data);
-  	// 			$(".skill").autocomplete({
-  	// 				source: function( request, response ) {
-  	// 				    	var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-  	// 		            	response( $.grep( data, function( item ){
-  	// 		                	return matcher.test( item );
-  	// 		            	}) );
-  	// 		        	}	
-  	// 		    });
-  	// 	    },
-  	// 	    error: function(){
-  	// 	        alert('error');
-  	// 	    }
-  	// 	});
-
+  	$.ajax({
+        url: "/allskills",
+        dataType:'json',
+ 		type: 'GET',
+	    success: function(data){
+			$(".skill").autocomplete({
+				source: function( request, response ) {
+				    	var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+		            	response( $.grep( data, function( item ){
+		                	return matcher.test( item );
+		            	}) );
+		        	}	
+		    });
+	    },
+	    error: function(){
+	        alert('error');
+	    }
+	});
+  	
 });
 
 

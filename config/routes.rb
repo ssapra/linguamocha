@@ -1,8 +1,6 @@
 Linguamocha::Application.routes.draw do
-
-  get "my_skills/new"
-
-  get "my_skills/destroy"
+  
+  get "/allskills" => "users#all_skills"
 
   root to: 'dashboard#home'
   
@@ -11,11 +9,5 @@ Linguamocha::Application.routes.draw do
   get "/:username/edit" => "users#edit", as: :edit_user
   put "/:username" => "users#update", as: :user
   delete "/:username" => "users#destroy", as: :user
-  
-  delete "/my_skill" => "my_skills#destroy", as: :destroy_skill
-  
-  # resources :user
-  
-  # match "/allskills" => "users#all_skills"
   
 end

@@ -12,7 +12,7 @@ letters.each do |l|
   length = doc.css('ul.directory li a').length
   
   (length-1).times do |t|
-    t+=1; d = l + t.to_s;
+    d = l + t.to_s;
     doc1 = Nokogiri::HTML(open("http://www.linkedin.com/skills/directory/#{d}"))
     doc1.css('ul.directory li a').each do |link|
       Skill.create(:tag => link.content)

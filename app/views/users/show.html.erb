@@ -60,8 +60,13 @@
 		
 		<div class="learning grid_8">
 			<h3>Currently Learning</h3>
-			<p>Ruby-on-Rails</p>
-			<p>How to love</p>
+			<% if @user.interests %>
+				<% @user.interests.each do |i| %>
+					<p><%= i.tag%></p>
+				<% end %>
+			<% else %>
+				<i>Not learning anything at the moment</i>
+			<% end %>
 		</div>
 	</div>
 </div>

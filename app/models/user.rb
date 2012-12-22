@@ -32,10 +32,6 @@ class User < ActiveRecord::Base
     sent = Request.find_by_sender_id(self.id)
     received = Request.find_by_receiver_id(self.id)
     requests = [sent,received].flatten
-    if requests == [nil,nil]
-      return nil
-    else 
-      requests
-    end
+    requests.delete_if {|r| r == nil}
   end
 end

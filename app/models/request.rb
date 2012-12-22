@@ -1,11 +1,14 @@
 class Request < ActiveRecord::Base
   attr_accessible :date, 
+                  :title,
                   :location, 
                   :receiver_confirmation, 
                   :receiver_id, 
                   :sender_confirmation, 
                   :sender_id, 
-                  :time
+                  :time,
+                  :messages_attributes
                   
-  has_many :messages
+  has_many :messages, dependent: :destroy
+  accepts_nested_attributes_for :messages, :allow_destroy => true
 end

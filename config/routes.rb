@@ -3,8 +3,11 @@ Linguamocha::Application.routes.draw do
   get "/allskills" => "users#all_skills"
 
   get "/requests" => "requests#index", as: :requests
+  get "/requests/new" => "requests#new", as: :new_request
+  post "/request" => "requests#create", as: :request
+  get "/request/:id" => "requests#show", as: :request
   
-
+  
   root to: 'dashboard#home'
   
   devise_for :users  

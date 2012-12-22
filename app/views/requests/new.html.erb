@@ -1,0 +1,48 @@
+<h1>Sending a Request</h1>
+
+<%= nested_form_for(@request, :url => {:controller => :requests, :action => :create}) do |f| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+      <% @request.errors.each_with_index.each do |msg, i| %>
+        <li><%= msg[1] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+	<%= f.label :title %>
+	<%= f.text_field :title%>
+  </div>
+
+  <div class="field">
+	<%= f.label :time %>
+	<%= f.text_field :time%>
+  </div>
+
+  <div class="field">
+	<%= f.label :date %>
+	<%= f.text_field :date%>
+  </div>
+
+  <div class="field">
+	<%= f.label :location %>
+	<%= f.text_field :location%>
+  </div>
+
+  <%= f.fields_for :messages do |builder| %>
+	<%= builder.label :message %>
+	<%= builder.text_area :body, :size => "40x10"%>
+  <% end %>
+
+  <%= f.hidden_field :sender_id %>
+  <%= f.hidden_field :receiver_id %>
+
+ <div class="actions">
+     <%= f.submit "Create Request" %>
+  </div>
+
+<% end %>

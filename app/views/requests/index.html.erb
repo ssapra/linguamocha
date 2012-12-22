@@ -1,8 +1,8 @@
 <h1>Requests</h1>
 
 <% if @requests %>
-	<%= @requests.each do |request| %>
-	
+	<% @requests.each do |request| %>
+		<%= link_to "#{request.title}", request_path(request.id)%>
 	<% end %>
 <% else %>
 	<i>No requests right now</i>

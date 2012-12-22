@@ -8,6 +8,8 @@
 				<% end %><br />
 				<% if @user == current_user %>
 					<%= link_to "Edit Profile", edit_user_path(@user.username) %>
+				<% else %>
+					<%= link_to "Ask for Help", new_request_path(:sender_id => @current_user.id, :receiver_id => @user.id)%>
 				<% end %>
 			</figure>
 		</div>

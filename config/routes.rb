@@ -2,6 +2,9 @@ Linguamocha::Application.routes.draw do
   
   get "/allskills" => "users#all_skills"
 
+  get "/requests" => "requests#index", as: :requests
+  
+
   root to: 'dashboard#home'
   
   devise_for :users  
@@ -9,5 +12,6 @@ Linguamocha::Application.routes.draw do
   get "/:username/edit" => "users#edit", as: :edit_user
   put "/:username" => "users#update", as: :user
   delete "/:username" => "users#destroy", as: :user
+
   
 end

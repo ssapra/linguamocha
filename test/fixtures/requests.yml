@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sender_id: 1
+  receiver_id: 1
+  sender_confirmation: false
+  receiver_confirmation: false
+  time: 2012-12-22 13:52:21
+  date: 2012-12-22
+  location: MyString
+
+two:
+  sender_id: 1
+  receiver_id: 1
+  sender_confirmation: false
+  receiver_confirmation: false
+  time: 2012-12-22 13:52:21
+  date: 2012-12-22
+  location: MyString

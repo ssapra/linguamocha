@@ -27,4 +27,15 @@ class User < ActiveRecord::Base
   has_many :interests, dependent: :destroy
   accepts_nested_attributes_for :my_skills, :allow_destroy => true
   accepts_nested_attributes_for :interests, :allow_destroy => true
+  
+  def requests
+    sent = Request.find_by_sender_id(self.id)
+    received = Request.find_by_receiver_id(self.id)
+    requests = [sent,received].flatten
+    if requests == [nil,nil]
+      return nil
+    else 
+      requests
+    end
+  end
 end

@@ -1,10 +1,21 @@
-<h1>Requests</h1>
+<h1>Sent Requests</h1>
 
-<% if @requests %>
-	<% @requests.each do |request| %>
-		<%= link_to "#{request.title}", request_path(request.id)%>
+<% if @sent %>
+	<% @sent.each do |request| %>
+		<%= link_to "#{request.title}", request_path(request.id)%><br />
 	<% end %>
 <% else %>
-	<i>No requests right now</i>
+	<i>No requests have been sent</i>
 <% end %>
 		
+<br /><br />
+		
+<h1>Received Requests</h1>
+
+<% if @received %>
+	<% @received.each do |request| %>
+		<%= link_to "#{request.title}", request_path(request.id)%><br />
+	<% end %>
+<% else %>
+	<i>No requests have been received</i>
+<% end %>		

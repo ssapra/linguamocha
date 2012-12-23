@@ -10,5 +10,10 @@
 
 
 <% @request.messages.each do |message| %>
-  <%= message.body %>
+  	<%= message.user %>:
+	<%= message.body %><br />
 <% end %>
+
+<br /><br /><br /><br />
+
+<%= link_to "Edit request", edit_request_path(@request.id)%>

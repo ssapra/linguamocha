@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222215252) do
+ActiveRecord::Schema.define(:version => 20121223034224) do
 
   create_table "conversations", :force => true do |t|
     t.string   "subject",    :default => ""
@@ -29,10 +29,11 @@ ActiveRecord::Schema.define(:version => 20121222215252) do
   create_table "messages", :force => true do |t|
     t.integer  "request_id"
     t.text     "body"
-    t.boolean  "sender_viewed"
-    t.boolean  "receiver_viewed"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.boolean  "sender_viewed",   :default => false
+    t.boolean  "receiver_viewed", :default => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.integer  "user_id"
   end
 
   create_table "my_skills", :force => true do |t|
@@ -78,12 +79,12 @@ ActiveRecord::Schema.define(:version => 20121222215252) do
   create_table "requests", :force => true do |t|
     t.integer  "sender_id"
     t.integer  "receiver_id"
-    t.boolean  "sender_confirmation"
-    t.boolean  "receiver_confirmation"
+    t.boolean  "sender_confirmation",   :default => false
+    t.boolean  "receiver_confirmation", :default => false
     t.date     "date"
     t.string   "location"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.string   "title"
     t.time     "start_time"
     t.time     "end_time"

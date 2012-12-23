@@ -15,38 +15,38 @@
 
   <div class="field">
 	<%= f.label :title %>
-	<%= f.text_field :title%>
+	<%= f.text_field :title %>
   </div>
 
   <div class="field">
 	<%= f.label :from %>
-	<%= f.text_field :start_time%>
+	<%= f.text_field :start_time %>
   </div>
 
   <div class="field">
 	<%= f.label :to %>
-	<%= f.text_field :end_time%>
+	<%= f.text_field :end_time %>
   </div>
 
   <div class="datepicker">
 	<%= f.label :date %>
-	<%= f.text_field :date%>
+	<%= f.text_field :date %>
   </div>
 
   <div class="field">
 	<%= f.label :location %>
-	<%= f.text_field :location%>
+	<%= f.text_field :location %>
   </div>
 
   <%= f.fields_for :messages do |builder| %>
 	<%= builder.label :message %>
-	<%= builder.text_area :body, :size => "40x10"%>
+	<%= builder.text_area :body, :size => "40x10" %>
   <% end %>
 
   <%= f.hidden_field :sender_id %>
   <%= f.hidden_field :receiver_id %>
 
- <div class="actions">
+  <div class="actions">
      <%= f.submit "Create Request" %>
   </div>
 

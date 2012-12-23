@@ -1,0 +1,80 @@
+<h1>Request</h1>
+
+<%= form_for(@request, :url => {:controller => :requests, :action => :update}) do |f| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+      <ul>
+      <% @request.errors.each_with_index.each do |msg, i| %>
+        <li><%= msg[1] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+	<%= f.label :from %>
+	<%= f.text_field :start_time, :value => @request.start_time %>
+  </div>
+  
+  <div class="field">
+	<%= f.label :to %>
+	<%= f.text_field :end_time, :value => @request.end_time %>
+  </div>
+
+  <div class="datepicker">
+	<%= f.label :date %>
+	<%= f.text_field :date, :value => @request.date %>
+  </div>
+
+  <div class="field">
+	<%= f.label :location %>
+	<%= f.text_field :location %>
+  </div>
+
+  <div class="actions">
+     <%= f.submit "Update Request" %>
+  </div>
+
+<% end %>
+
+<br /><br /><br />
+
+<h1>Messages</h1>
+
+<% @request.messages.each do |message| %>
+	<%= message.user %>: 
+	<%= message.body %><br />
+<% end %>
+
+<br /><br /><br />
+
+<%= form_for(@message, :url => {:controller => :messages, :action => :create}) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+      <ul>
+      <% @message.errors.each_with_index.each do |msg, i| %>
+        <li><%= msg[1] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+	<%= f.label :message %>
+	<%= f.text_field :body %>
+  </div>
+
+  <%= f.hidden_field :request_id %>
+
+  <div class="actions">
+     <%= f.submit "Reply" %>
+  </div>
+
+<% end %>

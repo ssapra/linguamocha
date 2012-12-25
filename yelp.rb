@@ -26,6 +26,8 @@ json = JSON.parse(string)
 
 puts ''
 
+points = []
+
 json["businesses"].each do |business|
   # pp business 
   puts business["name"]
@@ -33,5 +35,22 @@ json["businesses"].each do |business|
   puts loc["address"]
   puts loc["neighborhoods"] if loc["neighborhoods"]
   puts "#{loc["city"]}, #{loc["state_code"]} #{loc["postal_code"]}"
+  puts "[#{loc["coordinate"]["latitude"]}, #{loc["coordinate"]["longitude"]}]"
+  points << [loc["coordinate"]["latitude"], loc["coordinate"]["longitude"]]
   puts ""
 end
+
+location_string = ""
+
+points.each_with_index do |point, i|
+  c = (i+97).chr.upcase
+  location_string += "&markers=color:red%7Clabel:#{c}%7C#{point[0]},#{point[1]}"
+  if i == 10 then break end
+end
+
+puts "http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap" + location_string + "&sensor=false"
+# 
+# "http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap
+# &markers=color:red%7Clabel:1%7C40.702147,-74.015794
+# &markers=color:red%7Clabel:2%7C40.711614,-74.012318
+# &markers=color:red%7Clabel:3%7C40.718217,-73.998284&sensor=false"

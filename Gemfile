@@ -9,6 +9,7 @@ gem 'devise'
 gem "paperclip", "~> 3.0"
 gem 'nokogiri'
 gem "nested_form"
+gem "geocoder"
 
 group :development do
 	gem 'sqlite3'

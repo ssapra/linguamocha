@@ -2,6 +2,7 @@ require 'rubygems'
 require 'oauth'
 require 'pp'
 require 'json'
+require 'geoip'
 
 consumer_key = 'EcxkaDnICiYJE2PZm_OeCw'
 consumer_secret = 'Yqc_OOMULadnzTs7Juj8bmZN3Ng'
@@ -15,6 +16,13 @@ access_token = OAuth::AccessToken.new(consumer, token, token_secret)
 
 puts "What is your location"
 current_location = gets.chomp
+
+# interface = UrbanMapping::Interface.new('cb5d8d502a625083c77181341a7a5e5f')
+
+# hoods = interface.get_neighborhoods_by_postal_code(loc["postal_code"])
+
+# pp hoods
+
 
 cl = current_location.split(" ").join("+")
 

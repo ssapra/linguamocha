@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @ip = request.remote_ip
     results = Geocoder.search(@ip)
     @location = results[0].city
+    logger.debug "Results: #{results.inspect}"
   end
   
   def edit

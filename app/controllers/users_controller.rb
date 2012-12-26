@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:username])
     @current_user = current_user
     @ip = request.remote_ip
-    results = Geocoder.search(ip)
+    results = Geocoder.search(@ip)
     @location = results[0].city
   end
   

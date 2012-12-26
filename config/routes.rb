@@ -6,8 +6,6 @@ Linguamocha::Application.routes.draw do
   
   post "/message" => "messages#create", as: :message
   
-  
-  
   root to: 'dashboard#home'
   
   devise_for :users  
@@ -16,5 +14,4 @@ Linguamocha::Application.routes.draw do
   put "/:username" => "users#update", as: :user
   delete "/:username" => "users#destroy", as: :user
 
-  
 end

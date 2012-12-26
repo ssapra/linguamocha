@@ -7,12 +7,12 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find_by_username(params[:username])
+    @user = current_user
     # @user.my_skills << MySkill.new
   end
   
   def update
-    @user = User.find_by_username(params[:username])
+    @user = current_user
     
     respond_to do |format|
       if @user.update_attributes(params[:user])

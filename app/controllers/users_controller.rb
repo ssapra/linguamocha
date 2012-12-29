@@ -6,8 +6,8 @@ class UsersController < ApplicationController
     @current_user = current_user
     @education = [@user.high_school, @user.college, @user.degree]
     @ip = request.remote_ip
-    results = Geocoder.search(@ip)
-    @location = results[0].city
+    results = Geocoder.search(@ip)[0].data
+    @location = results["city"] + ", " + results["region_code"]
     logger.debug "Results: #{@location}"
   end
   

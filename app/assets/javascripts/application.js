@@ -33,15 +33,28 @@ $(function() {
 			            	}) );
 			        	}	
 			    });
-			
-				// $(function() {
-				//     $(document).on("focus",".grand-child-name", function() {
-				//         $('.grand-child-name').autocomplete({
-				//             source: $('.grand-child-name').data('autocomplete-source')
-				//         }); 
-				//     });
-				// })
-			
+		    },
+		    error: function(){
+		        alert('error');
+		    }
+		});
+	});
+	
+	$(document).on("focus",".interest", function() {
+		$.ajax({
+		    url: "/allskills",
+	        dataType:'json',
+	 		type: 'GET',
+		    success: function(data){
+				$(".interest").autocomplete({
+					minLength: 2,
+					source: function( request, response ) {
+					    	var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+			            	response( $.grep( data, function( item ){
+			                	return matcher.test( item );
+			            	}) );
+			        	}	
+			    });
 		    },
 		    error: function(){
 		        alert('error');

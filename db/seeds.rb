@@ -1,4 +1,3 @@
-
 require 'open-uri'
 require 'nokogiri'
 
@@ -6,7 +5,8 @@ Skill.destroy_all
 
 letters = ['a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-print "Creating skills"           
+           
+print "Creating skills "           
 letters.each do |l|
   doc = Nokogiri::HTML(open("http://www.linkedin.com/skills/directory/#{l}"))
   length = doc.css('ul.directory li a').length
@@ -18,11 +18,19 @@ letters.each do |l|
       Skill.create(:tag => link.content)
     end
   end
-  print "."
+  print "#{l} "
 end
 
 puts ""
-puts "Skills created."
+puts "Skills created in local database"
+
+f = File.new("skills.csv", "w")
+
+Skill.pluck(:tag).each do |t|
+  f.puts(t)
+end
+
+f.close
 
 
 

@@ -6,12 +6,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_username(params[:username])
     @current_user = current_user
+    @education = [@user.high_school, @user.college, @user.degree]
     @ip = request.remote_ip
-    # if env[‘HTTP_X_REAL_IP’] 
-    #   @ip = env[‘HTTP_X_REAL_IP’] 
-    # else
-    #   @ip = env[‘REMOTE_ADDR’]
-    # end
     results = Geocoder.search(@ip)
     @location = results[0].city
     logger.debug "Results: #{results.inspect}"

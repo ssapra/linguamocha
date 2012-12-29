@@ -29,13 +29,17 @@
 				<div class="label grid_2">
 					<p>Education:</p>
 				</div>
-
-				<div class="label_responses grid_6">
-					<p><strong><%= @user.high_school%></strong><br>
-						<strong><%= @user.college %></strong><br>
-						<em><%= @user.degree %></em>
-					</p>
-				</div>
+               
+                <% if @education != [nil, nil, nil] %>
+					<div class="label_responses grid_6">
+						<p><strong><%= @user.high_school%></strong><br>
+							<strong><%= @user.college %></strong><br>
+							<em><%= @user.degree %></em>
+						</p>
+					</div>
+				<% else %>
+					<i>No education listed</i>
+				<% end %>
 			<div/>
 
 			<div class="occupation grid_8">
@@ -63,7 +67,7 @@
 		
 		<div class="learning grid_8">
 			<h3>Currently Learning</h3>
-			<% if @user.interests %>
+			<% if @user.interests != [] %>
 				<% @user.interests.each do |i| %>
 					<p><%= i.tag%></p>
 				<% end %>

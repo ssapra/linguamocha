@@ -17,25 +17,38 @@
 //= require timepicker
 
 $(function() {
-       
-  	$.ajax({
-        url: "/allskills",
-        dataType:'json',
- 		type: 'GET',
-	    success: function(data){
-			$(".skill").autocomplete({
-				source: function( request, response ) {
-				    	var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
-		            	response( $.grep( data, function( item ){
-		                	return matcher.test( item );
-		            	}) );
-		        	}	
-		    });
-	    },
-	    error: function(){
-	        alert('error');
-	    }
+    
+	$(document).on("focus",".skill", function() {
+		$.ajax({
+		    url: "/allskills",
+	        dataType:'json',
+	 		type: 'GET',
+		    success: function(data){
+				$(".skill").autocomplete({
+					minLength: 2,
+					source: function( request, response ) {
+					    	var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+			            	response( $.grep( data, function( item ){
+			                	return matcher.test( item );
+			            	}) );
+			        	}	
+			    });
+			
+				// $(function() {
+				//     $(document).on("focus",".grand-child-name", function() {
+				//         $('.grand-child-name').autocomplete({
+				//             source: $('.grand-child-name').data('autocomplete-source')
+				//         }); 
+				//     });
+				// })
+			
+		    },
+		    error: function(){
+		        alert('error');
+		    }
+		});
 	});
+	
 	
 	$("input#request_date").datepicker();
 	$('input#request_start_time').timepicker({ 'step': 15 });

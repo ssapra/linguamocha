@@ -1,3 +1,5 @@
+require 'csv'
+
 class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
   
@@ -5,6 +7,11 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:username])
     @current_user = current_user
     @ip = request.remote_ip
+    # if env[‘HTTP_X_REAL_IP’] 
+    #   @ip = env[‘HTTP_X_REAL_IP’] 
+    # else
+    #   @ip = env[‘REMOTE_ADDR’]
+    # end
     results = Geocoder.search(@ip)
     @location = results[0].city
     logger.debug "Results: #{results.inspect}"
@@ -30,9 +37,18 @@ class UsersController < ApplicationController
   end
   
   def all_skills
-    skills = Skill.pluck(:tag)
+    # skills = []
+    # CSV.open("skills.csv", "r").each do |csv_obj|
+    #   skills << csv_obj
+    # end
+    
+    skills = CSV.read("skills.csv").flatten
+    
+    
+    # skills = Skill.pluck(:tag)
+    
     respond_to do |format|
-      format.json {render :json => skills}
+      format.json {render :json => skills.to_json}
     end
   end
   

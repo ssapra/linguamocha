@@ -6,6 +6,8 @@ require 'pp'
 
 # results = Geocoder.search("McCarren Park, Brooklyn, NY")
 
-results = Geocoder.search('24.193.83.1')
+results = Geocoder.search('24.193.82.1')
 
-pp results[0].city
+city = results[0].city
+
+if city != "" then pp city else puts "City Not Found" end

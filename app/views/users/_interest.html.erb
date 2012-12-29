@@ -1,7 +1,11 @@
+<tr>
+  <td>
+	<div class="ui-widget">
+  	  <%#= f.label :interest %><br />
+  	  <%= f.text_field :tag, :class => "interest" %>
+	</div>	
+  </td>
 
-<div class="ui-widget">
-  <%= f.label :interest %><br />
-  <%= f.text_field :tag, :class => "interest" %>
-</div>
+  <td><br /><%= f.link_to_remove "Remove interest" %></td>
 
-<%= f.link_to_remove "Remove interest" %>
+</tr>

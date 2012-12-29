@@ -1,14 +1,18 @@
+<tr>
+  <td>
+    <div class="ui-widget">
+      <%#= f.label :skill %><br />
+      <%= f.text_field :tag, :class => "skill" %>
+    </div>
+  </td>
 
-<div class="ui-widget">
-  <%= f.label :skill %><br />
-  <%= f.text_field :tag, :class => "skill" %>
-</div>
+  <td>
+	<div class="field">
+	  <%#= f.label :description %><br />
+	  <%= f.text_area :description, :size => "30x10" %>
+	</div> 
+  </td>
 
-<div class="field">
-  <%= f.label :description %><br />
-  <%= f.text_area :description, :size => "30x10" %>
-</div> 
+  <td><br /><%= f.link_to_remove "Remove this skill" %></td>
 
-<%= f.link_to_remove "Remove this skill" %> 
-
-
+</tr>

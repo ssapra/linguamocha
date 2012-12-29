@@ -44,17 +44,46 @@
 	<%= f.text_field :occupation %>
   </div>
 
-  <%= f.fields_for :my_skills do |builder| %>
-    <%= render "skill", :f => builder%>
-  <% end %>
+  <br />
+  <br />
+
+  <h1>My Skills</h1>
+
+  <table>
+  	<th>Skill</th>
+	<th>Description</th>
+	<th> </th>
+	<%= f.fields_for :my_skills do |builder| %>
+      <%= render "skill", :f => builder%>
+    <% end %>
+  </table>
+ 
+  <br />
+  <br />
   
   <p><%= f.link_to_add "Add a skill", :my_skills %></p>
 
-  <%= f.fields_for :interests do |interest| %>
-    <%= render "interest", :f => interest%>
-  <% end %>
+  <br />
+  <br />
+
+  <h1>My Interests</h1> 
+
+  <table>
+	<th>Interest</th>
+	<th> </th>
+  	  <%= f.fields_for :interests do |interest| %>
+        <%= render "interest", :f => interest%>
+      <% end %>
+  </table>
+
+  <br />
+  <br />
+  <br />
   
   <p><%= f.link_to_add "Add an interest", :interests %></p>
+
+  <br />
+  <br />
 
   <% f.hidden_field :username%>
 

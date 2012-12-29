@@ -1,5 +1,3 @@
-require 'csv'
-
 class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
   
@@ -33,16 +31,8 @@ class UsersController < ApplicationController
   end
   
   def all_skills
-    # skills = []
-    # CSV.open("skills.csv", "r").each do |csv_obj|
-    #   skills << csv_obj
-    # end
-    
     skills = CSV.read("skills.csv").flatten
-    
-    
-    # skills = Skill.pluck(:tag)
-    
+  
     respond_to do |format|
       format.json {render :json => skills.to_json}
     end

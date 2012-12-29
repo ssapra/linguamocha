@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @current_user = current_user
     @education = [@user.high_school, @user.college, @user.degree]
     @ip = request.remote_ip
+    logger.debug "IP ADDRESS: #{@ip.split("")}"
     results = Geocoder.search(@ip)
     @location = results[0].city
     logger.debug "Results: #{results.inspect}"
@@ -13,7 +14,6 @@ class UsersController < ApplicationController
   
   def edit
     @user = current_user
-    # @user.my_skills << MySkill.new
   end
   
   def update

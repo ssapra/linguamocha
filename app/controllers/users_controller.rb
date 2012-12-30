@@ -5,12 +5,6 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:username])
     @current_user = current_user
     @education = [@user.high_school, @user.college, @user.degree]
-    @ip = request.remote_ip
-    if Geocoder.search(@ip)[0] != nil then results = Geocoder.search(@ip)[0].data end
-    if results 
-      @location = results["city"] + ", " + results["region_code"]
-    end
-    logger.debug "Results: #{@location}"
   end
   
   def edit

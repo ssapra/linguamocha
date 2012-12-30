@@ -1,6 +1,8 @@
 Linguamocha::Application.routes.draw do
   
   get "/allskills" => "users#all_skills"
+  
+  get "/nearby" => "requests#nearby_locations", as: :get_locations
 
   resources :requests
   

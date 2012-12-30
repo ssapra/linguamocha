@@ -12,6 +12,8 @@ gem 'nested_form'
 gem 'geocoder'
 gem 'fastercsv'
 
+gem 'oauth'
+
 group :development do
 	gem 'sqlite3'
 end

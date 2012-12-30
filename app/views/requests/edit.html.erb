@@ -32,7 +32,12 @@
 	<%= f.text_field :date, :value => @request.date %>
   </div>
 
-  <div class="field">
+  <!-- %= "Find cafes and restaurants near: " %>
+    <input type="text" id="find" value='<%= "#{@location}" %>'>
+    <a href="#" class="find">Find Locations</a>
+    Not your city? Type in your city and find locations now! -->
+
+  <div class="locations">
 	<%= f.label :location %>
 	<%= f.text_field :location %>
   </div>

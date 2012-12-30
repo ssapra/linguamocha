@@ -1,5 +1,7 @@
 class RequestsController < ApplicationController
   
+  before_filter :get_location
+  
   def index
     @user = current_user
     @sent = @user.sent_requests
@@ -60,6 +62,36 @@ class RequestsController < ApplicationController
       Date.strptime(stringdate,"%m/%d/%Y")
     else
       Date.strptime(stringdate,"%Y-%m-%d")
+    end
+  end
+  
+  def nearby_locations
+    consumer_key = 'EcxkaDnICiYJE2PZm_OeCw'
+    consumer_secret = 'Yqc_OOMULadnzTs7Juj8bmZN3Ng'
+    token = 'sKXNbkV6k17LqXx3Rjl21BzvpP26O9CF'
+    token_secret = '8EuUtxYMsqGD89qtIRkDj-LOXKg'
+
+    api_host = 'api.yelp.com'
+
+    consumer = OAuth::Consumer.new(consumer_key, consumer_secret, {:site => "http://#{api_host}"})
+    access_token = OAuth::AccessToken.new(consumer, token, token_secret)
+    
+    cl = params[:current_location].split(" ").join("+")
+
+    path = "/v2/search?term=cafe+coffee&location=#{cl}"
+
+    string =  access_token.get(path).body
+
+    json = JSON.parse(string)
+    
+    points = []
+
+    json["businesses"].each do |business|
+      points << {:name => business["name"], :address => business["location"]["address"][0]}
+    end
+    
+    respond_to do |format|
+      format.json {render :json => points.to_json}
     end
   end
   

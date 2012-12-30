@@ -62,6 +62,31 @@ $(function() {
 		});
 	});
 	
+	$("a.find").on("click", function() {
+		var loc = [];
+		var values = [];
+		$.ajax({
+		    url: "/nearby",
+	        dataType:'json',
+			data: {'current_location': $("input#find").val()},
+	 		type: 'GET',
+		    success: function(data){
+				$.each(data, function(key, value) {
+					loc.push(value.address);
+					values.push(value.name);
+	        	});
+	
+				$('div.locations').html('');
+				$.each(loc,function(i,o){
+					$('<input type="radio" name=location value="' + o + '">' + values[i] +": " + o + '<br />').appendTo('div.locations');
+				});
+		    },
+		    error: function(){
+		        alert('error');
+		    }
+		});
+	});
+	
 	
 	$("input#request_date").datepicker();
 	$('input#request_start_time').timepicker({ 'step': 15 });

@@ -41,10 +41,10 @@ json["businesses"].each do |business|
   puts business["name"]
   loc = business["location"]
   puts loc["address"]
-  puts loc["neighborhoods"] if loc["neighborhoods"]
-  puts "#{loc["city"]}, #{loc["state_code"]} #{loc["postal_code"]}"
-  puts "[#{loc["coordinate"]["latitude"]}, #{loc["coordinate"]["longitude"]}]"
-  points << [loc["coordinate"]["latitude"], loc["coordinate"]["longitude"]]
+  # puts loc["neighborhoods"] if loc["neighborhoods"]
+  # puts "#{loc["city"]}, #{loc["state_code"]} #{loc["postal_code"]}"
+  # puts "[#{loc["coordinate"]["latitude"]}, #{loc["coordinate"]["longitude"]}]"
+  # points << [loc["coordinate"]["latitude"], loc["coordinate"]["longitude"]]
   puts ""
 end
 

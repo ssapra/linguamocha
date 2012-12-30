@@ -13,4 +13,15 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def get_location
+    @ip = request.remote_ip
+    if Geocoder.search(@ip)[0] != nil then results = Geocoder.search(@ip)[0].data end
+    if results 
+      @location = results["city"] + ", " + results["region_code"]
+    else 
+      nil
+    end
+    logger.debug "Results: #{@location}"
+  end
+  
 end

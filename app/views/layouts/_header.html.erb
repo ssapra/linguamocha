@@ -1,7 +1,7 @@
 
 <div id="header_container">
 	<header>
-		<%= link_to image_tag("logo.png", :size => '30x30'), root_url, :id => "logo" %>
+		<%#= link_to image_tag("logo.png", :size => '30x30'), root_url, :id => "logo" %>
 	</header>
 </div>
 
@@ -20,3 +20,25 @@
 		</ul>
 	</nav>
 </div>
+
+<!-- <div class="fixed_bar">
+	<div class="header_container">
+		<%= link_to image_tag("logo.png", :size => '5x5'), root_url, :id => "logo" %>
+
+		<div id="nav_container">
+			<nav>
+				<ul>
+					<% if user_signed_in? %>
+						<li><%= link_to "Profile", user_path(current_user.username)%></li>
+						<li><a href="#">Find People</a></li>
+						<li><%= link_to "Requests", requests_path %></li>
+						<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+					<% else %>
+						<li><%= link_to "Sign In", new_user_session_path %></li> or
+						<li><%= link_to "Sign Up", new_user_registration_path %></li>
+					<% end %>
+				</ul>
+			</nav>
+		</div>			
+	</div>
+</div> -->

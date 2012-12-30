@@ -105,3 +105,110 @@
 	</div>
 </div>
 	
+	
+
+<!-- <div class="person grid_12">
+	<div class="name grid_5">	
+		<h1><%= @user.name %></h1>
+		<% if @user == current_user %>
+			<%= link_to "Edit Profile", edit_user_path(@user.username), :class => "edit" %><br />
+			<%= "You are near #{@location}" %>
+		<% else %>
+			<%= link_to "Ask for Help", new_request_path(:sender_id => @current_user.id, :receiver_id => @user.id)%>
+		<% end %>
+	</div>
+
+	<div class="prof_pic grid_7"></div>
+		<% if @user.avatar_file_name %>
+			<%= image_tag @user.avatar.url(:medium) %>
+		<% end %><br />
+	</div>
+
+		<div class="education grid_12">
+
+			<div class="label grid_5">
+				<h3>Education</h3>
+			</div>
+
+			<div class="label_responses grid_7">
+				<% if @education != [nil, nil, nil] %>
+					<div class="label_responses grid_6">
+						<p><strong><%= @user.high_school%></strong><br>
+							<strong><%= @user.college %></strong><br>
+							<em><%= @user.degree %></em>
+						</p>
+					</div>
+				<% else %>
+					<i>No education listed</i>
+				<% end %>
+			</div>
+		<div/>
+
+		<div class="occupation grid_12">
+			<div class="label grid_5">
+				<h3>Occupation</h3> 
+			</div>
+
+			<div class="label_responses grid_7">
+				<p><strong><%= @user.occupation %></strong></p>
+			</div>
+		</div>
+
+	<div class="skills grid_12">
+		<div class="label grid_5">
+			<h3>Skills</h3>
+		</div>
+
+		<div class="label_responses grid_7">
+			<% if @user.my_skills != [] %>
+				<% @user.my_skills.each do |skill| %>
+				    <p><%= skill.tag %></p> 
+				    <%= skill.description %>
+				<% end %>
+			<% else %>
+				<i>No skills listed</i>
+			<% end %>
+		</div>
+	</div>
+
+	<div class="currently_learning grid_12">
+		<div class="label grid_5">
+			<h3>Currently Learning</h3>
+		</div>
+
+		<div class="label_responses grid_7">
+			<% if @user.interests != [] %>
+				<% @user.interests.each do |i| %>
+					<p><%= i.tag%></p>
+				<% end %>
+			<% else %>
+				<i>Not learning anything at the moment</i>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+
+<div class="reference_group grid_12">
+	<h4>Latest Feedback</h4>
+
+	<div class="reference grid_12">
+		<div class="reviewer grid_5">
+			<a href="#"><h5>Ben Siegel</h5></a>
+		</div>
+
+		<div class="review grid_7">
+			<p>I had a good time. We just sat around in his room late at night and watched Lost. It was fairly romantic, actually.</p>
+		</div>
+	</div>
+</div>
+
+<div class="reference grid_12">
+	<div class="reviewer grid_5">
+		<a href="#"><h5>Victor Kung</h5></a>
+	</div>
+
+	<div class="review grid_7">
+		<p>4.5 out of 5 stars. Would do again.</p>
+	</div>
+</div> -->

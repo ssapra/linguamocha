@@ -23,7 +23,7 @@ class RequestsController < ApplicationController
     respond_to do |format|
       if @request.save
         @request.messages.last.update_attributes(:user_id => current_user.id)
-        @request.update_attributes(:location => params[:location])
+        if params[:location] then @request.update_attributes(:location => params[:location]) end
         format.html { redirect_to @request, notice: 'Note was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
       else
@@ -48,6 +48,7 @@ class RequestsController < ApplicationController
     params[:request][:date] = change_date(params[:request][:date])
     respond_to do |format|
       if @request.update_attributes(params[:request])
+        if params[:location] then @request.update_attributes(:location => params[:location]) end
         format.html { redirect_to @request, notice: 'Request was successfully updated.' }
         format.json { head :no_content }
       else

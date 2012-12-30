@@ -22,6 +22,11 @@ class User < ActiveRecord::Base
                   :occupation,
                   :my_skills_attributes,
                   :interests_attributes
+
+
+  validates :username, presence: true, uniqueness: true, format: { with: /^[a-z0-9_-]{6,12}$/,
+                      message: "must be lowercase letters and numbers" }, length: { in: 6..12, too_short: "must have at least 6 characters",
+                          too_long: "must have at most 12 characters"}
   
   has_many :my_skills, dependent: :destroy
   has_many :interests, dependent: :destroy

@@ -69,6 +69,8 @@ nav li a {
 	padding: 10px;
 }
 
+h1, h2, h3, p, a { font-family: 'Open Sans', sans-serif; }
+
 /* 
  ******************************
       =main

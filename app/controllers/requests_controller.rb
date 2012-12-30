@@ -23,6 +23,7 @@ class RequestsController < ApplicationController
     respond_to do |format|
       if @request.save
         @request.messages.last.update_attributes(:user_id => current_user.id)
+        @request.update_attributes(:location => params[:location])
         format.html { redirect_to @request, notice: 'Note was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
       else

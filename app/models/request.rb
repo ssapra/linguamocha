@@ -32,7 +32,4 @@ class Request < ActiveRecord::Base
   
   # Urban Mapping API key: cb5d8d502a625083c77181341a7a5e5f
   
-  
-  
-  
 end

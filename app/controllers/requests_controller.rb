@@ -1,6 +1,8 @@
 class RequestsController < ApplicationController
+  include Yelp
   
   before_filter :get_location
+  before_filter :get_coordinates
   
   def index
     @user = current_user
@@ -68,32 +70,29 @@ class RequestsController < ApplicationController
   end
   
   def nearby_locations
-    consumer_key = 'EcxkaDnICiYJE2PZm_OeCw'
-    consumer_secret = 'Yqc_OOMULadnzTs7Juj8bmZN3Ng'
-    token = 'sKXNbkV6k17LqXx3Rjl21BzvpP26O9CF'
-    token_secret = '8EuUtxYMsqGD89qtIRkDj-LOXKg'
-
-    api_host = 'api.yelp.com'
-
-    consumer = OAuth::Consumer.new(consumer_key, consumer_secret, {:site => "http://#{api_host}"})
-    access_token = OAuth::AccessToken.new(consumer, token, token_secret)
-    
-    cl = params[:current_location].split(" ").join("+")
-
-    path = "/v2/search?term=cafe+coffee&location=#{cl}"
-
-    string =  access_token.get(path).body
-
-    json = JSON.parse(string)
-    
-    points = []
-
-    json["businesses"].each do |business|
-      points << {:name => business["name"], :address => business["location"]["address"][0]}
-    end
+    points = Yelp.businesses(params[:current_location])
     
     respond_to do |format|
       format.json {render :json => points.to_json}
+    end
+  end
+  
+  def coordinates
+    points = Yelp.coordinates(params[:current_location])
+    
+    respond_to do |format|
+      format.json {render :json => points.to_json}
+    end
+  end
+  
+  def my_coordinates
+    
+    if @coordinates == {:latitude => nil, :longitude => nil}
+      @coordinates = {:latitude => 41.785935, :longitude =>  -88.147299}
+    end
+    
+    respond_to do |format|
+      format.json {render :json => @coordinates.to_json}
     end
   end
   

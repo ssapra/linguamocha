@@ -78,13 +78,53 @@ $(function() {
 	
 				$('div.locations').html('');
 				$.each(loc,function(i,o){
-					$('<input type="radio" name=location value="' + o + '">' + values[i] +": " + o + '<br />').appendTo('div.locations');
+					$('<input type="radio" name=location value="' + o + '">' + values[i] +": " + '<br />').appendTo('div.locations');
+					$('<p>' + o + '</p><br />').appendTo('div.locations');
 				});
 		    },
 		    error: function(){
 		        alert('error');
 		    }
 		});
+		
+		$.ajax({
+		    url: "/mycoordinates",
+	        dataType:'json',
+			data: {'current_location': $("input#find").val()},
+	 		type: 'GET',
+		    success: function(data){
+				var latitude = data.latitude;
+				var longitude = data.longitude;
+				var mapOptions = {
+				    zoom: 8,
+				    center: new google.maps.LatLng(latitude, longitude),
+				    mapTypeId: google.maps.MapTypeId.ROADMAP
+				}
+				var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+						// alert(document.getElementById("map_canvas"));
+						
+				var myLatlng = new google.maps.LatLng(latitude,longitude);
+				
+				var marker = new google.maps.Marker({
+				    position: myLatlng
+				});
+				
+				var label = new Label({
+				    map: map
+			    });
+
+				marker.setMap(map);
+				
+				label.set('zIndex', 1234);
+	            label.bindTo('position', marker, 'position');
+	            label.set('text', "A");
+		    },
+		    error: function(){
+		        alert('error');
+		    }
+		});
+		
+			
 	});
 	
 	
@@ -92,6 +132,24 @@ $(function() {
 	$('input#request_start_time').timepicker({ 'step': 15 });
 	$('input#request_end_time').timepicker({ 'step': 15 });
   	
+	// function initialize(){
+	// 		var mapOptions = {
+	// 		    zoom: 8,
+	// 		    center: new google.maps.LatLng(latitude, longitude),
+	// 		    mapTypeId: google.maps.MapTypeId.ROADMAP
+	// 		}
+	// 		var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+	// 	}
+	
+	function loadScript(){
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+	    script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyDFXdzd98ckgjQL-ix-2GedGRVvGl9ef-U&sensor=true";
+		document.body.appendChild(script);
+	}
+	
+	// window.onload = loadScript;
+
 });
 
 

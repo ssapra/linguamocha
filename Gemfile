@@ -5,13 +5,29 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+# Sign in/up/out
 gem 'devise'
+
+# Profile Picture
 gem "paperclip", "~> 3.0"
+
+# Scraping LinkedIn skills
 gem 'nokogiri'
+
+# JS for Nested Form
 gem 'nested_form'
+
+# Finding zipcode and coordinates from IP
 gem 'geocoder'
+
+#Reading from CSV
 gem 'fastercsv'
 
+# Searching
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
+# Yelp API Usage
 gem 'oauth'
 
 group :development do

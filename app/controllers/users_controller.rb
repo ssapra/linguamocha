@@ -33,4 +33,12 @@ class UsersController < ApplicationController
     end
   end
   
+  def search
+    @params = params[:search]
+    search = User.search do
+              fulltext params[:search]
+             end
+    @users = search.results
+  end
+  
 end

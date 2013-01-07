@@ -1,0 +1,5 @@
+Search results for <%= @params %>
+
+<% @users.each_with_index do |users, i| %>
+	<%= "#{i}: #{user.name}" %><br />
+<% end %>

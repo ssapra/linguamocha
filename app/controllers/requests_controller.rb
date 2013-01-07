@@ -1,8 +1,8 @@
 class RequestsController < ApplicationController
   include Yelp
   
-  before_filter :get_location
-  before_filter :get_coordinates
+  # before_filter :get_location
+  # before_filter :get_coordinates
   
   def index
     @user = current_user
@@ -37,17 +37,22 @@ class RequestsController < ApplicationController
   
   def show
     @request = Request.find_by_id(params[:id])
+    @message = Message.new(:request_id => @request.id)
   end
   
   def edit
     @request = Request.find_by_id(params[:id])
+    @location = get_location
+    @coordinates = get_coordinates
     @message = Message.new(:request_id => @request.id)
+    if @request.start_time then @start_time = @request.start_time.strftime("%l:%M %P") end
+    if @request.end_time then @end_time = @request.end_time.strftime("%l:%M %P") end
   end
   
   def update
     @request = Request.find(params[:id])
-    
-    params[:request][:date] = change_date(params[:request][:date])
+
+    # params[:request][:date] = change_date(params[:request][:date])
     respond_to do |format|
       if @request.update_attributes(params[:request])
         if params[:location] then @request.update_attributes(:location => params[:location]) end
@@ -86,7 +91,7 @@ class RequestsController < ApplicationController
   end
   
   def my_coordinates
-    
+    @coordinates = get_coordinates
     if @coordinates == {:latitude => nil, :longitude => nil}
       @coordinates = {:latitude => 41.785935, :longitude =>  -88.147299}
     end
@@ -94,6 +99,49 @@ class RequestsController < ApplicationController
     respond_to do |format|
       format.json {render :json => @coordinates.to_json}
     end
+  end
+  
+  def accept
+    @request = Request.find(params[:id])
+    @request.update_attributes(:receiver_confirmation => true)
+    redirect_to edit_request_path(@request)
+  end
+  
+  def deny
+    @request = Request.find(params[:id])    
+    @request.update_attributes(:receiver_confirmation => true)
+    redirect_to @request
+  end
+  
+  def get_location
+    results = search
+    if results 
+      @zipcode = results["zipcode"]
+    else 
+      nil
+    end
+    logger.debug "Results: #{@zipcode}"
+  end
+  
+  def search
+    @ip = request.remote_ip
+    if @ip == '127.0.0.1' then @ip = '24.14.125.69' end
+    if Geocoder.search(@ip)[0] != nil 
+      results = Geocoder.search(@ip)[0].data 
+    end
+    results
+  end
+  
+  def get_coordinates
+    results = search
+    
+    if results 
+      @coordinates = {:latitude => results["latitude"].to_f,
+                      :longitude => results["longitude"].to_f}
+    else 
+      nil
+    end
+    logger.debug "Results: #{@coordinates}"
   end
   
 end

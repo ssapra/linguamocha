@@ -1,0 +1,46 @@
+<h1><%= @request.title %></h1>	
+
+<% if @request.receiver_confirmation == true %>
+
+<i><%= "#{@request.receiver} has accepted your request!" %></i><br />
+
+	<% if @request.pending_approval? %>
+	  <i><%= "#{@request.receiver} has supplied a location and a list of times" %><br />
+		Please pick a time and approve the request details.<br />
+	
+	  <%= link_to "Choose time and approve location", "#" %>
+	
+	<% else %>
+	  <i><%= "This request has been approved by both sides!" %>
+	<% end %>
+
+
+<!-- <b>From: <%#= @request.start_time.strftime('%l:%M %P') %></b><br /> -->
+<!-- <b>To: <%#= @request.end_time.strftime('%l:%M %P') %></b><br /> --><br />
+<b>Date: <%= @request.date.strftime("%B %d, %Y") %></b><br />
+<b>Location: <%= @request.location %></b><br /><br />
+
+<% elsif @request.receiver_confirmation == false %>
+
+<%= "Sorry, #{@request.receiver} has denied your request"%>
+
+<% else %>
+
+<i>Request Pending</i>
+
+<% end %>
+
+<h1>Messages</h1>
+
+<% @request.messages.each do |message| %>
+  	<%= message.user %>:
+	<%= message.body %><br />
+<% end %>
+
+<br /><br /><br /><br />
+
+<% if @request.receiver_confirmation %>
+  <%= render "message_field" %>
+<% else %>
+  <%= link_to "Edit request", edit_request_path(@request.id) %>
+<% end %>

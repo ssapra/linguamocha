@@ -5,6 +5,10 @@ Linguamocha::Application.routes.draw do
   get "/nearby" => "requests#nearby_locations", as: :get_locations
   get "/coordinates" => "requests#coordinates", as: :coordinates
   get "/mycoordinates" => "requests#my_coordinates", as: :my_coordinates
+  
+  get "/accept/:id" => "requests#accept", as: :accept
+  get "/deny/:id" => "requests#deny", as: :deny
+  
   resources :requests
   
   post "/message" => "messages#create", as: :message

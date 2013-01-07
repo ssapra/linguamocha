@@ -1,0 +1,34 @@
+<h1><%= @request.title %></h1>	
+
+<% if @request.receiver_confirmation == true %>
+
+<i><%= "You have accepted #{@request.sent_by}'s request!"%></i><br />
+
+<!-- <b>From: <%#= @request.start_time.strftime('%l:%M %P') %></b><br /> -->
+<!-- <b>To: <%#= @request.end_time.strftime('%l:%M %P') %></b><br /> -->
+<b>Request Deadline: <%= @request.date.strftime("%B %d, %Y") %></b><br />
+<b>Location: <%= @request.location %></b><br /><br />
+
+<% elsif @request.receiver_confirmation == false %>
+
+<%= "You have denied #{@request.sent_by}'s request"%>
+
+<% else %>
+
+<i>Request Pending</i><br /><br />
+
+<%= link_to "Accept", accept_path(:id => @request.id) %> |
+<%= link_to "Deny", deny_path(:id => @request.id) %><br /><br />
+
+<% end %>
+
+<h1>Messages</h1>
+
+<% @request.messages.each do |message| %>
+  	<%= message.user %>:
+	<%= message.body %><br />
+<% end %>
+
+<br /><br /><br /><br />
+
+<%= link_to "Edit request", edit_request_path(@request.id)%>

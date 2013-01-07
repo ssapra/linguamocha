@@ -12,78 +12,59 @@
     </div>
   <% end %>
 
-  <div class="field">
-	<%= f.label :title %>
-	<%= f.text_field :title %>
-  </div>
+  <!-- <div class="field">
+  	<%#= f.label :title %>
+  	<%= f.text_field :title %>
+    </div> -->
+
+  <%= "Title of Request: #{@request.title}"%>
+
+  <% if current_user.name == @request.receiver %>
 
   <div class="field">
 	<%= f.label :from %>
-	<%= f.text_field :start_time, :value => @request.start_time.strftime("%l:%M %P") %>
+	<%= f.text_field :start_time, :value => @start_time %>
   </div>
   
   <div class="field">
 	<%= f.label :to %>
-	<%= f.text_field :end_time, :value => @request.end_time.strftime("%l:%M %P") %>
+	<%= f.text_field :end_time, :value => @end_time %>
   </div>
 
-  <div class="datepicker">
-	<%= f.label :date %>
-	<%= f.text_field :date, :value => @request.date %>
-  </div>
-
-  <!-- %= "Find cafes and restaurants near: " %>
-    <input type="text" id="find" value='<%= "#{@location}" %>'>
+  <!-- <div class="datepicker">
+  	<%#= f.label :date %>
+  	<%#= f.text_field :date, :value => @request.date %>
+    </div> -->
+  
+  <%= "Find cafes and restaurants near: " %>
+    <input type="text" id="find" value='<%= "#{@zipcode}" %>'>
     <a href="#" class="find">Find Locations</a>
-    Not your city? Type in your city and find locations now! -->
+    Not your zipcode? Type in your zipcode/neighborhood and find locations now!
 
   <div class="locations">
-	<%= f.label :location %>
-	<%= f.text_field :location %>
+	<%#= f.label :location %>
+	<%= f.hidden_field :location %>
   </div>
 
-  Another location?
-  <input type="text" id="find" value='<%= "#{@location}" %>'>
-  <a href="#" class="find">Find Locations</a>
+
+  <div id="map_canvas" style="width:300px; height:300px"></div>
+
+  <br />
+  <br />
+  <br />
 
   <div class="actions">
      <%= f.submit "Update Request" %>
   </div>
 
-<% end %>
-
-<br /><br /><br />
-
-<h1>Messages</h1>
-
-<% @request.messages.each do |message| %>
-	<%= message.user %>: 
-	<%= message.body %><br />
-<% end %>
-
-<br /><br /><br />
-
-<%= form_for(@message, :url => {:controller => :messages, :action => :create}) do |f| %>
-  <% if @message.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
-      <ul>
-      <% @message.errors.each_with_index.each do |msg, i| %>
-        <li><%= msg[1] %></li>
-      <% end %>
-      </ul>
-    </div>
   <% end %>
 
-  <div class="field">
-	<%= f.label :message %>
-	<%= f.text_field :body %>
-  </div>
-
-  <%= f.hidden_field :request_id %>
-
-  <div class="actions">
-     <%= f.submit "Reply" %>
-  </div>
-
 <% end %>
+
+<br /><br /><br />
+
+<%= render 'messages' %>
+
+<br /><br /><br />
+
+<%= render 'message_field' %>

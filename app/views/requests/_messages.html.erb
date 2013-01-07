@@ -1,0 +1,6 @@
+<h1>Messages</h1>
+
+<% @request.messages.each do |message| %>
+	<%= message.user %>: 
+	<%= message.body %><br />
+<% end %>

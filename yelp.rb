@@ -14,8 +14,8 @@ api_host = 'api.yelp.com'
 consumer = OAuth::Consumer.new(consumer_key, consumer_secret, {:site => "http://#{api_host}"})
 access_token = OAuth::AccessToken.new(consumer, token, token_secret)
 
-puts "What is your location"
-current_location = gets.chomp
+# puts "What is your location"
+# current_location = gets.chomp
 
 # interface = UrbanMapping::Interface.new('cb5d8d502a625083c77181341a7a5e5f')
 
@@ -24,9 +24,11 @@ current_location = gets.chomp
 # pp hoods
 
 
-cl = current_location.split(" ").join("+")
+# cl = current_location.split(" ").join("+")
 
-path = "/v2/search?term=cafe+coffee&location=#{cl}"
+# path = "/v2/search?term=cafe+coffee&location=60637"
+
+path = "/v2/search?term=cafe+coffee&location=60637#find_loc=60637&show_filters=1"
 
 string =  access_token.get(path).body
 
@@ -37,13 +39,13 @@ puts ''
 points = []
 
 json["businesses"].each do |business|
-  pp business 
-  # puts business["name"]
-  # loc = business["location"]
+  # pp business 
+  puts business["name"]
+  loc = business["location"]
   # puts loc["address"]
-  # puts loc["neighborhoods"] if loc["neighborhoods"]
-  # puts "#{loc["city"]}, #{loc["state_code"]} #{loc["postal_code"]}"
-  # puts "[#{loc["coordinate"]["latitude"]}, #{loc["coordinate"]["longitude"]}]"
+  puts loc["neighborhoods"] if loc["neighborhoods"]
+  puts "#{loc["city"]}, #{loc["state_code"]} #{loc["postal_code"]}"
+  puts "[#{loc["coordinate"]["latitude"]}, #{loc["coordinate"]["longitude"]}]"
   # points << [loc["coordinate"]["latitude"], loc["coordinate"]["longitude"]]
   puts ""
 end
@@ -56,7 +58,7 @@ points.each_with_index do |point, i|
   if i == 10 then break end
 end
 
-puts "http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap" + location_string + "&sensor=false"
+# puts "http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap" + location_string + "&sensor=false"
 # 
 # "http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap
 # &markers=color:red%7Clabel:1%7C40.702147,-74.015794

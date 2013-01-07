@@ -14,41 +14,41 @@
   <% end %>
 
   <div class="field">
-	<%= f.label :title %>
+	<%= f.label 'Title of Request: ' %>
 	<%= f.text_field :title %>
   </div>
 
-  <div class="field">
-	<%= f.label :from %>
-	<%= f.text_field :start_time %>
-  </div>
+  <!-- <div class="field">
+  	<%#= f.label :from %>
+  	<%#= f.text_field :start_time %>
+    </div>
 
-  <div class="field">
-	<%= f.label :to %>
-	<%= f.text_field :end_time %>
-  </div>
+    <div class="field">
+  	<%#= f.label :to %>
+  	<%#= f.text_field :end_time %>
+    </div> -->
 
   <div class="datepicker">
-	<%= f.label :date %>
+	<%= f.label "Have to meet by: " %>
 	<%= f.text_field :date %>
   </div>
 
 
-  <%= "Find cafes and restaurants near: " %>
-  <input type="text" id="find" value='<%= "#{@location}" %>'>
-  <a href="#" class="find">Find Locations</a>
-  Not your city? Type in your city and find locations now!
+  <%#= "Find cafes and restaurants near: " %>
+  <!-- <input type="text" id="find" value='<%= "#{@location}" %>'>
+    <a href="#" class="find">Find Locations</a>
+    Not your city? Type in your city and find locations now! -->
 
-  <div class="locations">
-	<%= f.label :location %>
-  </div>
+  <!-- <div class="locations">
+  	<%#= f.label :location %>
+    </div> -->
 
 
-  <div id="map_canvas" style="width:300px; height:300px">HI</div>
+  <!-- <div id="map_canvas" style="width:300px; height:300px"></div> -->
 
+  <!-- <br />
   <br />
-  <br />
-  <br />		
+  <br />		 -->
 
   <%= f.fields_for :messages do |builder| %>
 	<%= builder.label :message %>

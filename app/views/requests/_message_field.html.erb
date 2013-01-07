@@ -1,0 +1,24 @@
+<%= form_for(@message, :url => {:controller => :messages, :action => :create}) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+      <ul>
+      <% @message.errors.each_with_index.each do |msg, i| %>
+        <li><%= msg[1] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+	<%= f.label :message %>
+	<%= f.text_field :body %>
+  </div>
+
+  <%= f.hidden_field :request_id %>
+
+  <div class="actions">
+     <%= f.submit "Reply" %>
+  </div>
+
+<% end %>

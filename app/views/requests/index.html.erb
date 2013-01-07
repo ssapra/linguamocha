@@ -2,7 +2,11 @@
 
 <% if @sent %>
 	<% @sent.each do |request| %>
-		<%= link_to "#{request.title}", request_path(request.id)%><br />
+		<% if request.pending_approval? %>
+			<%= link_to "#{request.title}", request_path(request.id)%><%= "-- pending approval by #{request.receiver}"%><br />
+		<% else %>
+			<%= link_to "#{request.title}", request_path(request.id)%><br />
+		<% end %>
 	<% end %>
 <% else %>
 	<i>No requests have been sent</i>
@@ -14,7 +18,7 @@
 
 <% if @received %>
 	<% @received.each do |request| %>
-		<%= link_to "#{request.title}", request_path(request.id)%><br />
+		<%= link_to "#{request.title} -- #{request.sent_by}", request_path(request.id)%><br />
 	<% end %>
 <% else %>
 	<i>No requests have been received</i>

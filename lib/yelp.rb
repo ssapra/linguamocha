@@ -37,11 +37,12 @@ module Yelp
     
     cl = params.split(" ").join("+")
 
-    path = "/v2/search?term=cafe+coffee&location=#{cl}"
+    path = "/v2/search?term=cafe+coffee&location=#{cl}#find_loc=#{cl}&show_filters=1"
 
     string =  access_token.get(path).body
 
     json = JSON.parse(string)
+    
   end
   
 end

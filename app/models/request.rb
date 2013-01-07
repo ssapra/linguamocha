@@ -32,4 +32,21 @@ class Request < ActiveRecord::Base
   
   # Urban Mapping API key: cb5d8d502a625083c77181341a7a5e5f
   
+  def sent_by
+    User.find(self.sender_id).name
+  end
+  
+  def receiver
+    User.find(self.receiver_id).name
+  end
+  
+  def pending_approval?
+    self.start_time && self.end_time && self.location && (self.sender_confirmation == nil)
+  end
+  
+  def approved?
+    self.receiver_confirmation && self.sender_confirmation
+  end
+  
+  
 end

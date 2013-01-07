@@ -1,19 +1,7 @@
-<h1><%= @request.title %></h1>	
-
-<b>From: <%= @request.start_time.strftime('%l:%M %P') %></b><br />
-<b>To: <%= @request.end_time.strftime('%l:%M %P') %></b><br />
-<b>Date: <%= @request.date.strftime("%B %d, %Y") %></b><br />
-<b>Location: <%= @request.location %></b><br /><br />
-
-<h1>Messages</h1>
 
 
-
-<% @request.messages.each do |message| %>
-  	<%= message.user %>:
-	<%= message.body %><br />
+<% if current_user.name == @request.sent_by %>
+	<%= render 'sender' %>
+<% else %>
+	<%= render 'receiver'%>
 <% end %>
-
-<br /><br /><br /><br />
-
-<%= link_to "Edit request", edit_request_path(@request.id)%>

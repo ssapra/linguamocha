@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   attr_accessible :avatar
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "30x30>" },
                     :url => "/system/:attachment/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/:attachment/:id/:style/:basename.:extension"
                     
@@ -34,10 +34,10 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :interests, :allow_destroy => true
   
   searchable do
-    text :name
-    # text :my_skills do
-    #   my_skills.map { |skill| skill.tag }
-    # end
+    text :name, :username
+    text :my_skills do
+      my_skills.map { |skill| skill.tag }
+    end
   end
   
   def sent_requests

@@ -1,5 +1,7 @@
-Search results for <%= @params %>
+Search results for <%= @params %>: <br /><br />
 
-<% @users.each_with_index do |users, i| %>
-	<%= "#{i}: #{user.name}" %><br />
+<% @users.each_with_index do |user, i| %>
+	<%= image_tag user.avatar.url(:thumb) %><br />
+	<%= link_to "#{user.name}", user %><br />
+	<%= user.occupation %><br /><br /><br />
 <% end %>

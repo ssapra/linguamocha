@@ -36,7 +36,10 @@ class UsersController < ApplicationController
   def search
     @params = params[:search]
     search = User.search do
-              fulltext params[:search]
+               fulltext params[:search] do
+                 boost_fields :name => 2.0
+                 query_phrase_slop 1
+               end
              end
     @users = search.results
   end

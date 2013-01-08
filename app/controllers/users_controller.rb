@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
   
+  before_filter :helpers, :only => [:show]
+  
   def show
     @user = User.find_by_username(params[:username])
     @current_user = current_user
@@ -42,6 +44,24 @@ class UsersController < ApplicationController
                end
              end
     @users = search.results
+  end
+  
+  def helpers
+    @user = current_user
+    
+    all_searches = []
+    
+    @user.interests.each do |interest|
+      
+      search = User.search do
+                 fulltext interest.tag
+               end
+      all_searches << search.results
+    end
+    
+    logger.debug "#{all_searches}"
+    
+    @helpers = all_searches.flatten
   end
   
 end

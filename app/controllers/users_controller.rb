@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :correct_user, :only => [:edit, :update]
   
-  before_filter :helpers, :only => [:show]
+  # before_filter :helpers, :only => [:show]
   
   # rake sunspot:solr:start
   

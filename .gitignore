@@ -16,3 +16,7 @@
 
 # Ignore solr data files
 solr
+
+/solr
+
+/log

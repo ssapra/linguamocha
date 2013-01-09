@@ -82,6 +82,8 @@ $(function() {
 	
 				$('div.locations').html('');
 				$.each(loc,function(i,o){
+					var c = String.fromCharCode(i + 65);
+					$('<p>' + c + '</p>').appendTo('div.locations');
 					$('<input type="radio" name=location value="' + o + '">' + names[i] +": " + '<br />').appendTo('div.locations');
 					$('<p>' + o + '</p><br />').appendTo('div.locations');
 					var img = new Image();

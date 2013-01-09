@@ -33,7 +33,13 @@
 	position: relative;
 	top: 5px;
 	padding: 5px;
-} 
+}
+
+#yelp {
+	height: 30px;
+	width: 120px;
+	display: none;
+}
 
 /* 
  ******************************

@@ -35,11 +35,15 @@
   	<%#= f.label :date %>
   	<%#= f.text_field :date, :value => @request.date %>
     </div> -->
-  
+
+
+
   <%= "Find cafes and restaurants near: " %>
     <input type="text" id="find" value='<%= "#{@zipcode}" %>'>
     <a href="#" class="find">Find Locations</a>
     Not your zipcode? Type in your zipcode/neighborhood and find locations now!
+
+  <%= link_to image_tag("yelp.png", :id => "yelp"), "yelp.com" %><br />
 
   <div class="locations">
 	<%#= f.label :location %>

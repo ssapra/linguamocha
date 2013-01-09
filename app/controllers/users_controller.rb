@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   
   before_filter :helpers, :only => [:show]
   
+  # rake sunspot:solr:start
+  
   def show
     @user = User.find_by_username(params[:username])
     @current_user = current_user

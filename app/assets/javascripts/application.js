@@ -64,7 +64,9 @@ $(function() {
 	
 	$("a.find").on("click", function() {
 		var loc = [];
-		var values = [];
+		var names = [];
+		var counts = [];
+		var urls = [];
 		$.ajax({
 		    url: "/nearby",
 	        dataType:'json',
@@ -73,13 +75,21 @@ $(function() {
 		    success: function(data){
 				$.each(data, function(key, value) {
 					loc.push(value.address);
-					values.push(value.name);
+					names.push(value.name);
+					counts.push(value.review_count);
+					urls.push(value.rating_url);
 	        	});
 	
 				$('div.locations').html('');
 				$.each(loc,function(i,o){
-					$('<input type="radio" name=location value="' + o + '">' + values[i] +": " + '<br />').appendTo('div.locations');
+					$('<input type="radio" name=location value="' + o + '">' + names[i] +": " + '<br />').appendTo('div.locations');
 					$('<p>' + o + '</p><br />').appendTo('div.locations');
+					var img = new Image();
+					img.src = urls[i]; 
+					img.style.height = "15px";
+					img.style.width = "90px";
+					$(img).appendTo('div.locations');
+					$('<p>' + counts[i] + ' reviews</p><br /><br />').appendTo('div.locations');
 				});
 		    },
 		    error: function(){
@@ -109,20 +119,22 @@ $(function() {
 				    position: myLatlng
 				});
 				
-				var label = new Label({
-				    map: map
-			    });
-
-				marker.setMap(map);
-				
-				label.set('zIndex', 1234);
-	            label.bindTo('position', marker, 'position');
-	            label.set('text', "A");
+				// var label = new Label({
+				//     map: map
+				// 			    });
+				// 
+				// marker.setMap(map);
+				// 
+				// label.set('zIndex', 1234);
+				// 	            label.bindTo('position', marker, 'position');
+				// 	            label.set('text', "A");
 		    },
 		    error: function(){
 		        alert('error');
 		    }
 		});
+		
+		$("#yelp").delay(1500).show(0);
 		
 			
 	});
@@ -148,7 +160,7 @@ $(function() {
 		document.body.appendChild(script);
 	}
 	
-	// window.onload = loadScript;
+	
 
 });
 

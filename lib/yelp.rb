@@ -5,7 +5,7 @@ module Yelp
     
     coordinates = []
     
-    json["businesses"].each do |business|
+    json["businesses"].first(10).each do |business|
       coordinates << {:lat => business["location"]["coordinate"]["latitude"], :long => business["location"]["coordinate"]["longitude"]}
     end
     
@@ -17,8 +17,11 @@ module Yelp
     
     points = []
 
-    json["businesses"].each do |business|
-      points << {:name => business["name"], :address => business["location"]["address"][0]}
+    json["businesses"].first(10).each do |business|
+      points << {:name => business["name"], 
+                 :address => business["location"]["address"][0],
+                 :review_count => business["review_count"],
+                 :rating_url => business["rating_img_url_small"]}
     end
     
     points

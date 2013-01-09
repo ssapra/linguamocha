@@ -141,7 +141,7 @@ class RequestsController < ApplicationController
     else 
       nil
     end
-    logger.debug "Results: #{@coordinates}"
+    # logger.debug "Results: #{@coordinates}"
   end
   
 end

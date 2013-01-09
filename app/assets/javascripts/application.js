@@ -113,11 +113,11 @@ $(function() {
 				var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 						// alert(document.getElementById("map_canvas"));
 						
-				var myLatlng = new google.maps.LatLng(latitude,longitude);
-				
-				var marker = new google.maps.Marker({
-				    position: myLatlng
-				});
+				// var myLatlng = new google.maps.LatLng(latitude,longitude);
+				// 
+				// var marker = new google.maps.Marker({
+				//     position: myLatlng
+				// });
 				
 				// var label = new Label({
 				//     map: map
@@ -143,24 +143,6 @@ $(function() {
 	$("input#request_date").datepicker();
 	$('input#request_start_time').timepicker({ 'step': 15 });
 	$('input#request_end_time').timepicker({ 'step': 15 });
-  	
-	// function initialize(){
-	// 		var mapOptions = {
-	// 		    zoom: 8,
-	// 		    center: new google.maps.LatLng(latitude, longitude),
-	// 		    mapTypeId: google.maps.MapTypeId.ROADMAP
-	// 		}
-	// 		var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-	// 	}
-	
-	function loadScript(){
-		var script = document.createElement("script");
-		script.type = "text/javascript";
-	    script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyDFXdzd98ckgjQL-ix-2GedGRVvGl9ef-U&sensor=true";
-		document.body.appendChild(script);
-	}
-	
-	
 
 });
 

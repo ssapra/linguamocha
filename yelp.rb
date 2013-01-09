@@ -38,7 +38,8 @@ puts ''
 
 points = []
 
-pp json["businesses"]
+# pp json
+pp json["businesses"][0]
 
 # json["businesses"].each do |business|
 #   # pp business 

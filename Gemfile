@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'rails', "3.2.8"
+gem 'rails', "3.2.11"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 # Sign in/up/out
 gem 'devise'
+
+# gem 'thin'
 
 # Profile Picture
 gem "paperclip", "~> 3.0"
@@ -24,8 +26,8 @@ gem 'geocoder'
 gem 'fastercsv'
 
 # Searching
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+# gem 'sunspot_rails'
+# gem 'sunspot_solr'
 
 # Yelp API Usage
 gem 'oauth'

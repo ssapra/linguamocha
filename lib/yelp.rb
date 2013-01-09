@@ -20,6 +20,9 @@ module Yelp
     json["businesses"].first(10).each do |business|
       points << {:name => business["name"], 
                  :address => business["location"]["address"][0],
+                 :city => business["location"]["city"],
+                 :state => business["location"]["state_code"],
+                 :postal_code => business["location"]["postal_code"],
                  :review_count => business["review_count"],
                  :rating_url => business["rating_img_url_small"]}
     end

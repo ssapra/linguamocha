@@ -67,6 +67,7 @@ $(function() {
 		var names = [];
 		var counts = [];
 		var urls = [];
+		var cities = [];
 		$.ajax({
 		    url: "/nearby",
 	        dataType:'json',
@@ -78,6 +79,7 @@ $(function() {
 					names.push(value.name);
 					counts.push(value.review_count);
 					urls.push(value.rating_url);
+					cities.push(value.city + ", " + value.state + ", " + value.postal_code);
 	        	});
 	
 				$('div.locations').html('');
@@ -85,7 +87,8 @@ $(function() {
 					var c = String.fromCharCode(i + 65);
 					$('<p>' + c + '</p>').appendTo('div.locations');
 					$('<input type="radio" name=location value="' + o + '">' + names[i] +": " + '<br />').appendTo('div.locations');
-					$('<p>' + o + '</p><br />').appendTo('div.locations');
+					$('<p>' + o + '</p>').appendTo('div.locations');
+					$('<p>' + cities[i] + '</p><br />').appendTo('div.locations');
 					var img = new Image();
 					img.src = urls[i]; 
 					img.style.height = "15px";

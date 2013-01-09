@@ -15,6 +15,7 @@
 //= require jquery-custom	
 //= require jquery_nested_form
 //= require timepicker
+//= require markerwithlabel
 
 $(function() {
     
@@ -111,13 +112,32 @@ $(function() {
 				var latitude = data.latitude;
 				var longitude = data.longitude;
 				var mapOptions = {
-				    zoom: 8,
+				    zoom: 13,
 				    center: new google.maps.LatLng(latitude, longitude),
 				    mapTypeId: google.maps.MapTypeId.ROADMAP
 				}
 				var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-						// alert(document.getElementById("map_canvas"));
-						
+				
+				// var marker = new google.maps.Marker({
+				//     position: new google.maps.LatLng(latitude, longitude),
+				//     title:"A"
+				// });
+				
+				var image = "<%= asset_path 'redmarker.png' %>";
+
+				
+				var marker = new MarkerWithLabel({
+				   position: new google.maps.LatLng(latitude, longitude),
+				   map: map,
+				   icon: image,
+				   labelContent: "A",
+				   labelAnchor: new google.maps.Point(3, 30),
+				   labelClass: "labels", // the CSS class for the label
+				   labelInBackground: false
+				 });
+				
+				marker.setMap(map);
+				
 				// var myLatlng = new google.maps.LatLng(latitude,longitude);
 				// 
 				// var marker = new google.maps.Marker({

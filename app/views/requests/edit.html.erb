@@ -1,4 +1,3 @@
-<h1>Request</h1>
 
 <%= form_for(@request, :url => {:controller => :requests, :action => :update}) do |f| %>
   <% if @request.errors.any? %>
@@ -31,11 +30,33 @@
 	<%= f.text_field :end_time, :value => @end_time %>
   </div>
 
-  <!-- <div class="datepicker">
-  	<%#= f.label :date %>
-  	<%#= f.text_field :date, :value => @request.date %>
-    </div> -->
+  <div class="availability">
+	<label for="available_times" id="availability_label">Please select the times you are available to meet:</label>
+	<input type="date" name="available_times" id="available_times" placeholder="2/30/2013">			
+  </div>
 
+  <div class="meetup_place">
+	<h2>Find locations to meet:</h2>
+
+	<label for="zipcode">Enter your zipcode:</label>
+	<input type="input" name="zipcode" id="zipcode" placeholder="444444">
+	<input type="submit" name="find_locations" id="find_locations" value="Find Locations"><br>	
+	
+	<input type="radio" name="restaurant" class="restaurant" value="Starbucks"> Starbucks<br>
+	<p class="restaurant_address">1520 E 57th St</p> 
+	<p class="restaurant_address">Chicago, IL, 60637</p>
+	<img src="../img/rating.png" class="rating" alt="rating"><br>
+
+	<input type="radio" name="restaurant" class="restaurant" value="Medici"> Medici<br>
+	<p class="restaurant_address">1520 E 57th St</p> 
+	<p class="restaurant_address">Chicago, IL, 60637</p>
+	<img src="../img/rating.png" class="rating" alt="rating"><br>
+
+	<input type="radio" name="restaurant" class="restaurant" value="Midway Mart"> Midway Mart<br>
+	<p class="restaurant_address">1520 E 57th St</p> 
+	<p class="restaurant_address">Chicago, IL, 60637</p>
+	<img src="../img/rating.png" class="rating" alt="rating"><br>
+  </div>
 
   <%= "Find cafes and restaurants near: " %>
     <input type="text" id="find" value='<%= "#{@zipcode}" %>'>
@@ -71,3 +92,16 @@
 <br /><br /><br />
 
 <%= render 'message_field' %>
+
+	
+	<h1>Allen Sanderson will be informed that you have accepted his request</h1>
+
+	
+
+	
+
+	<div class="message">
+	<label for="message" id="optional">Optional Message:</label>
+	<textarea name="optional_message" id="optional_message" cols="30" rows="10">Write your message here</textarea>
+	<input type="submit" name="send_message" id="send_message" value="Submit">
+	</div>

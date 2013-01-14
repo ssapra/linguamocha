@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Sample Message Page</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<link rel="stylesheet" type="text/css" href="960_12_col.css">
+	<link rel="stylesheet" href="messagestyle.css">
+</head>
+<body>
+	<div class="fixed_bar">
+		<div class="header_container">
+			
+			<a href="#"><img id="logo" src="../img/logo.png" alt="LinguaMocha"></a>
+
+			<input type="search" name="search_bar" id="search_bar" placeholder="Find skills or people">
+			<input type="submit" name="search_button" id="search_button" value="Search">
+
+			<div id="nav_container">
+				<nav>
+					<ul>
+						<li><a href="#" class="selected">Profile</a></li>
+						<li><a href="#">Messages</a></li>
+						<li><a href="#">Log Out</a></li>
+					</ul>
+				</nav>
+			</div>		
+
+		</div>
+	</div>
+		
+	<div class="container_12">
+		
+		<h1>Send Request</h1>
+
+		<div class="to">
+			<label for="receiver">To:</label>
+			<input type="text" name="receiver" id="receiver" placeholder="Shaan Sapra">
+		</div>
+
+		<div class="deadline">
+			<label for="deadline_date">Need help by:</label>
+			<input type="date" name="deadline_date" id="deadline_date" placeholder="2/30/2013">
+			
+		</div>
+
+		<textarea name="request" id="request" cols="30" rows="10">Type your request here</textarea>
+
+		<input type="submit" name="send_message" id="send_message" value="Request help from Shaan">
+
+		<div class="copyright grid_12">
+			<footer>©LinguaMocha 4ever</footer>
+		</div>
+	</div>
+</body>
+</html>

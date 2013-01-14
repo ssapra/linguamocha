@@ -3,8 +3,8 @@
 <head>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <title>Linguamocha</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "application", :media => "all" %>	
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFXdzd98ckgjQL-ix-2GedGRVvGl9ef-U&sensor=true" type="text/javascript"> </script>
 
@@ -12,16 +12,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+	<p class="notice"><%= notice %></p>
+	<p class="alert"><%= alert %></p>
 
-<%= render 'layouts/header' %>
-<div class="container_12">
-	<%= yield %>
+	<%= render 'layouts/header' %>
+	<div class="container_12">
+		<%= yield %>
+	</div>
 	<%= render 'layouts/footer' %>
-</div>
-
-
 
 </body>
 </html>

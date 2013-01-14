@@ -14,6 +14,7 @@ class RequestsController < ApplicationController
     @request = Request.new(:sender_id => params[:sender_id], 
                           :receiver_id => params[:receiver_id])
     @request.messages << Message.new
+    @receiver = User.find(params[:receiver_id]).name
   end
   
   def create

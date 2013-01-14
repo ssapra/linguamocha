@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Sample Acceptance Page</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<link rel="stylesheet" type="text/css" href="960_12_col.css">
+	<link rel="stylesheet" href="acceptancestyle.css">
+</head>
+<body>
+	<div class="fixed_bar">
+		<div class="header_container">
+			
+			<a href="#"><img id="logo" src="../img/logo.png" alt="LinguaMocha"></a>
+
+			<input type="search" name="search_bar" id="search_bar" placeholder="Find skills or people">
+			<input type="submit" name="search_button" id="search_button" value="Search">
+
+			<div id="nav_container">
+				<nav>
+					<ul>
+						<li><a href="#" class="selected">Profile</a></li>
+						<li><a href="#">Messages</a></li>
+						<li><a href="#">Log Out</a></li>
+					</ul>
+				</nav>
+			</div>		
+
+		</div>
+	</div>
+		
+	<div class="container_12">
+		
+		<h1>Allen Sanderson will be informed that you have accepted his request</h1>
+
+		<div class="availability">
+			<label for="available_times" id="availability_label">Please select the times you are available to meet:</label>
+			<input type="date" name="available_times" id="available_times" placeholder="2/30/2013">			
+		</div>
+
+		<div class="meetup_place">
+			<h2>Find locations to meet:</h2>
+
+			<label for="zipcode">Enter your zipcode:</label>
+			<input type="input" name="zipcode" id="zipcode" placeholder="444444">
+			<input type="submit" name="find_locations" id="find_locations" value="Find Locations"><br>	
+			
+			<input type="radio" name="restaurant" class="restaurant" value="Starbucks"> Starbucks<br>
+			<p class="restaurant_address">1520 E 57th St</p> 
+			<p class="restaurant_address">Chicago, IL, 60637</p>
+			<img src="../img/rating.png" class="rating" alt="rating"><br>
+
+			<input type="radio" name="restaurant" class="restaurant" value="Medici"> Medici<br>
+			<p class="restaurant_address">1520 E 57th St</p> 
+			<p class="restaurant_address">Chicago, IL, 60637</p>
+			<img src="../img/rating.png" class="rating" alt="rating"><br>
+
+			<input type="radio" name="restaurant" class="restaurant" value="Midway Mart"> Midway Mart<br>
+			<p class="restaurant_address">1520 E 57th St</p> 
+			<p class="restaurant_address">Chicago, IL, 60637</p>
+			<img src="../img/rating.png" class="rating" alt="rating"><br>
+		</div>
+
+		<div class="message">
+		<label for="message" id="optional">Optional Message:</label>
+		<textarea name="optional_message" id="optional_message" cols="30" rows="10">Write your message here</textarea>
+		<input type="submit" name="send_message" id="send_message" value="Submit">
+		</div>
+
+		<div class="copyright grid_12">
+			<footer>©LinguaMocha 4ever</footer>
+		</div>
+	</div>
+</body>
+</html>

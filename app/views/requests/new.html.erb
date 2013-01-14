@@ -1,4 +1,4 @@
-<h1>Sending a Request</h1>
+<h1>Send Request</h1>
 
 <%= nested_form_for(@request, :url => {:controller => :requests, :action => :create}) do |f| %>
   <% if @request.errors.any? %>
@@ -12,6 +12,11 @@
       </ul>
     </div>
   <% end %>
+	
+  <div class="to">
+	<label for="receiver">To:</label>
+	<input type="text" name="receiver" id="receiver" placeholder=<%="#{@receiver}"%>>
+  </div>	
 
   <div class="field">
 	<%= f.label 'Title of Request: ' %>
@@ -28,38 +33,21 @@
   	<%#= f.text_field :end_time %>
     </div> -->
 
-  <div class="datepicker">
-	<%= f.label "Have to meet by: " %>
-	<%= f.text_field :date %>
+  <div class="datepicker deadline">
+	<%= f.label "Need help by: " %>
+	<%= f.text_field :date, :id => "deadline_date"%>
   </div>
-
-
-  <%#= "Find cafes and restaurants near: " %>
-  <!-- <input type="text" id="find" value='<%= "#{@location}" %>'>
-    <a href="#" class="find">Find Locations</a>
-    Not your city? Type in your city and find locations now! -->
-
-  <!-- <div class="locations">
-  	<%#= f.label :location %>
-    </div> -->
-
-
-  <!-- <div id="map_canvas" style="width:300px; height:300px"></div> -->
-
-  <!-- <br />
-  <br />
-  <br />		 -->
 
   <%= f.fields_for :messages do |builder| %>
 	<%= builder.label :message %>
-	<%= builder.text_area :body, :size => "40x10" %>
+	<%= builder.text_area :body, :size => "30x10", :id => "request" %>
   <% end %>
 
   <%= f.hidden_field :sender_id %>
   <%= f.hidden_field :receiver_id %>
 
   <div class="actions">
-     <%= f.submit "Create Request" %>
+     <%= f.submit "Request help from #{@receiver}", :id => "send_message" %>
   </div>
 
 <% end %>

@@ -1,3 +1,4 @@
+<h1>Allen Sanderson will be informed that you have accepted his request</h1>
 
 <%= form_for(@request, :url => {:controller => :requests, :action => :update}) do |f| %>
   <% if @request.errors.any? %>
@@ -39,29 +40,12 @@
 	<h2>Find locations to meet:</h2>
 
 	<label for="zipcode">Enter your zipcode:</label>
-	<input type="input" name="zipcode" id="zipcode" placeholder="444444">
-	<input type="submit" name="find_locations" id="find_locations" value="Find Locations"><br>	
+	<input type="text" id="find" value='<%= "#{@zipcode}" %>'>
+	<a href="#" class="find">Find Locations</a>
+	<!-- <input type="input" name="zipcode" id="zipcode" value=<%="#{@zipcode}"%>>
+	<button class="yelp" id="find_locations">Find Locations</button><br /> -->
 	
-	<input type="radio" name="restaurant" class="restaurant" value="Starbucks"> Starbucks<br>
-	<p class="restaurant_address">1520 E 57th St</p> 
-	<p class="restaurant_address">Chicago, IL, 60637</p>
-	<img src="../img/rating.png" class="rating" alt="rating"><br>
-
-	<input type="radio" name="restaurant" class="restaurant" value="Medici"> Medici<br>
-	<p class="restaurant_address">1520 E 57th St</p> 
-	<p class="restaurant_address">Chicago, IL, 60637</p>
-	<img src="../img/rating.png" class="rating" alt="rating"><br>
-
-	<input type="radio" name="restaurant" class="restaurant" value="Midway Mart"> Midway Mart<br>
-	<p class="restaurant_address">1520 E 57th St</p> 
-	<p class="restaurant_address">Chicago, IL, 60637</p>
-	<img src="../img/rating.png" class="rating" alt="rating"><br>
   </div>
-
-  <%= "Find cafes and restaurants near: " %>
-    <input type="text" id="find" value='<%= "#{@zipcode}" %>'>
-    <a href="#" class="find">Find Locations</a>
-    Not your zipcode? Type in your zipcode/neighborhood and find locations now!
 
   <%= link_to image_tag("yelp.png", :id => "yelp"), "yelp.com" %><br />
 
@@ -85,20 +69,13 @@
 
 <% end %>
 
-<br /><br /><br />
 
 <%= render 'messages' %>
-
-<br /><br /><br />
+	
 
 <%= render 'message_field' %>
-
-	
-	<h1>Allen Sanderson will be informed that you have accepted his request</h1>
-
 	
 
-	
 
 	<div class="message">
 	<label for="message" id="optional">Optional Message:</label>

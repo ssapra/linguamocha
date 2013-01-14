@@ -11,11 +11,62 @@
  *= require reset
  *= require 960_12_col
  *= require jquery-custom
+ *= require font
  *= require_self
  */
 
+/***** Overall *****/
+
+h1, h2, h3, h4, h5, p, strong, em {
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+	font-size: 20px;
+    font-family: 'OpenSansBold';
+	text-align: left;
+	padding-bottom: 10px;
+}
+
+p, footer, input, h2, h3, h4, h5 {
+    font-family: 'OpenSansRegular';
+	font-weight: 400;
+}
+
+p, footer {
+    font-size: 13px;
+}
+h2, h3, h4 {
+    font-size: 15px;
+}
+
+h3 {
+	padding-bottom: 10px;
+	text-decoration: none;
+}
+
+h4 {
+	margin-right: 640px;
+	text-align: right;
+	border-bottom: 2px solid #6db776;
+}
+
+h5 {
+    font-size: 13px;
+	text-align: right;
+}
+
+input {
+    border-radius: 5px;
+    box-shadow: none;
+    border: 2px solid #104717;
+/*    cursor: pointer;	*/
+}
+
 body {
     background-color: #F3FFF5;
+	font-family: 'OpenSansRegular';
 }
 
 /* 
@@ -110,44 +161,6 @@ nav li a:hover {
     border: 3px solid #6db776;
 }
 
-h1, h2, h3, h4, h5, p, strong, em {
-    font-weight: normal;
-    font-style: normal;
-}
-p, footer, input, h2, h3, h4, h5 {
-    font-family: 'OpenSansRegular';
-}
-
-input {
-    border-radius: 5px;
-    box-shadow: none;
-    border: 2px solid #104717;
-/*    cursor: pointer;	*/
-}
-
-/***** Sending Request ******/
-
-#message {
-    margin-top: 30px;
-    padding: 3px;
-}
-p, footer {
-    font-size: 13px;
-}
-h2, h3, h4 {
-    font-size: 15px;
-}
-h5 {
-    font-size: 13px;
-}
-
-h1 {
-	font-size: 20px;
-    font-family: 'OpenSansBold';
-	text-align: left;
-	padding-bottom: 10px;
-}
-
 .name {
 	float: left;
 }
@@ -189,7 +202,7 @@ h1 {
     border-right: 2px solid #6db776;
 }
 .skill_description {
-    font-family: 'OpenSansLightItalic';
+    font-family: 'Open Sans Italic';
     padding-left: 20px;
     padding-bottom: 20px;
 }
@@ -217,16 +230,38 @@ h1 {
 	margin-left: 0px;
 }
 
-h3 {
-	padding-bottom: 10px;
+/* 
+ ******************************
+      =references
+ ******************************
+*/
+
+.reference_group {
+	margin-top: 60px;
+}
+
+.reference {
+	padding-top: 30px;
+}
+.reviewer a {
 	text-decoration: none;
 }
 
-h1 {
-    font-size: 20px;
-    font-family: 'OpenSansBold';
-    text-align: left;
-    padding-bottom: 30px;
+.review p {
+	font-size: 14px;
+	text-align: left;
+	margin-left: 70px;
+    margin-right: 50px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #6db776;
+}
+
+
+/***** Sending Request ******/
+
+#message {
+    margin-top: 30px;
+    padding: 3px;
 }
 
 #request {
@@ -236,10 +271,6 @@ h1 {
     height: 300px;
     padding: 5px;
     margin-top: 20px;
-    font-size: 14px;
-}
-
-label {
     font-size: 14px;
 }
 
@@ -297,10 +328,16 @@ label {
     margin: 10px;
 }
 
+.from label{
+	font-size: 16px;
+}
+
 #sender, #deadline_date {
     display: inline;
     font-family: 'OpenSansBold';
+	font-weight: 400px;
     padding-left: 10px;
+	font-size: 16px;
 }
 .request {
     border-bottom: 2px solid #104717;
@@ -309,6 +346,37 @@ label {
     margin-right: 50px;
     padding-bottom: 10px;
 }
+
+.request p{
+	font-size: 16px;
+}
+
+ul.request_options {
+	padding-top: 10px;
+	padding-bottom: 30px;
+}
+
+ul.request_options li {
+    display: inline;
+    margin: 5px;
+    padding: 5px;
+}
+
+ul.request_options a{
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#request_options li.current{
+    font-weight: bolder;
+}
+
+#request_option li:hover {
+   	-webkit-transform: scale(1.07);
+	-moz-transform: scale(1.07);
+	-ms-transform: scale(1.07);
+}
+
 #accept_request, #reject_request {
     margin-top: 30px;
     margin-left: 10px;
@@ -334,40 +402,6 @@ label {
 	width: 200px;
 }
 
-
-/* 
- ******************************
-      =references
- ******************************
-*/
-h4 {
-	margin-right: 640px;
-	text-align: right;
-	border-bottom: 2px solid #6db776;
-}
-h5 {
-	text-align: right;
-}
-
-.reference_group {
-	margin-top: 60px;
-}
-
-.reference {
-	padding-top: 30px;
-}
-.reviewer a {
-	text-decoration: none;
-}
-
-.review p {
-	font-size: 14px;
-	text-align: left;
-	margin-left: 70px;
-    margin-right: 50px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #6db776;
-}
 
 /* 
  ******************************

@@ -38,8 +38,10 @@
 			<p><%= request.messages.first.body %></p>
 		</div>
 
-		<%= link_to "Accept", accept_path(:id => request.id) %>
-		<%= link_to "Deny", deny_path(:id => request.id) %>
+		<ul class="request_options">
+			<li><%= link_to "Accept", accept_path(:id => request.id) %></li>
+			<li><%= link_to "Deny", deny_path(:id => request.id) %></li>
+		</ul>
 	
 	<% end %>
 <% else %>

@@ -130,6 +130,7 @@ class RequestsController < ApplicationController
     if Geocoder.search(@ip)[0] != nil 
       results = Geocoder.search(@ip)[0].data 
     end
+    logger.debug "results: #{results}"
     results
   end
   

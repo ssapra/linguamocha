@@ -41,10 +41,10 @@ class UsersController < ApplicationController
     @users = []
     
     @params.split(" ").each do |param|
-      @users << User.where("first_name = ? OR last_name = ?", param, param)
+      @users << User.where("first_name = ? OR last_name = ?", param.capitalize, param.capitalize)
     end
-    
-    @users.flatten!.uniq
+
+    @users = @users.flatten.uniq.select{|user| user.id != current_user.id}
     
   end
   

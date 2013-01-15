@@ -31,7 +31,7 @@ gem "ransack"
 # Yelp API Usage
 gem 'oauth'
 
-group :development do
+group :development, :test do
 	gem 'sqlite3'
 end
 

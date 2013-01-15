@@ -1,0 +1,12 @@
+<%= search_form_for @search, :url => search_path, :html => {:method => :post} do |f| %>
+  <%= f.label :first_name_cont, "First Name" %>
+  <%= f.text_field :first_name_cont %><br />
+
+  <%= f.label :last_name_cont, "Last Name" %>
+  <%= f.text_field :last_name_cont %><br />
+
+  <%= f.label :my_skills_tag_cont, "Skill" %>
+  <%= f.text_field :my_skills_tag_cont %><br />
+
+  <%= f.submit %>
+<% end %>

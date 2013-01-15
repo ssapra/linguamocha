@@ -26,7 +26,7 @@ gem 'geocoder'
 gem 'fastercsv'
 
 # Searching
-# gem 'searchlogic'
+gem "ransack"
 
 # Yelp API Usage
 gem 'oauth'

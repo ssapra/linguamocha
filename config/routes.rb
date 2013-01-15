@@ -17,6 +17,9 @@ Linguamocha::Application.routes.draw do
   
   root to: 'dashboard#home'
   
+  post "/full_search" => "users#search", as: :search
+  get "/full_search" => "users#search_form", as: :full_search
+  
   devise_for :users  
   get "/:username" => "users#show", as: :user
   get "/:username/edit" => "users#edit", as: :edit_user

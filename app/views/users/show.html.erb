@@ -6,6 +6,8 @@
           <div class="prof_pic grid_4">
 		<% if @user.avatar_file_name %>
 			<%= image_tag @user.avatar.url(:medium) %>
+		<% else %>
+			<%= image_tag("empty.png", :id => "search_image") %>
 		<% end %><br />
           </div>
 	

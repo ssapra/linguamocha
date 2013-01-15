@@ -36,16 +36,25 @@ class UsersController < ApplicationController
   end
   
   def search
-    @params = params[:search]
+    if params[:search]
+      @params = params[:search]
     
-    @users = []
+      @users = []
     
-    @params.split(" ").each do |param|
-      @users << User.where("first_name = ? OR last_name = ?", param.capitalize, param.capitalize)
-    end
+      @params.split(" ").each do |param|
+        @users << User.where("first_name = ? OR last_name = ?", param.capitalize, param.capitalize)
+      end
 
-    @users = @users.flatten.uniq.select{|user| user.id != current_user.id}
+      @users = @users.flatten.uniq.select{|user| user.id != current_user.id}
+    elsif params[:q]
+      @q = User.search(params[:q])
+      @users = @q.result(:distinct => true)
+    end
     
+  end
+  
+  def search_form
+    @search = User.search(params[:q])
   end
   
   def helpers

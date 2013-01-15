@@ -7,7 +7,7 @@
 	<% if user_signed_in? %>
 		<%= form_tag :controller => 'users', :action => 'search' do %>
 		  <%= text_field_tag :search, params[:search], :id => 'search_bar' %>
-	      <%= submit_tag "Search", :name => nil, :id => "search_button" %> 
+	      <%= submit_tag "Quick Search", :name => nil, :id => "search_button" %> 
 	    <% end %>
 	<% end %>
 		

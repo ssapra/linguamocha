@@ -3,8 +3,6 @@ class UsersController < ApplicationController
   
   # before_filter :helpers, :only => [:show]
   
-  # rake sunspot:solr:start
-  
   def show
     @user = User.find_by_username(params[:username])
     @current_user = current_user
@@ -39,13 +37,15 @@ class UsersController < ApplicationController
   
   def search
     @params = params[:search]
-    search = User.search do
-               fulltext params[:search] do
-                 boost_fields :name => 2.0
-                 query_phrase_slop 1
-               end
-             end
-    @users = search.results
+    
+    @users = []
+    
+    @params.split(" ").each do |param|
+      @users << User.where("first_name = ? OR last_name = ?", param, param)
+    end
+    
+    @users.flatten!.uniq
+    
   end
   
   def helpers

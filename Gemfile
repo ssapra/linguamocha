@@ -26,8 +26,7 @@ gem 'geocoder'
 gem 'fastercsv'
 
 # Searching
-# gem 'sunspot_rails'
-# gem 'sunspot_solr'
+# gem 'searchlogic'
 
 # Yelp API Usage
 gem 'oauth'

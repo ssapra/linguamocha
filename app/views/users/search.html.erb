@@ -1,7 +1,12 @@
 Search results for <%= @params %>: <br /><br />
 
+
 <% @users.each_with_index do |user, i| %>
-	<%= image_tag user.avatar.url(:thumb) %><br />
+	<% if user.avatar_updated_at %>
+		<%= image_tag user.avatar.url(:thumb) %><br />
+	<% else %>
+		<%= link_to image_tag("empty.png", :id => "search_image"), user_path(user.username) %>
+	<% end %>
 	<%= link_to "#{user.name}", user_path(user.username) %><br />
 	<%= user.occupation %><br /><br /><br />
 <% end %>

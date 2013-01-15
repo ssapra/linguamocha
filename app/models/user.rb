@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
                     :url => "/system/:attachment/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/system/:attachment/:id/:style/:basename.:extension"
                     
-  attr_accessible :name, 
+  attr_accessible :first_name,
+                  :last_name,
                   :bio,
                   :username,
                   :high_school,
@@ -33,12 +34,6 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :my_skills, :allow_destroy => true
   accepts_nested_attributes_for :interests, :allow_destroy => true
   
-  # searchable do
-  #     text :name, :username
-  #     text :my_skills do
-  #       my_skills.map { |skill| skill.tag }
-  #     end
-  #   end
   
   def sent_requests
     Request.find_all_by_sender_id(self.id)
@@ -51,5 +46,9 @@ class User < ActiveRecord::Base
   def requests
     requests = [sent_requests,received_requests].flatten
     requests.delete_if {|r| r == nil}
+  end
+  
+  def name
+    self.first_name + " " + self.last_name
   end
 end

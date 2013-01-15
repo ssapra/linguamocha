@@ -402,6 +402,21 @@ ul.request_options a{
 	width: 200px;
 }
 
+/*
+ ******************************
+	 =search
+ ******************************
+*/
+
+#search_image{
+	width: 100px;
+	height: 100px;
+}
+
+.search_name{
+	text-decoration: none
+}
+
 
 /* 
  ******************************

@@ -42,13 +42,18 @@ class UsersController < ApplicationController
       @users = []
     
       @params.split(" ").each do |param|
-        @users << User.where("first_name = ? OR last_name = ?", param.capitalize, param.capitalize)
+        @q = User.search({"first_name_cont"=>param.capitalize})
+        @users << @q.result(:distinct => true)
+        @q = User.search({"last_name_cont"=>param.capitalize}) 
+        @users << @q.result(:distinct => true)
+        @q = User.search({"my_skills_tag_cont"=>param.downcase}) 
+        @users << @q.result(:distinct => true)
       end
-
       @users = @users.flatten.uniq.select{|user| user.id != current_user.id}
     elsif params[:q]
       @q = User.search(params[:q])
       @users = @q.result(:distinct => true)
+      @users.select!{|user| user.id != current_user.id}
     end
     
   end

@@ -56,6 +56,7 @@ class RequestsController < ApplicationController
     # params[:request][:date] = change_date(params[:request][:date])
     respond_to do |format|
       if @request.update_attributes(params[:request])
+        @request.messages.last.update_attributes(:user_id => current_user.id)
         if params[:location] then @request.update_attributes(:location => params[:location]) end
         format.html { redirect_to @request, notice: 'Request was successfully updated.' }
         format.json { head :no_content }

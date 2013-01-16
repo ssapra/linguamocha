@@ -1,3 +1,4 @@
+
 <h1>Allen Sanderson will be informed that you have accepted his request</h1>
 
 <%= form_for(@request, :url => {:controller => :requests, :action => :update}) do |f| %>
@@ -34,7 +35,7 @@
   <div class="availability">
 	<label for="available_times" id="availability_label">Please select the times you are available to meet:</label>
 	<input type="date" name="available_times" id="available_times" placeholder="2/30/2013">			
-  </div>
+  </div><br />
 
   <div class="meetup_place">
 	<h2>Find locations to meet:</h2>
@@ -55,11 +56,23 @@
   </div>
 
 
-  <div id="map_canvas" style="width:300px; height:300px"></div>
+  <div id="map_canvas"></div>
 
   <br />
   <br />
   <br />
+
+  <%= render 'messages' %>
+
+  <% @request.messages << @message %>
+	
+  <%= f.fields_for :messages do |builder| %>
+	<% d = builder.text_area :body %>
+	<% if d.split("\n")[1].split("</textarea>")[0].nil? %>
+		<%= builder.label :message %>
+		<%= builder.text_area :body %>
+	<%end %>
+  <% end %>
 
   <div class="actions">
      <%= f.submit "Update Request" %>
@@ -70,11 +83,11 @@
 <% end %>
 
 
-<%= render 'messages' %>
+
 	
 
-<%= render 'message_field' %>
-	
+<%#= render 'message_field' %>
+
 
 
 	<div class="message">

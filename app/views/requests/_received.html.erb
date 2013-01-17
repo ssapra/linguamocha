@@ -1,0 +1,33 @@
+<!-- <h1>Received Requests</h1> -->
+
+<% if @received %>
+	<% @received.each do |request| %>
+		
+	 	<div class="title">
+			<%= link_to "#{request.title}", request_path(request.id) %>
+			<%= "You have accepted this request." if request.receiver_confirmation %><br />
+		</div>
+	
+		<div class="from">
+			<label for="sender">From:</label>
+			<p id="sender"><%= request.sent_by%></p>
+		</div>
+
+		<div class="deadline">
+			<label for="deadline_date">Needs help by:</label>
+			<p id="deadline_date"><%= request.date %></p>
+		</div>
+
+		<div class="request">
+			<p><%= request.messages.first.body if request.messages.first %></p>
+		</div>
+
+		<ul class="request_options">
+			<li><%= link_to "Accept", accept_path(:id => request.id) if request.receiver_confirmation != true%></li>
+			<li><%= link_to "Deny", deny_path(:id => request.id) %></li>
+		</ul>
+	
+	<% end %>
+<% else %>
+	<i>No requests have been received</i>
+<% end %>		

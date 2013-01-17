@@ -1,0 +1,13 @@
+<!-- <h1>Sent Requests</h1> -->
+
+<% if @sent != []%>
+	<% @sent.each do |request| %>
+		<% if request.pending_approval? %>
+			<%= link_to "#{request.title}", request_path(request.id)%><%= "-- pending approval by #{request.receiver}"%><br />
+		<% else %>
+			<%= link_to "#{request.title}", request_path(request.id)%><br />
+		<% end %>
+	<% end %>
+<% else %>
+	<i>No requests have been sent</i>
+<% end %>

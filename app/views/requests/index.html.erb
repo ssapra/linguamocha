@@ -1,49 +1,12 @@
-
-<h1>Sent Requests</h1>
-
-<% if @sent %>
-	<% @sent.each do |request| %>
-		<% if request.pending_approval? %>
-			<%= link_to "#{request.title}", request_path(request.id)%><%= "-- pending approval by #{request.receiver}"%><br />
-		<% else %>
-			<%= link_to "#{request.title}", request_path(request.id)%><br />
-		<% end %>
-	<% end %>
-<% else %>
-	<i>No requests have been sent</i>
-<% end %>
-		
-<br /><br />
-		
-<h1>Received Requests</h1>
-
-<% if @received %>
-	<% @received.each do |request| %>
-		
-	 	<div class="title">
-			<%= link_to "#{request.title}", request_path(request.id) %><br />
-		</div>
-	
-		<div class="from">
-			<label for="sender">From:</label>
-			<p id="sender"><%= request.sent_by%></p>
-		</div>
-
-		<div class="deadline">
-			<label for="deadline_date">Needs help by:</label>
-			<p id="deadline_date"><%= request.date %></p>
-		</div>
-
-		<div class="request">
-			<p><%= request.messages.first.body %></p>
-		</div>
-
-		<ul class="request_options">
-			<li><%= link_to "Accept", accept_path(:id => request.id) %></li>
-			<li><%= link_to "Deny", deny_path(:id => request.id) %></li>
-		</ul>
-	
-	<% end %>
-<% else %>
-	<i>No requests have been received</i>
-<% end %>		
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Sent Requests</a></li>
+    <li><a href="#tabs-2">Received Requests</a></li>
+  </ul>
+  <div id="tabs-1">
+	<%= render "sent" %>
+  </div>
+  <div id="tabs-2">
+	<%= render "received" %>
+  </div>
+</div>

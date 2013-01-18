@@ -38,11 +38,14 @@ class RequestsController < ApplicationController
   
   def show
     @request = Request.find_by_id(params[:id])
-    @message = Message.new(:request_id => @request.id)
+    # @message = Message.new(:request_id => @request.id)
   end
   
   def edit
     @request = Request.find_by_id(params[:id])
+    @request.messages.each do |m|
+      if m.body == nil then m.destroy end
+    end
     @location = get_location
     @coordinates = get_coordinates
     @message = Message.new(:request_id => @request.id)
@@ -104,6 +107,7 @@ class RequestsController < ApplicationController
   
   def my_coordinates
     @coordinates = get_coordinates
+    logger.debug "coordites #{@coordinates}"
     if @coordinates == {:latitude => nil, :longitude => nil}
       @coordinates = {:latitude => 41.785935, :longitude =>  -88.147299}
     end
@@ -132,7 +136,7 @@ class RequestsController < ApplicationController
     else 
       nil
     end
-    logger.debug "Results: #{@zipcode}"
+    # logger.debug "Results: #{@zipcode}"
   end
   
   def search

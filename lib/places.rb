@@ -20,6 +20,7 @@ module Places
     json["results"].first(10).each do |result|
       points << {:name => result["name"], 
                  :address => result["vicinity"]
+                 # :rating => result["rating"]
                }
                  # :city => result["location"]["city"],
                  # :state => business["location"]["state_code"],

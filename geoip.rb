@@ -8,6 +8,8 @@ require 'pp'
 
 results = Geocoder.search('24.193.82.1')
 
+pp results
+
 city = results[0].city
 
 if city != "" then pp city else puts "City Not Found" end

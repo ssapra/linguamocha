@@ -53,13 +53,13 @@ pp json["businesses"][0]
 #   puts ""
 # end
 
-location_string = ""
+# location_string = ""
 
-points.each_with_index do |point, i|
-  c = (i+97).chr.upcase
-  location_string += "&markers=color:red%7Clabel:#{c}%7C#{point[0]},#{point[1]}"
-  if i == 10 then break end
-end
+# points.each_with_index do |point, i|
+#   c = (i+97).chr.upcase
+#   location_string += "&markers=color:red%7Clabel:#{c}%7C#{point[0]},#{point[1]}"
+#   if i == 10 then break end
+# end
 
 # puts "http://maps.googleapis.com/maps/api/staticmap?zoom=13&size=600x300&maptype=roadmap" + location_string + "&sensor=false"
 # 

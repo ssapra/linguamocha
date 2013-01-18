@@ -1,0 +1,1 @@
+LinguaMocha::Application.config.PLACES_API = "AIzaSyAZO08sPxtMwOgkgrAVYdYbPqIm0FxQUwk"

@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  include Yelp
+  include Places
   
   # before_filter :get_location
   # before_filter :get_coordinates
@@ -87,7 +87,7 @@ class RequestsController < ApplicationController
   end
   
   def nearby_locations
-    points = Yelp.businesses(params[:current_location])
+    points = Places.businesses(params[:current_location])
     
     respond_to do |format|
       format.json {render :json => points.to_json}
@@ -95,7 +95,7 @@ class RequestsController < ApplicationController
   end
   
   def coordinates
-    points = Yelp.coordinates(params[:current_location])
+    points = Places.coordinates(params[:current_location])
     
     respond_to do |format|
       format.json {render :json => points.to_json}

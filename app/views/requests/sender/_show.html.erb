@@ -2,7 +2,7 @@
 
 <% if @request.receiver_confirmation == true %>
 
-<i><%= "#{@request.receiver} has accepted your request!" %></i><br />
+	<i><%= "#{@request.receiver} has accepted your request!" %></i><br />
 
 	<% if @request.pending_approval? %>
 	  <i><%= "#{@request.receiver} has supplied a location and a list of times" %><br />
@@ -13,20 +13,19 @@
 	<% else %>
 	  <i><%= "This request has been approved by both sides!" %>
 	<% end %>
-
-
-<!-- <b>From: <%#= @request.start_time.strftime('%l:%M %P') %></b><br /> -->
-<!-- <b>To: <%#= @request.end_time.strftime('%l:%M %P') %></b><br /> --><br />
-<b>Date: <%= @request.date.strftime("%B %d, %Y") %></b><br />
-<b>Location: <%= @request.location %></b><br /><br />
+	
+	<!-- <b>From: <%#= @request.start_time.strftime('%l:%M %P') %></b><br /> -->
+	<!-- <b>To: <%#= @request.end_time.strftime('%l:%M %P') %></b><br /> --><br />
+	<b>Date: <%= @request.date.strftime("%B %d, %Y") %></b><br />
+	<b>Location: <%= @request.location %></b><br /><br />
 
 <% elsif @request.receiver_confirmation == false %>
 
-<%= "Sorry, #{@request.receiver} has denied your request"%>
+	<%= "Sorry, #{@request.receiver} has denied your request"%>
 
 <% else %>
 
-<i>Request Pending</i>
+	<i>Request Pending</i>
 
 <% end %>
 
@@ -38,6 +37,10 @@
 <% end %>
 
 <br /><br /><br /><br />
+
+<% if @review %>
+	<%= "Review: #{@review.body}"%><br /><br />
+<% end %>
 
 <% if @request.receiver_confirmation %>
   <%= render "message_field" %>

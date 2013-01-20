@@ -13,6 +13,9 @@ Linguamocha::Application.routes.draw do
   
   resources :requests
   
+  get "/review/:id" => "reviews#new", as: :review
+  post "/review/:id" => "reviews#create"
+  
   post "/message" => "messages#create", as: :message
   
   root to: 'dashboard#home'
@@ -21,6 +24,7 @@ Linguamocha::Application.routes.draw do
   get "/full_search" => "users#search_form", as: :full_search
   
   devise_for :users  
+  
   get "/:username" => "users#show", as: :user
   get "/:username/edit" => "users#edit", as: :edit_user
   put "/:username" => "users#update", as: :user

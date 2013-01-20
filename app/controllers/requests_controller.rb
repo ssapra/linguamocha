@@ -44,6 +44,7 @@ class RequestsController < ApplicationController
   def show
     @request = Request.find_by_id(params[:id])
     @message = Message.new(:request_id => @request.id)
+    @review = @request.review
   end
   
   def edit

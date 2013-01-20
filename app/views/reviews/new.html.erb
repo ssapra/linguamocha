@@ -1,0 +1,34 @@
+<%= form_for(@review, :url => {:controller => :reviews, :action => :create}) do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+      <ul>
+      <% @review.errors.each_with_index.each do |msg, i| %>
+        <li><%= msg[1] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	Request: <%= @request.title %><br />
+	<b>Date: <%= @request.date.strftime("%B %d, %Y") %></b><br />
+	<b>Location: <%= @request.location %></b><br /><br />
+	
+	<%= render "/requests/messages"%>
+	
+	<hr />
+	
+	<div class="field">
+	    <%= f.label :body, "Write a review" %>
+		<%= f.text_area :body, :id => "request" %>
+	</div>
+	
+	<%= f.hidden_field :request_id %>
+	<%= f.hidden_field :sender_id %>
+	<%= f.hidden_field :receiver_id %>
+	
+	<div class="actions">
+	     <%= f.submit "Submit Review", :confirm => "Are you sure?" %>
+	</div>
+	
+<% end %>

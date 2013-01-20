@@ -59,4 +59,12 @@ class User < ActiveRecord::Base
   def name
     self.first_name + " " + self.last_name
   end
+  
+  def reviews_sent 
+    Review.find_all_by_sender_id(self.id)
+  end
+  
+  def reviews_received
+    Review.find_all_by_receiver_id(self.id)    
+  end
 end

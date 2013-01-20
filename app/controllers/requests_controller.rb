@@ -4,6 +4,8 @@ class RequestsController < ApplicationController
   # before_filter :get_location
   # before_filter :get_coordinates
   
+  before_filter :clear_messages, :only => [:show, :edit]
+  
   def index
     @user = current_user
     @sent = @user.sent_requests
@@ -13,7 +15,7 @@ class RequestsController < ApplicationController
   def new
     @request = Request.new(:sender_id => params[:sender_id], 
                           :receiver_id => params[:receiver_id])
-    @request.messages << Message.new
+    @request.messages << Message.new(:user_id => current_user.id)
     @receiver = User.find(params[:receiver_id]).name
   end
   
@@ -22,11 +24,12 @@ class RequestsController < ApplicationController
     split_date = params[:request][:date].split("/")
     date = split_date[1] + "/" + split_date[0] + "/" + split_date[2]
     @request.date = Date.parse(date)
+    
+    logger.debug "#{@request.inspect}"
 
     respond_to do |format|
       if @request.save
         @request.messages.last.update_attributes(:user_id => current_user.id)
-        if params[:location] then @request.update_attributes(:location => params[:location]) end
         format.html { redirect_to @request, notice: 'Note was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
       else
@@ -38,17 +41,14 @@ class RequestsController < ApplicationController
   
   def show
     @request = Request.find_by_id(params[:id])
-    # @message = Message.new(:request_id => @request.id)
+    @message = Message.new(:request_id => @request.id)
   end
   
   def edit
     @request = Request.find_by_id(params[:id])
-    @request.messages.each do |m|
-      if m.body == nil then m.destroy end
-    end
     @location = get_location
     @coordinates = get_coordinates
-    @message = Message.new(:request_id => @request.id)
+    @message = Message.new(:request_id => @request.id, :user_id => current_user.id)
     if @request.start_time then @start_time = @request.start_time.strftime("%l:%M %P") end
     if @request.end_time then @end_time = @request.end_time.strftime("%l:%M %P") end
   end
@@ -159,6 +159,13 @@ class RequestsController < ApplicationController
       nil
     end
     # logger.debug "Results: #{@coordinates}"
+  end
+  
+  def clear_messages
+    @request = Request.find(params[:id])
+    @request.messages.each do |m|
+      if m.body == nil || m.body == "" then m.destroy end
+    end
   end
   
 end

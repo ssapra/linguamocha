@@ -1,0 +1,80 @@
+<!-- <h1>Allen Sanderson will be informed that you have accepted his request</h1> -->
+
+<%= form_for(@request, :url => {:controller => :requests, :action => :update}) do |f| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+      <ul>
+      <% @request.errors.each_with_index.each do |msg, i| %>
+        <li><%= msg[1] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- <div class="field">
+  	<%#= f.label :title %>
+  	<%= f.text_field :title %>
+    </div> -->
+
+  <%= "Title of Request: #{@request.title}"%>
+
+<div class="field">
+	<%= f.label :from %>
+	<%= f.text_field :start_time, :value => @start_time %>
+  </div>
+
+  <div class="field">
+	<%= f.label :to %>
+	<%= f.text_field :end_time, :value => @end_time %>
+  </div>
+
+  <div class="availability">
+	<label for="available_times" id="availability_label">Please select the times you are available to meet:</label>
+	<input type="date" name="available_times" id="available_times" placeholder="2/30/2013">			
+  </div><br />
+
+	<br /><%= "Location chosen: #{@request.location}" %><br />
+
+  <div class="meetup_place">
+	<h2>Find locations to meet:</h2>
+
+	<label for="zipcode">Enter your zipcode:</label>
+	<input type="text" id="find" value='<%= "#{@zipcode}" %>'>
+	<a href="#" class="find">Find Locations</a>
+	<!-- <input type="input" name="zipcode" id="zipcode" value=<%="#{@zipcode}"%>>
+	<button class="yelp" id="find_locations">Find Locations</button><br /> -->
+
+  </div>
+
+  <%#= link_to image_tag("yelp.png", :id => "yelp"), "yelp.com" %><br />
+
+  <div class="locations">
+	<%#= f.label :location %>
+	<%= f.hidden_field :location %>
+  </div>
+
+
+  <!-- <div id="map_canvas" style="height:300px;width:300px;"></div> -->
+
+  <br />
+  <br />
+  <br />
+
+  <%= render 'messages' %>
+
+  <% @request.messages << @message %>
+
+  <%= f.fields_for :messages do |builder| %>
+	<% d = builder.text_area :body %>
+	<% if d.split("\n")[1].split("</textarea>")[0].nil? %>
+		<%= builder.label :message %>
+		<%= builder.text_area :body %>
+	<%end %>
+  <% end %>
+
+  <div class="actions">
+     <%= f.submit "Update Request" %>
+  </div>
+
+<% end %>

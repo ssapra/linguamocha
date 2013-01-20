@@ -5,7 +5,6 @@ class Message < ActiveRecord::Base
                   :sender_viewed,
                   :user_id
                   
-
                   
   belongs_to :request
   

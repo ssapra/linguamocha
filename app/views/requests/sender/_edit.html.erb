@@ -1,0 +1,47 @@
+<% if @request.receiver_confirmation %>
+	<%= "Location: #{@request.location}"%>
+<% elsif @request.pending_approval? %>
+	Still pending
+<% else %>
+	<%= "#{@request.receiver} has denied your request." %>
+<% end %>
+	
+
+<%= render "/requests/messages" %>
+
+<%= form_for(@request, :url => {:controller => :requests, :action => :update}) do |f| %>
+	
+	<% if @request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@request.errors.count, "error") %> prohibited this request from being saved:</h2>
+      <ul>
+      <% @request.errors.each_with_index.each do |msg, i| %>
+        <li><%= msg[1] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% @request.messages << @message %>
+
+  <%= f.fields_for :messages do |builder| %>
+	<% d = builder.text_area :body %>
+	<% if d.split("\n")[1].split("</textarea>")[0].nil? %>
+		<%= builder.label :message %>
+		<%= builder.text_area :body, :id =>"optional_message", :size =>"30x10", :placeholder => "Optional Message" %>
+		<%= builder.hidden_field :user_id %>
+	<%end %>
+  <% end %>
+
+
+  <div class="actions">
+     <%= f.submit "Send message" %>
+  </div>
+
+<% end %>
+
+<!-- <div class="message">
+	<label for="message" id="optional">Optional Message:</label>
+	<textarea name="optional_message" id="optional_message" cols="30" rows="10">Write your message here</textarea>
+	<input type="submit" name="send_message" id="send_message" value="Submit">
+</div> -->

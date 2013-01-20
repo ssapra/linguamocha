@@ -1,7 +1,7 @@
 
 
 <% if current_user.name == @request.sent_by %>
-	<%= render 'sender' %>
+	<%= render '/requests/sender/show' %>
 <% else %>
-	<%= render 'receiver'%>
+	<%= render '/requests/receiver/show' %>
 <% end %>

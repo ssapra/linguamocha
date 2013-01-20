@@ -2,7 +2,8 @@
   <ul>
     <li><a href="#tabs-1">Sent Requests</a></li>
     <li><a href="#tabs-2">Received Requests</a></li>
-    <li><a href="#tabs-3">Past Requests</a></li>
+    <li><a href="#tabs-3">Past Sent Requests</a></li>
+    <li><a href="#tabs-4">Past Received Requests</a></li>
   </ul>
   <div id="tabs-1">
 	<%= render "sent" %>
@@ -11,6 +12,9 @@
 	<%= render "received" %>
   </div>
   <div id="tabs-3">
-	
+	<%= render "past_sent" %>
+  </div>
+  <div id="tabs-4">
+	<%= render "past_received" %>
   </div>
 </div>

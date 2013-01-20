@@ -1,0 +1,7 @@
+<% if @past_sent != []%>
+	<% @past_sent.each do |request| %>
+		<%= link_to "#{request.title}", request_path(request.id)%><br />
+	<% end %>
+<% else %>
+	<i>No sent requests in your archive</i>
+<% end %>

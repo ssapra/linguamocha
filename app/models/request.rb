@@ -31,7 +31,6 @@ class Request < ActiveRecord::Base
   
   def approved?
     self.receiver_confirmation && self.sender_confirmation
-  end
-  
+  end  
   
 end

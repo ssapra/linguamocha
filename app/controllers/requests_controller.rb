@@ -10,6 +10,8 @@ class RequestsController < ApplicationController
     @user = current_user
     @sent = @user.sent_requests
     @received = @user.received_requests
+    @past_sent = @user.past_sent_requests
+    @past_received = @user.past_received_requests
   end
   
   def new

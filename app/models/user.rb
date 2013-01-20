@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
                   :college,
                   :degree,
                   :occupation,
+                  :zipcode,
+                  :city,
+                  :state,
                   :my_skills_attributes,
                   :interests_attributes
 

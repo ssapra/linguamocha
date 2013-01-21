@@ -83,26 +83,17 @@
 
 <div class="reference_group grid_12">
    <h4>Latest Feedback</h4>
-   
-   <div class="reference grid_12">
-           <div class="reviewer grid_4">
-                   <a href="#"><h5>Ben Siegel</h5></a>
-           </div>
+   <% @user.reviews_received.each do |r|%>
+	   <div class="reference grid_12">
+	           <div class="reviewer grid_4">
+	                   <a href="#"><h5><%= r.sent_by %></h5></a>
+	           </div>
 
-           <div class="review grid_8">
-                   <p>I had a good time. We just sat around in his room late at night and watched Lost. It was fairly romantic, actually.</p>
-           </div>
-   </div>
-
-   <div class="reference grid_12">
-           <div class="reviewer grid_4">
-                   <a href="#"><h5>Victor Kung</h5></a>
-           </div>
-
-           <div class="review grid_8">
-                   <p>4.5 out of 5 stars. Would do again.</p>
-           </div>
-   </div>
+	           <div class="review grid_8">
+	                   <p><%= r.body %></p>
+	           </div>
+	   </div>
+   <% end %>
 </div>
 	
 	

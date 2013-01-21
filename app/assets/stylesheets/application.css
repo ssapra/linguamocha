@@ -138,12 +138,29 @@ nav li a:hover {
     text-decoration: underline;
 }
 
+
 /* 
  ******************************
       =main
  ******************************
 */
 
+
+/*
+ ******************************
+	 welcome page
+ ******************************
+*/
+
+#frontpage {
+	height: 230px;
+	width: 400px;
+    display: block;
+    margin: 50px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
 
 .container_12 {
     border-left: 2px solid #C0C0C0;

@@ -6,4 +6,9 @@ class Review < ActiveRecord::Base
                   :receiver_id
                   
   belongs_to :request
+  
+  def sent_by
+    User.find_by_id(self.sender_id).name
+  end
+  
 end

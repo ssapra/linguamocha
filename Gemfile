@@ -17,7 +17,8 @@ gem "paperclip", "~> 3.0"
 gem 'nokogiri'
 
 # JS for Nested Form
-gem 'nested_form'
+# gem 'nested_form'
+gem 'nested_form', github: 'ryanb/nested_form'
 
 # Finding zipcode and coordinates from IP
 gem 'geocoder'

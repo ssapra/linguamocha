@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/ryanb/nested_form.git
+  revision: f6744578d25a73c23608668fde2a20f7ae9d7d77
+  specs:
+    nested_form (0.3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -62,7 +68,6 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.19)
     multi_json (1.5.0)
-    nested_form (0.3.1)
     nokogiri (1.5.6)
     oauth (0.4.7)
     orm_adapter (0.4.0)
@@ -137,7 +142,7 @@ DEPENDENCIES
   fastercsv
   geocoder
   jquery-rails
-  nested_form
+  nested_form!
   nokogiri
   oauth
   paperclip (~> 3.0)

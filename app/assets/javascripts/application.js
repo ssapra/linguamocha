@@ -11,10 +11,11 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require timepicker
 //= require jquery_ujs
 //= require jquery-custom	
 //= require jquery_nested_form
-//= require timepicker
+
 
 $(function() {
     

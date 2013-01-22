@@ -68,8 +68,8 @@
   	<th>Skill</th>
 	<th>Description</th>
 	<th> </th>
-	<%= f.fields_for :my_skills do |builder| %>
-      <%= render "skill", :f => builder%>
+	<%= f.fields_for :my_skills, :wrapper => false do |builder| %>
+      <%= render "skill_fields", :f => builder%>
     <% end %>
   </table>
  
@@ -86,8 +86,8 @@
   <table>
 	<th>Interest</th>
 	<th> </th>
-  	  <%= f.fields_for :interests do |interest| %>
-        <%= render "interest", :f => interest%>
+  	  <%= f.fields_for :interests, :wrapper => false do |interest| %>
+        <%= render "interest_fields", :f => interest%>
       <% end %>
   </table>
 

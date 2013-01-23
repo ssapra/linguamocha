@@ -1,11 +1,11 @@
-<tr class="fields">
-  <td>
-	<div class="ui-widget">
-  	  <%#= f.label :interest %><br />
-  	  <%= f.text_field :tag, :class => "interest" %>
-	</div>	
-  </td>
+<tr class="fields" id=<%="#{index}"%>>
+    <td>
+  		<div class="ui-widget">
+  	  		<%= f.text_field :tag, :class => "interest" %>
+		</div>	
+  	</td>
 
-  <td><br /><%= f.link_to_remove image_tag("delete.png") %></td>
-
+	<td class=<%="#{index}"%> id="delete"><br /><%= f.link_to_remove image_tag("delete.png") %></td>
 </tr>
+<tr><td> </td></tr>
+<tr><td> </td></tr>

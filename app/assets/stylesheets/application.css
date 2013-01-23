@@ -15,6 +15,7 @@
  *= require_self
  */
 
+
 /***** Overall *****/
 
 h1, h2, h3, h4, h5, p, strong, em {
@@ -223,6 +224,16 @@ nav li a:hover {
     padding-left: 20px;
     padding-bottom: 20px;
 }
+
+textarea.skill_description{
+	border-radius: 5px;
+	box-shadow: none;
+	border: 2px solid #104717;
+	font-family: 'Open Sans';
+	font-size: 14px;
+	padding-left: 4px;
+}
+
 .currently_learning {
     padding: 0px 15px 15px 15px;
     border-left: 2px solid #6db776;
@@ -245,6 +256,17 @@ nav li a:hover {
 
 .learning h3, .learning p {
 	margin-left: 0px;
+}
+
+td#delete{
+	position: relative;
+	top: -19px;
+	display: none;
+}
+
+td#remove{
+	position: relative;
+	top: 4px;
 }
 
 /* 

@@ -1,18 +1,17 @@
-<tr class="fields">
-  <td>
-    <div class="ui-widget">
-      <%#= f.label :skill %><br />
-      <%= f.text_field :tag, :class => "skill" %>
-    </div>
-  </td>
+<tr class="fields" id=<%="#{index}"%>>
+	<td>
+		<div class="ui-widget">
+	    	<%#= f.label :skill %><br />
+	    	<%= f.text_field :tag, :class => "skill" %>
+	  	</div>
+	</td>
 
-  <td>
-	<div class="field">
-	  <%#= f.label :description %><br />
-	  <%= f.text_area :description, :size => "30x10" %>
-	</div> 
-  </td>
+	<td>
+		<div class="field">
+	 		<%#= f.label :description %><br />
+	 		<%= f.text_area :description, :size => "60x5", :class => "skill_description" %>
+		</div> 
+	</td>
 
-  <td><br /><%= f.link_to_remove image_tag("delete.png") %></td>
-
+	<td class=<%="#{index}"%> id="remove"><br /><%= f.link_to_remove image_tag("delete.png", :class => "delete") %></td>
 </tr>

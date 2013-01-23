@@ -68,9 +68,12 @@
   	<th>Skill</th>
 	<th>Description</th>
 	<th> </th>
+	<% index = 0 %>
 	<%= f.fields_for :my_skills, :wrapper => false do |builder| %>
-      <%= render "skill_fields", :f => builder%>
+     	<%= render "skill_fields", :f => builder, :index => index %>
+		<% index = index + 1 %>
     <% end %>
+
   </table>
  
   <br />
@@ -86,9 +89,9 @@
   <table>
 	<th>Interest</th>
 	<th> </th>
-  	  <%= f.fields_for :interests, :wrapper => false do |interest| %>
-        <%= render "interest_fields", :f => interest%>
-      <% end %>
+  	<%= f.fields_for :interests, :wrapper => false do |interest| %>
+    	<%= render "interest_fields", :f => interest, :index => index %>
+    <% end %>
   </table>
 
   <br />

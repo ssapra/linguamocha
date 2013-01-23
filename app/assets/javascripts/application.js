@@ -193,7 +193,16 @@ $(function() {
 	$(function() {
 	    $("#tabs").tabs();
 	  });
-
+	
+	$(".fields").hover(
+		function(){
+			$('td.' + this.id).show();
+		},
+		function(){
+			$('td.' + this.id).hide();
+		}
+	);
+		
 });
 
 

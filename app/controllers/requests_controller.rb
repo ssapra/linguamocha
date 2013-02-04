@@ -131,6 +131,18 @@ class RequestsController < ApplicationController
     @request.update_attributes(:receiver_confirmation => true)
     redirect_to @request
   end
+
+  def confirm
+    @request = Request.find(params[:id])
+    @request.update_attributes(:sender_confirmation => true)
+    redirect_to @request
+  end
+
+  def deny_request
+    @request = Request.find(params[:id])    
+    @request.update_attributes(:sender_confirmation => true)
+    redirect_to @request
+  end
   
   def get_location
     results = search

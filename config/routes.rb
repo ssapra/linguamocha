@@ -9,6 +9,9 @@ Linguamocha::Application.routes.draw do
   get "/accept/:id" => "requests#accept", as: :accept
   get "/deny/:id" => "requests#deny", as: :deny
   
+  get "/confirm/:id" => "requests#confirm", as: :confirm
+  get "/deny/:id" => "requests#deny_request", as: :deny_request
+
   post "/search" => "users#search"
   
   resources :requests

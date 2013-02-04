@@ -1,24 +1,33 @@
 <h1><%= @request.title %></h1>	
 
-<% if @request.receiver_confirmation == true %>
+<% if @request.pending_approval? %>
 
-<i><%= "You have accepted #{@request.sent_by}'s request!"%></i><br />
+	<i><%= "You have accepted #{@request.sent_by}'s request!" %></i><br />
+	<i><%= "Supply a location and a list of times" %><br />
+		Please pick a time and approve the request details.<br />
 
-<!-- <b>From: <%#= @request.start_time.strftime('%l:%M %P') %></b><br /> -->
-<!-- <b>To: <%#= @request.end_time.strftime('%l:%M %P') %></b><br /> -->
-<b>Request Deadline: <%= @request.date.strftime("%B %d, %Y") %></b><br />
-<b>Location: <%= @request.location %></b><br /><br />
+	<%= link_to "Choose time and approve location", "#" %><br />
+
+	<%#= link_to "Accept Request", confirm_path(:id => @request.id) %> | <%#= link_to "Deny Request", deny_path(:id => @request.id)%>
+	
+<% elsif @request.approved? == true && @request.date >= Date.today %>
+	<i><%= "This request has been approved by both sides!" %>
+	
+	<b>Date: <%= @request.date.strftime("%B %d, %Y") %></b><br />
+	<b>Location: <%= @request.location %></b><br /><br />
 
 <% elsif @request.receiver_confirmation == false %>
+	<%= "Sorry, #{@request.receiver} has denied your request"%>
 
-<%= "You have denied #{@request.sent_by}'s request"%>
+<% elsif @request.canceled? == true %>
+	<%= "#{@request.sent_by} canceled this request" %>
 
-<% else %>
+<% elsif @request.date >= Date.today %>
+	<i>Request Pending</i>
 
-<i>Request Pending</i><br /><br />
-
-<%= link_to "Accept", accept_path(:id => @request.id) %> |
-<%= link_to "Deny", deny_path(:id => @request.id) %><br /><br />
+<% elsif @request.approved? && @request.date < Date.today %>
+	<%= "Date: #{@request.date}" %><br />
+	<%= "Location: #{@request.location}" %>
 
 <% end %>
 
@@ -27,9 +36,17 @@
 <% @request.messages.each do |message| %>
   	<%= message.user %>:
 	<%= message.body %><br />
+<% end %><br />
+
+<br />
+
+<% if @request.canceled? || @request.date < Date.today %>
+	<%=render "message_field" %><br />
+	<% if @review %>
+		<%= "#{@request.sent_by}'s review: #{@review.body}"%><br /><br />
+	<% end %>
+<% else %>
+	<%= link_to "Edit request", edit_request_path(@request.id)%>
 <% end %>
 
-<br /><br /><br /><br />
-
-<%= link_to "Edit request", edit_request_path(@request.id)%>
 

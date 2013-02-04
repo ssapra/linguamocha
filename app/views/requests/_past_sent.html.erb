@@ -1,10 +1,22 @@
 <% if @past_sent != []%>
 	<% @past_sent.each do |request| %>
-		<% if request.review %>
-			<%= link_to "#{request.title}", request_path(request.id)%><br />
-		<% else %>
-			<%= link_to "#{request.title}", review_path(request.id)%><br />
-		<% end %>
+		
+		<div class="title">
+			<% if request.review %>
+				<%= link_to "#{request.title}", request_path(request.id)%><br />
+			<% else %>
+				<%= link_to "#{request.title}", review_path(request.id)%><br />
+			<% end %>
+		</div>
+
+		<div class="deadline">
+			<label for="deadline_date">Met on:</label>
+			<p id="deadline_date"><%= request.date %></p>
+		</div>
+		<div class="deadline">
+			<label for="deadline_date">Location:</label>
+			<p id="deadline_date"><%= request.location %></p>
+		</div>
 	<% end %>
 <% else %>
 	<i>No sent requests in your archive</i>

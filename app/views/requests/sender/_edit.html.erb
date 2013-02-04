@@ -1,7 +1,8 @@
-<% if @request.receiver_confirmation %>
+<% if @request.receiver_confirmation == nil %>
+	Request is still pending <br />
+<% elsif @request.receiver_confirmation %>
+	<%= "#{@request.receiver} has accepted your request." %>
 	<%= "Location: #{@request.location}"%>
-<% elsif @request.pending_approval? %>
-	Still pending
 <% else %>
 	<%= "#{@request.receiver} has denied your request." %>
 <% end %>

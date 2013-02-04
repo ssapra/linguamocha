@@ -1,18 +1,17 @@
 <h1><%= @request.title %></h1>	
 
-<% if @request.receiver_confirmation == true %>
+<% if @request.pending_approval? == true %>
 
 	<i><%= "#{@request.receiver} has accepted your request!" %></i><br />
-
-	<% if @request.pending_approval? %>
-	  <i><%= "#{@request.receiver} has supplied a location and a list of times" %><br />
+	<i><%= "#{@request.receiver} has supplied a location and a list of times" %><br />
 		Please pick a time and approve the request details.<br />
 	
-	  <%= link_to "Choose time and approve location", "#" %>
+	  <%= link_to "Choose time and approve location", "#" %><br />
+
+	  <%= link_to "Accept Request", confirm_path(:id => @request.id) %> | <%= link_to "Deny Request", deny_path(:id => @request.id)%>
 	
-	<% else %>
+<% elsif  @request.approved? == true && @request.date >= Date.today %>
 	  <i><%= "This request has been approved by both sides!" %>
-	<% end %>
 	
 	<!-- <b>From: <%#= @request.start_time.strftime('%l:%M %P') %></b><br /> -->
 	<!-- <b>To: <%#= @request.end_time.strftime('%l:%M %P') %></b><br /> --><br />
@@ -20,13 +19,11 @@
 	<b>Location: <%= @request.location %></b><br /><br />
 
 <% elsif @request.receiver_confirmation == false %>
-
 	<%= "Sorry, #{@request.receiver} has denied your request"%>
-
-<% else %>
-
+<% elsif @request.canceled? == true %>
+	You have canceled this request.
+<% elsif @request.date >= Date.today %>
 	<i>Request Pending</i>
-
 <% end %>
 
 <h1>Messages</h1>
@@ -34,16 +31,15 @@
 <% @request.messages.each do |message| %>
   	<%= message.user %>:
 	<%= message.body %><br />
-<% end %>
-
-<br /><br /><br /><br />
-
-<% if @review %>
-	<%= "Review: #{@review.body}"%><br /><br />
-<% end %>
+<% end %><br />
 
 <% if @request.receiver_confirmation %>
   <%= render "message_field" %>
 <% else %>
   <%= link_to "Edit request", edit_request_path(@request.id) %>
+<% end %><br /><br />
+
+<% if @review %>
+	<%= "Review: #{@review.body}"%><br /><br />
 <% end %>
+

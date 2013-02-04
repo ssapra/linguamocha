@@ -28,11 +28,15 @@ class Request < ActiveRecord::Base
   end
   
   def pending_approval?
-    self.start_time && self.end_time && self.location && (self.sender_confirmation == nil)
+    self.receiver_confirmation == true && self.sender_confirmation == nil
   end
   
   def approved?
     self.receiver_confirmation && self.sender_confirmation
   end  
+
+  def canceled?
+    self.sender_confirmation == false
+  end
   
 end

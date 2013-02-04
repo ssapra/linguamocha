@@ -5,7 +5,11 @@
 		
 	 	<div class="title">
 			<%= link_to "#{request.title}", request_path(request.id) %>
-			<%= "You have accepted this request." if request.receiver_confirmation %><br />
+			<% if request.canceled? %>
+				<%= "#{request.sent_by} canceled the request." %>
+			<% elsif request.receiver_confirmation %>
+				<%= "You have accepted this request." %>
+			<% end %>
 		</div>
 	
 		<div class="from">
@@ -23,11 +27,14 @@
 		</div>
 
 		<ul class="request_options">
-			<li><%= link_to "Accept", accept_path(:id => request.id) if request.receiver_confirmation != true%></li>
-			<li><%= link_to "Deny", deny_path(:id => request.id) %></li>
+			<% if !request.canceled? %>
+				<li><%= link_to "Accept", accept_path(:id => request.id) if request.receiver_confirmation != true%></li>
+				<li><%= link_to "Deny", deny_path(:id => request.id) %></li>
+			<% end %>
 		</ul>
 	
 	<% end %>
 <% else %>
 	<i>No requests have been received</i>
 <% end %>		
+	

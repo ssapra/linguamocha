@@ -86,7 +86,7 @@
    <% @user.reviews_received.each do |r|%>
 	   <div class="reference grid_12">
 	           <div class="reviewer grid_4">
-	                   <a href="#"><h5><%= r.sent_by %></h5></a>
+	                   <a href="#"><h5><%= link_to "#{r.sent_by.name}", user_path(r.sent_by.username) %></h5></a>
 	           </div>
 
 	           <div class="review grid_8">

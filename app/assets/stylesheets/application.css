@@ -198,6 +198,55 @@ nav li a:hover {
     background-color: white;
     height: 100%;
 }
+     
+/* ***********************
+*************************
+      =sign_in
+**************************
+*********************** */
+
+#sign_in {
+  font-size: 20px;
+  margin-bottom: 40px;
+  font-family: 'OpenSansBold';
+}
+label {
+  display: block;
+}
+.remember_me label {
+  display: inline;
+}
+.remember_me {
+  margin-bottom: 50px;
+}
+
+#sign_in_submit {
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+#sign_in_submit:hover {
+  cursor: pointer;
+}
+
+#user_email{
+  height: 20px;
+  margin: 10px;
+  border: 2px solid #104717;
+  border-radius: 3px;
+  font-size: 15px;
+  width: 200px;
+}
+
+#user_password{
+  height: 20px;
+  margin: 10px;
+  border: 2px solid #104716;
+  border-radius: 3px;
+  font-size: 15px;
+  width: 200px;
+}
+/* check to see what a tags are doing */
+
 
 /*** Profile *******/
 
@@ -447,25 +496,7 @@ ul.request_options a{
     margin-left: 10px;
 }
 
-/*** Sign In page ***/
 
-#user_email{
-	height: 20px;
-	margin: 10px;
-	border: 2px solid #104717;
-	border-radius: 3px;
-	font-size: 17px;
-	width: 200px;
-}
-
-#user_password{
-	height: 20px;
-	margin: 10px;
-	border: 2px solid #104716;
-	border-radius: 3px;
-	font-size: 17px;
-	width: 200px;
-}
 
 /*
  ******************************

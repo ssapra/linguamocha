@@ -16,7 +16,12 @@
  */
 
 
-/***** Overall *****/
+     
+/* ***********************
+*************************
+      =general
+**************************
+*********************** */
 
 h1, h2, h3, h4, h5, p, strong, em {
     font-weight: normal;
@@ -25,7 +30,7 @@ h1, h2, h3, h4, h5, p, strong, em {
 
 h1 {
 	font-size: 20px;
-    font-family: 'OpenSansBold';
+  font-family: 'OpenSansBold';
 	text-align: left;
 	padding-bottom: 10px;
 }
@@ -66,8 +71,13 @@ input {
 }
 
 body {
-    background-color: #F3FFF5;
+  background-color: #F3FFF5;
 	font-family: 'OpenSansRegular';
+  margin: 0;
+}
+
+.content {
+  margin: 50px;
 }
 
 /* 
@@ -163,14 +173,30 @@ nav li a:hover {
     text-align: center;
 }
 
+.wrapper {
+  background-color: #F3FFF5;
+
+
+  /* required */
+  position: absolute;
+  overflow: visible;
+  display: block;
+  width: 100%;
+  height: auto;
+  left: 0px;
+  right: 0;
+  bottom: 0;
+  top: 40px;
+}
 .container_12 {
     border-left: 2px solid #C0C0C0;
     border-right: 2px solid #C0C0C0;
-    padding-left: 50px;
     position: relative;
-	padding-top: 85px;
+    width: 1060px;
+    margin: 0 auto;
     z-index: 2;
     background-color: white;
+    height: 100%;
 }
 
 /*** Profile *******/

@@ -8,7 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require reset
+ *= require normalize
  *= require 960_12_col
  *= require jquery-custom
  *= require font
@@ -34,6 +34,7 @@ h1 {
 	text-align: left;
 	padding-bottom: 10px;
 }
+
 
 p, footer, input, h2, h3, h4, h5 {
     font-family: 'OpenSansRegular';
@@ -80,11 +81,13 @@ body {
   margin: 50px;
 }
 
-/* 
- ******************************
+     
+/* ***********************
+*************************
       =header
- ******************************
-*/
+**************************
+*********************** */
+
 .fixed_bar {
 	position: fixed;
     top: 0px;
@@ -150,13 +153,6 @@ nav li a:hover {
 }
 
 
-/* 
- ******************************
-      =main
- ******************************
-*/
-
-
 /*
  ******************************
 	 welcome page
@@ -175,9 +171,6 @@ nav li a:hover {
 
 .wrapper {
   background-color: #F3FFF5;
-
-
-  /* required */
   position: absolute;
   overflow: visible;
   display: block;
@@ -205,11 +198,12 @@ nav li a:hover {
 **************************
 *********************** */
 
-#sign_in {
+#sign_in, #sign_up  {
   font-size: 20px;
   margin-bottom: 40px;
   font-family: 'OpenSansBold';
 }
+
 label {
   display: block;
 }
@@ -228,7 +222,7 @@ label {
   cursor: pointer;
 }
 
-#user_email{
+#user_email {
   height: 20px;
   margin: 10px;
   border: 2px solid #104717;
@@ -237,7 +231,7 @@ label {
   width: 200px;
 }
 
-#user_password{
+#user_password {
   height: 20px;
   margin: 10px;
   border: 2px solid #104716;
@@ -245,10 +239,16 @@ label {
   font-size: 15px;
   width: 200px;
 }
-/* check to see what a tags are doing */
+.content a {
+  display: block;
+} 
 
-
-/*** Profile *******/
+     
+/* ***********************
+*************************
+      =profile
+**************************
+*********************** */
 
 #pic {
     border: 3px solid #6db776;

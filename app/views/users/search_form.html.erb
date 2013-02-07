@@ -1,3 +1,5 @@
+<h1>Advanced Search</h1>
+
 <%= search_form_for @search, :url => search_path, :html => {:method => :post} do |f| %>
   <%= f.label :first_name_cont, "First Name" %>
   <%= f.text_field :first_name_cont %><br />
@@ -7,6 +9,10 @@
 
   <%= f.label :my_skills_tag_cont, "Skill" %>
   <%= f.text_field :my_skills_tag_cont %><br />
+
+  <%= f.label :interests_tag_cont, "Currently Learning" %>
+  <%= f.text_field :interests_tag_cont, :disabled=>true %><br />
+
 
   <%= f.submit %>
 <% end %>

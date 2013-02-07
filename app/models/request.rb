@@ -20,11 +20,11 @@ class Request < ActiveRecord::Base
   end
   
   def sent_by
-    User.find(self.sender_id).name
+    User.find(self.sender_id)
   end
   
   def receiver
-    User.find(self.receiver_id).name
+    User.find(self.receiver_id)
   end
   
   def pending_approval?

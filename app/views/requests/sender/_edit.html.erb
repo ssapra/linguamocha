@@ -28,7 +28,8 @@
   <%= f.fields_for :messages do |builder| %>
 	<% d = builder.text_area :body %>
 	<% if d.split("\n")[1].split("</textarea>")[0].nil? %>
-		<%= builder.label :message %>
+		<br />
+		<%#= builder.label :message %>
 		<%= builder.text_area :body, :id =>"optional_message", :size =>"30x10", :placeholder => "Optional Message" %>
 		<%= builder.hidden_field :user_id %>
 	<%end %>
@@ -40,9 +41,3 @@
   </div>
 
 <% end %>
-
-<!-- <div class="message">
-	<label for="message" id="optional">Optional Message:</label>
-	<textarea name="optional_message" id="optional_message" cols="30" rows="10">Write your message here</textarea>
-	<input type="submit" name="send_message" id="send_message" value="Submit">
-</div> -->

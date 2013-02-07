@@ -4,7 +4,7 @@
 	<% @sent.each do |request| %>
 		<div class="title">
 			<% if request.receiver_confirmation == nil%>
-				<%= link_to "#{request.title}", request_path(request.id)%><%= "-- pending approval by #{request.receiver}"%>
+				<%= link_to "#{request.title}", request_path(request.id)%><%= "-- pending approval by #{request.receiver.name}"%>
 				<br />
 			<% elsif request.receiver_confirmation %>
 				<%= link_to "#{request.title}", request_path(request.id)%><%= "-- accepted by #{request.receiver}"%>
@@ -24,13 +24,16 @@
 			<label for="deadline_date">Deadline:</label>
 			<p id="deadline_date"><%= request.date %></p>
 		</div>
-		<div class="deadline">
-			<label for="deadline_date">Location:</label>
-			<p id="deadline_date"><%= request.location %></p>
-		</div>
+
+		<% if request.location %>
+			<div class="deadline">
+				<label for="deadline_date">Location:</label>
+				<p id="deadline_date"><%= request.location %></p>
+			</div>
+		<% end %>
 
 		<div class="request">
-			<p><%= request.messages.first.body if request.messages.first %></p>
+			<p><%= "Your message: #{request.messages.first.body}" if request.messages.first %></p>
 		</div>
 
 		<!-- <ul class="request_options">

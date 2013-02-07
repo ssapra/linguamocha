@@ -83,17 +83,21 @@
 
 <div class="reference_group grid_12">
    <h4>Latest Feedback</h4>
-   <% @user.reviews_received.each do |r|%>
-	   <div class="reference grid_12">
-	           <div class="reviewer grid_4">
-	                   <a href="#"><h5><%= link_to "#{r.sent_by.name}", user_path(r.sent_by.username) %></h5></a>
-	           </div>
+   	<% if @user.reviews_received != [] %>
+	   <% @user.reviews_received.each do |r|%>
+		   <div class="reference grid_12">
+		           <div class="reviewer grid_4">
+		                   <a href="#"><h5><%= link_to "#{r.sent_by.name}", user_path(r.sent_by.username) %></h5></a>
+		           </div>
 
-	           <div class="review grid_8">
-	                   <p><%= r.body %></p>
-	           </div>
-	   </div>
-   <% end %>
+		           <div class="review grid_8">
+		                   <p><%= r.body %></p>
+		           </div>
+		   </div>
+	   <% end %>
+	<% else %>
+		<p>No reviews have been written</p>
+	<% end %>
 </div>
 	
 	

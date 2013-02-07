@@ -11,8 +11,7 @@
 	    <% end %>
 	<% end %>
 		
-		<div id="nav_container">
-			<nav>
+		<div class="nav">
 				<ul>
 					<% if user_signed_in? %>
 						<li><%= link_to "Profile", user_path(current_user.username)%></li>
@@ -20,11 +19,10 @@
 						<li><%= link_to "Requests", requests_path %></li>
 						<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
 					<% else %>
-						<li><%= link_to "Sign In", new_user_session_path %></li> or
+						<li><%= link_to "Sign In", new_user_session_path %></li>
 						<li><%= link_to "Sign Up", new_user_registration_path %></li>
 					<% end %>
 				</ul>
-			</nav>
 		</div>		
 
 	</div>

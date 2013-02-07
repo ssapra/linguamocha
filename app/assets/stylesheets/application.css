@@ -90,10 +90,10 @@ body {
 
 .fixed_bar {
 	position: fixed;
-    top: 0px;
+  top: 0px;
 	width: 100%;
 	z-index: 5;
-    background-color: white;
+  background-color: white;
 }
 
 .header_container { 
@@ -101,8 +101,7 @@ body {
 	position:relative;
 	height: 40px; 
 	width: 100%;
-	margin: auto;
-    border-bottom: 5px solid #44A350;
+  border-bottom: 5px solid #44A350;
 }
 
 .logo {
@@ -110,46 +109,41 @@ body {
 	height: 30px;
 } 
 
-#nav_container {
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
-	float: right;
-	margin-bottom: 5px;
-	margin-right: 10px;
-}
-
 #search_bar {
-    margin-left: 50px;
-    padding-left: 5px;
-    padding: 2px 5px 2px;
+  margin-left: 50px;
+  padding-left: 5px;
+  padding: 2px 5px 2px;
 	position: absolute;
 	top: 10px;
 	left: 100px;
 }
 
 #search_button {
-    margin-left: 50px;
-    padding-left: 5px;
-    padding: 2px 5px 2px;
+  margin-left: 50px;
+  padding-left: 5px;
+  padding: 2px 5px 2px;
 	position: absolute;
 	top: 10px;
 	left: 260px;
 }
-
-
-nav li {
-	display: inline;
+.nav ul {
+  position: fixed;
+  right: 0;
+  top: 0;
+  margin-top: 10px;
 }
-nav li a {
+.nav li {
+	display: inline;
+  margin: 0 20px;
+}
+.nav li a {
 	color: white;
 	text-decoration: none;
-    font-family: 'OpenSansRegular';
-	font-size: 12px;
-	padding: 15px 20px;
+  font-family: 'OpenSansRegular';
+	font-size: 16px;
 }
-nav li a:hover {
-    text-decoration: underline;
+.nav li a:hover {
+  text-decoration: underline;
 }
 
 

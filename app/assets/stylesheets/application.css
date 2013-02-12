@@ -55,9 +55,8 @@ h3 {
 }
 
 h4 {
-  margin-right: 640px;
-  text-align: right;
-  border-bottom: 2px solid #6db776;
+  text-decoration: underline;
+  margin: 0;
 }
 
 h5 {
@@ -261,20 +260,26 @@ label {
 .label h3 {
   text-align: left;
 }
-.education {
-    float: left;
-}
 .occupation {
     float: right;
     margin-left: 30px;
 }
-.education, .occupation {
+
+.education, .occupation, .bio {
     padding: 15px;
     border: 2px solid #6db776;
-    margin-top: 50px;
 }
-.skills, .currently_learning, .occupation, .education {
+.education {
+  margin-right: 50px;
+}
+.currently_learning {
+  margin-bottom: 50px;
+}
+.skills, .currently_learning, .occupation, .education, .bio {
     background-color: #F3FFF5;
+}
+.bio {
+  border: 2px solid #6db776;
 }
 .skills {
     margin-top: 35px;
@@ -297,7 +302,10 @@ textarea.skill_description{
   font-size: 14px;
   padding-left: 4px;
 }
-
+.more_info {
+  margin-top: 80px;
+  margin-bottom: 50px;
+}
 .currently_learning {
     padding: 0px 15px 15px 15px;
     border-left: 2px solid #6db776;
@@ -305,12 +313,8 @@ textarea.skill_description{
     border-bottom: 2px solid #6db776;
 }
 
-.person, .education, .occupation {
+.person, .skills, .currently_learning .education, .occupation, .reference_group, .bio {
     float: left;
-}
-.skills, .currently_learning {
-    float: right;
-    margin-right: 30px;
 }
 
 .label_responses p {
@@ -339,9 +343,7 @@ td#remove{
  ******************************
 */
 
-.reference_group {
-  margin-top: 60px;
-}
+
 
 .reference {
   padding-top: 30px;
@@ -354,9 +356,9 @@ td#remove{
   font-size: 14px;
   text-align: left;
   margin-left: 70px;
-    margin-right: 50px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #6db776;
+  margin-right: 50px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #6db776;
 }
 
 

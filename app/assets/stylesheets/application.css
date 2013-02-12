@@ -1,4 +1,5 @@
 /*
+/*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -29,16 +30,16 @@ h1, h2, h3, h4, h5, p, strong, em {
 }
 
 h1 {
-	font-size: 20px;
+  font-size: 20px;
   font-family: 'OpenSansBold';
-	text-align: left;
-	padding-bottom: 10px;
+  text-align: left;
+  padding-bottom: 10px;
 }
 
 
 p, footer, input, h2, h3, h4, h5 {
     font-family: 'OpenSansRegular';
-	font-weight: 400;
+  font-weight: 400;
 }
 
 p, footer {
@@ -49,31 +50,32 @@ h2, h3, h4 {
 }
 
 h3 {
-	padding-bottom: 10px;
-	text-decoration: none;
+  padding-bottom: 10px;
+  text-decoration: none;
 }
 
 h4 {
-	margin-right: 640px;
-	text-align: right;
-	border-bottom: 2px solid #6db776;
+  margin-right: 640px;
+  text-align: right;
+  border-bottom: 2px solid #6db776;
 }
 
 h5 {
     font-size: 13px;
-	text-align: right;
+  text-align: right;
 }
 
 input {
     border-radius: 5px;
     box-shadow: none;
     border: 2px solid #104717;
-/*    cursor: pointer;	*/
+    margin-bottom: 20px;
+    padding-top: 0;
 }
 
 body {
-  background-color: #F3FFF5;
-	font-family: 'OpenSansRegular';
+  background-image: url('background.jpg');
+  font-family: 'OpenSansRegular';
   margin: 0;
 }
 
@@ -89,42 +91,42 @@ body {
 *********************** */
 
 .fixed_bar {
-	position: fixed;
+  position: fixed;
   top: 0px;
-	width: 100%;
-	z-index: 5;
+  width: 100%;
+  z-index: 5;
   background-color: white;
 }
 
 .header_container { 
-	background-color: #104717;  
-	position:relative;
-	height: 40px; 
-	width: 100%;
+  background-color: #104717;  
+  position:relative;
+  height: 40px; 
+  width: 100%;
   border-bottom: 5px solid #44A350;
 }
 
 .logo {
-	padding: 5px;
-	height: 30px;
+  padding: 5px;
+  height: 30px;
 } 
 
 #search_bar {
   margin-left: 50px;
   padding-left: 5px;
   padding: 2px 5px 2px;
-	position: absolute;
-	top: 10px;
-	left: 100px;
+  position: absolute;
+  top: 10px;
+  left: 100px;
 }
 
 #search_button {
   margin-left: 50px;
   padding-left: 5px;
   padding: 2px 5px 2px;
-	position: absolute;
-	top: 10px;
-	left: 260px;
+  position: absolute;
+  top: 10px;
+  left: 260px;
 }
 .nav ul {
   position: fixed;
@@ -133,14 +135,14 @@ body {
   margin-top: 10px;
 }
 .nav li {
-	display: inline;
+  display: inline;
   margin: 0 20px;
 }
 .nav li a {
-	color: white;
-	text-decoration: none;
+  color: white;
+  text-decoration: none;
   font-family: 'OpenSansRegular';
-	font-size: 16px;
+  font-size: 15px;
 }
 .nav li a:hover {
   text-decoration: underline;
@@ -149,41 +151,42 @@ body {
 
 /*
  ******************************
-	 welcome page
+   welcome page
  ******************************
 */
 
 #frontpage {
-	height: 230px;
-	width: 400px;
-    display: block;
-    margin: 50px 0px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+  height: 230px;
+  width: 400px;
+  display: block;
+  margin: 50px 0px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .wrapper {
-  background-color: #F3FFF5;
+  background-image: url('background.jpg');
   position: absolute;
   overflow: visible;
   display: block;
   width: 100%;
-  height: auto;
   left: 0px;
   right: 0;
   bottom: 0;
   top: 40px;
 }
 .container_12 {
-    border-left: 2px solid #C0C0C0;
-    border-right: 2px solid #C0C0C0;
+    border-left: 5px solid #44A350;
+    border-right: 5px solid #44A350;
     position: relative;
     width: 1060px;
     margin: 0 auto;
     z-index: 2;
     background-color: white;
-    height: 100%;
+    min-height: 100%;
+    top: 0;
+    bottom: 0;
 }
      
 /* ***********************
@@ -200,6 +203,7 @@ body {
 
 label {
   display: block;
+  padding: 0;
 }
 .remember_me label {
   display: inline;
@@ -216,23 +220,14 @@ label {
   cursor: pointer;
 }
 
-#user_email {
+#user_email, #user_password {
   height: 20px;
-  margin: 10px;
   border: 2px solid #104717;
   border-radius: 3px;
   font-size: 15px;
   width: 200px;
 }
 
-#user_password {
-  height: 20px;
-  margin: 10px;
-  border: 2px solid #104716;
-  border-radius: 3px;
-  font-size: 15px;
-  width: 200px;
-}
 .content a {
   display: block;
 } 
@@ -249,14 +244,14 @@ label {
 }
 
 .name {
-	float: left;
+  float: left;
 }
 
 .label {
-	float: left;
+  float: left;
 }
 .label_responses {
-	float: left;
+  float: left;
     margin-top: 20px;
 }
 .occupation .label_responses, .education .label_responses {
@@ -264,7 +259,7 @@ label {
 }
 
 .label h3 {
-	text-align: left;
+  text-align: left;
 }
 .education {
     float: left;
@@ -295,12 +290,12 @@ label {
 }
 
 textarea.skill_description{
-	border-radius: 5px;
-	box-shadow: none;
-	border: 2px solid #104717;
-	font-family: 'Open Sans';
-	font-size: 14px;
-	padding-left: 4px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: 2px solid #104717;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  padding-left: 4px;
 }
 
 .currently_learning {
@@ -319,23 +314,23 @@ textarea.skill_description{
 }
 
 .label_responses p {
-	margin-left: 0px;
+  margin-left: 0px;
 }
 
 
 .learning h3, .learning p {
-	margin-left: 0px;
+  margin-left: 0px;
 }
 
 td#delete{
-	position: relative;
-	top: -19px;
-	display: none;
+  position: relative;
+  top: -19px;
+  display: none;
 }
 
 td#remove{
-	position: relative;
-	top: 4px;
+  position: relative;
+  top: 4px;
 }
 
 /* 
@@ -345,20 +340,20 @@ td#remove{
 */
 
 .reference_group {
-	margin-top: 60px;
+  margin-top: 60px;
 }
 
 .reference {
-	padding-top: 30px;
+  padding-top: 30px;
 }
 .reviewer a {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 .review p {
-	font-size: 14px;
-	text-align: left;
-	margin-left: 70px;
+  font-size: 14px;
+  text-align: left;
+  margin-left: 70px;
     margin-right: 50px;
     padding-bottom: 20px;
     border-bottom: 1px solid #6db776;
@@ -408,28 +403,28 @@ td#remove{
 }
 
 #zipcode {
-	margin: 0px 5px;
+  margin: 0px 5px;
 }
 
 .restaurant {
-	margin-top: 40px;
-	margin-left: 80px;
+  margin-top: 40px;
+  margin-left: 80px;
 }
 
 .restaurant_address {
-	padding: 0px;
-	padding-top: 2px;
-	margin: 0px;
-	margin-left: 80px;
-	font-size: 12px; 
+  padding: 0px;
+  padding-top: 2px;
+  margin: 0px;
+  margin-left: 80px;
+  font-size: 12px; 
 }
 .rating {
-	display: inline;
-	margin-left: 80px;
+  display: inline;
+  margin-left: 80px;
 }
 .message {
-	margin-left: 50px;
-	margin-top: 50px;
+  margin-left: 50px;
+  margin-top: 50px;
 }
 
 .from, .deadline {
@@ -437,15 +432,15 @@ td#remove{
 }
 
 .from label{
-	font-size: 16px;
+  font-size: 16px;
 }
 
 #sender, #deadline_date {
     display: inline;
     font-family: 'OpenSansBold';
-	font-weight: 400px;
+  font-weight: 400px;
     padding-left: 10px;
-	font-size: 16px;
+  font-size: 16px;
 }
 .request {
     border-bottom: 2px solid #104717;
@@ -456,12 +451,12 @@ td#remove{
 }
 
 .request p{
-	font-size: 16px;
+  font-size: 16px;
 }
 
 ul.request_options {
-	padding-top: 10px;
-	padding-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 30px;
 }
 
 ul.request_options li {
@@ -471,8 +466,8 @@ ul.request_options li {
 }
 
 ul.request_options a{
-	text-transform: uppercase;
-	font-weight: bold;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 #request_options li.current{
@@ -480,9 +475,9 @@ ul.request_options a{
 }
 
 #request_option li:hover {
-   	-webkit-transform: scale(1.07);
-	-moz-transform: scale(1.07);
-	-ms-transform: scale(1.07);
+    -webkit-transform: scale(1.07);
+  -moz-transform: scale(1.07);
+  -ms-transform: scale(1.07);
 }
 
 #accept_request, #reject_request {
@@ -494,17 +489,17 @@ ul.request_options a{
 
 /*
  ******************************
-	 =search
+   =search
  ******************************
 */
 
 #search_image{
-	width: 100px;
-	height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 .search_name{
-	text-decoration: none
+  text-decoration: none
 }
 
 
@@ -514,10 +509,10 @@ ul.request_options a{
  ******************************
 */
 footer {
-	padding-top: 50px;
+  padding-top: 50px;
     padding-right: 50px;
-	padding-bottom: 10px;
-	text-align: right;
-	font-size: 12px;
+  padding-bottom: 10px;
+  text-align: right;
+  font-size: 12px;
 }
 

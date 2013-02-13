@@ -3,13 +3,13 @@
 		<h1><%= @user.name %></h1>
 	</div>
 
-          <div class="prof_pic grid_4">
+  <div class="prof_pic grid_4">
 		<% if false #@user.avatar_file_name %>
-			<%= image_tag @user.avatar.url(:medium) %>
+			<%= image_tag @user.avatar.url, :class => "prof_image" %>
 		<% else %>
-			<%= image_tag("empty.png", :id => "search_image") %>
+			<%= image_tag "empty.png", :class => "prof_image" %>
 		<% end %><br />
-          </div>
+  </div>
 	
 	<% if @user == current_user %>
 		<%= link_to "Edit Profile", edit_user_path(@user.username), :class => "edit"%><br />

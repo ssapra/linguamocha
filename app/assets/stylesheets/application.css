@@ -37,7 +37,7 @@ h1 {
 }
 
 
-p, footer, input, h2, h3, h4, h5 {
+p, footer, input, h5 {
     font-family: 'OpenSansRegular';
   font-weight: 400;
 }
@@ -46,12 +46,13 @@ p, footer {
     font-size: 13px;
 }
 h2, h3, h4 {
-    font-size: 15px;
+  font-size: 15px;
+  font-family: 'OpenSansBold';
 }
 
 h3 {
-  padding-bottom: 10px;
   text-decoration: none;
+  margin: 0;
 }
 
 h4 {
@@ -111,22 +112,35 @@ body {
 } 
 
 #search_bar {
-  margin-left: 50px;
-  padding-left: 5px;
-  padding: 2px 5px 2px;
-  position: absolute;
-  top: 10px;
-  left: 100px;
+  margin-left: 300px;
+  position: relative;
+  top: -40px;
 }
 
 #search_button {
-  margin-left: 50px;
-  padding-left: 5px;
-  padding: 2px 5px 2px;
-  position: absolute;
-  top: 10px;
-  left: 260px;
+  position: relative;
+  top: -40px;
+  -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+  box-shadow:inset 0px 1px 0px 0px #ffffff;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+  background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+  background-color:#ededed;
+  -moz-border-radius:6px;
+  -webkit-border-radius:6px;
+  border-radius:6px;
+  border:1px solid #dcdcdc;
+  display:inline;
+  color:#777777;
+  font-size:15px;
+  font-weight:bold;
+  text-decoration:none;
+  text-shadow:1px 1px 0px #ffffff;
 }
+
+
+
 .nav ul {
   position: fixed;
   right: 0;
@@ -238,8 +252,9 @@ label {
 **************************
 *********************** */
 
-#pic {
+#prof_pic img, #search_image {
     border: 3px solid #6db776;
+    margin-bottom: 20px;
 }
 
 .name {
@@ -251,7 +266,7 @@ label {
 }
 .label_responses {
   float: left;
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .occupation .label_responses, .education .label_responses {
     margin-top: 30px;
@@ -273,7 +288,7 @@ label {
   margin-right: 50px;
 }
 .currently_learning {
-  margin-bottom: 50px;
+  margin-bottom: 150px;
 }
 .skills, .currently_learning, .occupation, .education, .bio {
     background-color: #F3FFF5;
@@ -282,7 +297,7 @@ label {
   border: 2px solid #6db776;
 }
 .skills {
-    margin-top: 35px;
+    margin-top: 50px;
     padding: 15px;
     border-left: 2px solid #6db776;
     border-top: 2px solid #6db776;
@@ -495,9 +510,10 @@ ul.request_options a{
  ******************************
 */
 
-#search_image{
-  width: 100px;
-  height: 100px;
+.prof_image{
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
 }
 
 .search_name{

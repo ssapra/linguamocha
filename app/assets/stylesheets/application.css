@@ -34,6 +34,7 @@ h1 {
   font-family: 'OpenSansBold';
   text-align: left;
   padding-bottom: 10px;
+  margin: 0;
 }
 
 
@@ -42,8 +43,8 @@ p, footer, input, h5 {
   font-weight: 400;
 }
 
-p, footer {
-    font-size: 13px;
+p, i, footer {
+    font-size: 14px;
 }
 h2, h3, h4 {
   font-size: 15px;
@@ -74,7 +75,7 @@ input {
 }
 
 body {
-  background-image: url('background.jpg');
+  background-image: url('bg14_3.jpg');
   font-family: 'OpenSansRegular';
   margin: 0;
 }
@@ -82,6 +83,7 @@ body {
 .content {
   margin: 50px;
 }
+
 
      
 /* ***********************
@@ -179,7 +181,6 @@ body {
 }
 
 .wrapper {
-  background-image: url('background.jpg');
   position: absolute;
   overflow: visible;
   display: block;
@@ -190,8 +191,8 @@ body {
   top: 40px;
 }
 .container_12 {
-    border-left: 5px solid #44A350;
-    border-right: 5px solid #44A350;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
     position: relative;
     width: 1060px;
     margin: 0 auto;
@@ -276,7 +277,6 @@ label {
   text-align: left;
 }
 .occupation {
-    float: right;
     margin-left: 30px;
 }
 
@@ -284,27 +284,27 @@ label {
     padding: 15px;
     border: 2px solid #6db776;
 }
-.education {
-  margin-right: 50px;
-}
-.currently_learning {
-  margin-bottom: 150px;
-}
 .skills, .currently_learning, .occupation, .education, .bio {
     background-color: #F3FFF5;
+    float: right;
 }
+.currently_learning, .occupation, .education, .bio {
+  margin-bottom: 20px;
+}
+
 .bio {
   border: 2px solid #6db776;
 }
 .skills {
-    margin-top: 50px;
+    margin-top: 30px;
     padding: 15px;
     border-left: 2px solid #6db776;
     border-top: 2px solid #6db776;
     border-right: 2px solid #6db776;
 }
 .skill_description {
-    font-family: 'Open Sans Italic';
+    font-family: 'OpenSansItalic';
+    font-size: 14px;
     padding-left: 20px;
     padding-bottom: 20px;
 }
@@ -328,9 +328,6 @@ textarea.skill_description{
     border-bottom: 2px solid #6db776;
 }
 
-.person, .skills, .currently_learning .education, .occupation, .reference_group, .bio {
-    float: left;
-}
 
 .label_responses p {
   margin-left: 0px;
@@ -362,6 +359,9 @@ td#remove{
 
 .reference {
   padding-top: 30px;
+}
+.reference_group {
+  min-height: 400px;
 }
 .reviewer a {
   text-decoration: none;
@@ -510,7 +510,7 @@ ul.request_options a{
  ******************************
 */
 
-.prof_image{
+.prof_image {
   width: 150px;
   height: 150px;
   margin-bottom: 20px;
@@ -526,11 +526,16 @@ ul.request_options a{
       =footer
  ******************************
 */
+.copyright {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+}
 footer {
   padding-top: 50px;
-    padding-right: 50px;
+  padding-right: 50px;
   padding-bottom: 10px;
-  text-align: right;
+  text-align: left;
   font-size: 12px;
 }
 

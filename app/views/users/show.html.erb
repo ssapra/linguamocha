@@ -51,6 +51,27 @@
   </div>
 </div>
 
+<div class="reference_group grid_5">
+  <h4>Latest Feedback</h4>
+  <% if @user.reviews_received != [] %>
+    <% @user.reviews_received.each do |r|%>
+      <div class="reference grid_7">
+        <div class="reviewer grid_2">
+          <a href="#">
+            <h5><%= link_to "#{r.sent_by.name}", user_path(r.sent_by.username) %></h5>
+          </a>
+        </div>
+
+        <div class="review grid_5">
+          <p><%= r.body %></p>
+        </div>
+      </div>
+  <% end %>
+  <% else %>
+    <p>No reviews have been written</p>
+  <% end %>
+</div>
+
 <div class="education grid_5">
   <div class="label grid_1">
     <h3>Education</h3>
@@ -75,36 +96,15 @@
 </div>
 
 
-<div class="more_info grid_12">
-  <div class="reference_group grid_7">
-    <h4>Latest Feedback</h4>
-   	<% if @user.reviews_received != [] %>
-      <% @user.reviews_received.each do |r|%>
-  	    <div class="reference grid_7">
-          <div class="reviewer grid_2">
-            <a href="#">
-              <h5><%= link_to "#{r.sent_by.name}", user_path(r.sent_by.username) %></h5>
-            </a>
-          </div>
 
-          <div class="review grid_5">
-            <p><%= r.body %></p>
-          </div>
-  	    </div>
-    <% end %>
-    <% else %>
-  	  <p>No reviews have been written</p>
-    <% end %>
-  </div>
 
-  <div class="bio grid_4">    
-    <h3>Personal Bio</h3>
-    <% if @user.bio %>
-      <%= @user.bio %><br /><br />
-    <% else %>
-      <i>No bio given</i>
-    <% end %>
-  </div>
+<div class="bio grid_5">    
+  <h3>Personal Bio</h3>
+  <% if @user.bio %>
+    <%= @user.bio %><br /><br />
+  <% else %>
+    <i>No bio given</i>
+  <% end %>
 </div>
 	
 	

@@ -57,7 +57,6 @@ h3 {
 }
 
 h4 {
-  text-decoration: underline;
   margin: 0;
 }
 
@@ -294,6 +293,7 @@ label {
 
 .bio {
   border: 2px solid #6db776;
+  margin-top: 30px;
 }
 .skills {
     margin-top: 30px;
@@ -302,8 +302,13 @@ label {
     border-top: 2px solid #6db776;
     border-right: 2px solid #6db776;
 }
-.skill_description {
+.skill, .learn {
+  font-family: 'OpenSansBold';
+  font-size: 14px;
+}
+.skill_description, .learn_description {
     font-family: 'OpenSansItalic';
+    font-style: none;
     font-size: 14px;
     padding-left: 20px;
     padding-bottom: 20px;
@@ -358,20 +363,27 @@ td#remove{
 
 
 .reference {
+  border-top: 1px solid #6db776;
   padding-top: 30px;
 }
 .reference_group {
+  margin-top: 50px;
   min-height: 400px;
+}
+.reviewer {
+
 }
 .reviewer a {
   text-decoration: none;
+  text-align: left;
+  font-size: 14px;
 }
 
 .review p {
   font-size: 14px;
   text-align: left;
-  margin-left: 70px;
   margin-right: 50px;
+  margin-bottom: 100px;
   padding-bottom: 20px;
   border-bottom: 1px solid #6db776;
 }

@@ -74,7 +74,11 @@ class User < ActiveRecord::Base
   end
     
   def set_username
-    self.username = self.first_name.downcase + self.last_name.downcase
-    self.save
+    if self.first_name
+      self.username = self.first_name.downcase + self.last_name.downcase
+      self.save
+    else 
+      return nil
+    end
   end
 end

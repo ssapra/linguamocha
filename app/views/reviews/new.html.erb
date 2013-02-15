@@ -15,11 +15,11 @@
 	<b>Location: <%= @request.location %></b><br /><br />
 	
 	<%= render "/requests/messages"%>
+	<% person = @request.sent_by %>
 	
 	<hr />
-	
+	<%= "You haven't written a review for #{person.first_name}. Let #{person.first_name} know how the meeting was." %>
 	<div class="field">
-	    <%= f.label :body, "Write a review" %>
 		<%= f.text_area :body, :id => "request" %>
 	</div>
 	

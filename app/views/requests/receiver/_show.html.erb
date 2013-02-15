@@ -20,7 +20,7 @@
 	<%= "Sorry, #{@request.receiver} has denied your request"%>
 
 <% elsif @request.canceled? == true %>
-	<%= "#{@request.sent_by} canceled this request" %>
+	<%= "#{@request.sent_by.name} canceled this request" %>
 
 <% elsif @request.date >= Date.today %>
 	<i>Request Pending</i>
@@ -43,7 +43,8 @@
 <% if @request.canceled? || @request.date < Date.today %>
 	<%=render "message_field" %><br />
 	<% if @review %>
-		<%= "#{@request.sent_by}'s review: #{@review.body}"%><br /><br />
+		<%= "#{@request.sent_by.first_name}'s review: #{@review.body}"%><br /><br />
+		<%= link_to "Delete review", delete_review_path(@review.id) %>
 	<% end %>
 <% else %>
 	<%= link_to "Edit request", edit_request_path(@request.id)%>

@@ -18,6 +18,7 @@ Linguamocha::Application.routes.draw do
   
   get "/review/:id" => "reviews#new", as: :review
   post "/review/:id" => "reviews#create"
+  delete "/review/:id" => "reviews#destory", as: :delete_review
   
   post "/message" => "messages#create", as: :message
   

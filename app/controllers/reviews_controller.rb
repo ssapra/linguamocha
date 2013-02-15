@@ -21,5 +21,14 @@ class ReviewsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+
+    respond_to do |format|
+      format.html { redirect_to @review.request, notice: 'Review was removed.'}
+    end
+  end
   
 end

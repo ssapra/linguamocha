@@ -133,9 +133,8 @@ body {
   border-radius:6px;
   border:1px solid #dcdcdc;
   display:inline;
-  color:#777777;
+  color:#104717;
   font-size:15px;
-  font-weight:bold;
   text-decoration:none;
   text-shadow:1px 1px 0px #ffffff;
 }
@@ -256,20 +255,15 @@ label {
     border: 3px solid #6db776;
     margin-bottom: 20px;
 }
-
+.person {
+  margin-left: 60px;
+}
 .name {
-  float: left;
+  width: 100px;
 }
 
 .label {
-  float: left;
-}
-.label_responses {
-  float: left;
-  margin-top: 20px;
-}
-.occupation .label_responses, .education .label_responses {
-    margin-top: 30px;
+  border-bottom: 1px solid #6db776;
 }
 
 .label h3 {
@@ -279,12 +273,11 @@ label {
     margin-left: 30px;
 }
 
-.education, .occupation, .bio {
+.bio {
     padding: 15px;
     border: 2px solid #6db776;
 }
-.skills, .currently_learning, .occupation, .education, .bio {
-    background-color: #F3FFF5;
+.bio, .skills, .currently_learning {
     float: right;
 }
 .currently_learning, .occupation, .education, .bio {
@@ -293,14 +286,12 @@ label {
 
 .bio {
   border: 2px solid #6db776;
-  margin-top: 30px;
 }
 .skills {
-    margin-top: 30px;
-    padding: 15px;
-    border-left: 2px solid #6db776;
-    border-top: 2px solid #6db776;
-    border-right: 2px solid #6db776;
+  margin-top: 30px;
+}
+.skills, .currently_learning {
+  margin-right: 50px;
 }
 .skill, .learn {
   font-family: 'OpenSansBold';
@@ -322,20 +313,15 @@ textarea.skill_description{
   font-size: 14px;
   padding-left: 4px;
 }
-.more_info {
-  margin-top: 80px;
-  margin-bottom: 50px;
-}
-.currently_learning {
-    padding: 0px 15px 15px 15px;
-    border-left: 2px solid #6db776;
-    border-right: 2px solid #6db776;
-    border-bottom: 2px solid #6db776;
+.more-info {
+  margin-top: 20px;
 }
 
 
-.label_responses p {
-  margin-left: 0px;
+
+.label_responses {
+  margin-left: 160px;
+  margin-top: 20px;
 }
 
 
@@ -367,7 +353,7 @@ td#remove{
   padding-top: 30px;
 }
 .reference_group {
-  margin-top: 50px;
+  margin-top: 20px;
   min-height: 400px;
 }
 .reviewer {

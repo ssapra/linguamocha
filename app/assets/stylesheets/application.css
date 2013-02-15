@@ -62,7 +62,6 @@ h4 {
 
 h5 {
     font-size: 13px;
-  text-align: right;
 }
 
 input {
@@ -81,6 +80,7 @@ body {
 
 .content {
   margin: 50px;
+  background-color: red;
 }
 
 
@@ -192,7 +192,7 @@ body {
     border-left: 5px solid #44A350;
     border-right: 5px solid #44A350;
     position: relative;
-    width: 1060px;
+    width: 1200px;
     margin: 0 auto;
     z-index: 2;
     background-color: white;
@@ -255,8 +255,12 @@ label {
     border: 3px solid #6db776;
     margin-bottom: 20px;
 }
+.content-left {
+  border-right: 1px solid gray;
+  padding-right: 30px;
+}
 .person {
-  margin-left: 60px;
+  margin-left: 50px;
 }
 .name {
   width: 100px;
@@ -276,6 +280,8 @@ label {
 .bio {
     padding: 15px;
     border: 2px solid #6db776;
+    margin-bottom: 100px;
+    margin-top: 50px;
 }
 .currently_learning {
   margin-top: 30px;
@@ -283,19 +289,15 @@ label {
 .bio, .skills, .currently_learning {
     float: right;
 }
-.currently_learning, .occupation, .education, .bio {
+.currently_learning, .occupation, .education, {
   margin-bottom: 20px;
+  margin-left: 0;
 }
 
-.bio {
-  border: 2px solid #6db776;
-}
 .skills {
   margin-top: 30px;
 }
-.skills, .currently_learning {
-  margin-right: 50px;
-}
+
 .skill {
   border-left: 2px solid #6db776;
   margin: 30px 0;
@@ -321,14 +323,9 @@ textarea.skill_description{
   font-size: 14px;
   padding-left: 4px;
 }
-.more-info {
-  margin-top: 20px;
-}
-
-
 
 .label_responses {
-  margin-left: 160px;
+  margin-left: 120px;
 }
 
 
@@ -364,19 +361,20 @@ td#remove{
   min-height: 400px;
 }
 .reviewer {
-
-}
+  padding: 0;
+}`
 .reviewer a {
   text-decoration: none;
   text-align: left;
   font-size: 14px;
+  margin: 0;
 }
-
+.review {
+  margin-left: 30px;
+}
 .review p {
   font-size: 14px;
   text-align: left;
-  margin-right: 50px;
-  margin-bottom: 100px;
   padding-bottom: 20px;
   border-bottom: 1px solid #6db776;
 }

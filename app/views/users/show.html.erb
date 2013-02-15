@@ -1,29 +1,54 @@
-<div class="person grid_3">	
-	<div class="name">       
-		<h1><%= @user.name %></h1>
-	</div>
-
-  <div class="prof_pic grid_3">
-		<% if false #@user.avatar_file_name %>
-			<%= image_tag @user.avatar.url, :class => "prof_image" %>
-		<% else %>
-			<%= image_tag "empty.png", :class => "prof_image" %>
-		<% end %><br />
-  </div>
-	
-	<% if @user == current_user %>
-		<%= link_to "Edit Profile", edit_user_path(@user.username), :class => "edit"%><br />
-	<% else %>
-		<%= link_to "Ask for Help", new_request_path(:sender_id => @current_user.id, :receiver_id => @user.id)%>
-	<% end %>
+<div class="content-left grid_6">
+  <div class="person grid_3">	
+  	<div class="name">       
+  		<h1><%= @user.name %></h1>
   	</div>
 
-<div class="skills grid_7">
-	<div class="label grid_7">
-		<h3>Skills</h3>
-   </div>
+    <div class="prof_pic grid_3">
+  		<% if false #@user.avatar_file_name %>
+  			<%= image_tag @user.avatar.url, :class => "prof_image" %>
+  		<% else %>
+  			<%= image_tag "empty.png", :class => "prof_image" %>
+  		<% end %><br />
+    </div>
+  	
+  	<% if @user == current_user %>
+  		<%= link_to "Edit Profile", edit_user_path(@user.username), :class => "edit"%><br />
+  	<% else %>
+  		<%= link_to "Ask for Help", new_request_path(:sender_id => @current_user.id, :receiver_id => @user.id)%>
+  	<% end %>
+  </div>
 
-  <div class="label_responses grid_5">
+  <div class="reference_group grid_5">
+    <h4>Latest Feedback</h4>
+    <% if @user.reviews_received != [] %>
+      <% @user.reviews_received.each do |r|%>
+        <div class="reference grid_5">
+          <div class="reviewer">
+            <a href="#">
+              <h5><%= link_to "#{r.sent_by.name}", user_path(r.sent_by.username) %></h5>
+            </a>
+          </div>
+
+          <div class="review">
+            <p><%= r.body %></p>
+          </div>
+        </div>
+    <% end %>
+    <% else %>
+    <div class="reference grid_5">
+      <p>No reviews have been written</p>
+     </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="skills grid_6">
+	<div class="label grid_6">
+		<h3>Skills</h3>
+  </div>
+
+  <div class="label_responses grid_4">
 		<% if @user.my_skills != [] %>
 			<% @user.my_skills.each do |skill| %>
         <div class="skill">
@@ -37,12 +62,12 @@
   </div>
 </div>
 
-<div class="currently_learning grid_7">
-	<div class="label grid_7">
+<div class="currently_learning grid_6">
+	<div class="label grid_6">
 		<h3>Currently Learning</h3>
 	</div>
 
-  <div class="label_responses grid_5">
+  <div class="label_responses grid_4">
 	<% if @user.interests != [] %>
 		<% @user.interests.each do |i| %>
     <div class="skill">
@@ -56,41 +81,17 @@
   </div>
 </div>
 
-<div class="more-info grid_12">
-  <div class="reference_group grid_5">
-    <h4>Latest Feedback</h4>
-    <% if @user.reviews_received != [] %>
-      <% @user.reviews_received.each do |r|%>
-        <div class="reference grid_7">
-          <div class="reviewer grid_2">
-            <a href="#">
-              <h5><%= link_to "#{r.sent_by.name}", user_path(r.sent_by.username) %></h5>
-            </a>
-          </div>
-
-          <div class="review grid_5">
-            <p><%= r.body %></p>
-          </div>
-        </div>
-    <% end %>
-    <% else %>
-    <div class="reference grid_7">
-      <p>No reviews have been written</p>
-     </div>
-    <% end %>
-  </div>
 
 
 
-  <div class="bio grid_4">    
+  <div class="bio grid_6">    
     <h3>Personal Bio</h3>
     <% if @user.bio %>
-      <%= @user.bio %><br /><br />
+      <%= @user.bio %>
     <% else %>
       <i>No bio given</i>
     <% end %>
   </div>
-</div>
 	
 	
 

@@ -12,7 +12,6 @@
  *= require normalize
  *= require 960_12_col
  *= require jquery-custom
- *= require font
  *= require_self
  */
 
@@ -31,7 +30,8 @@ h1, h2, h3, h4, h5, p, strong, em {
 
 h1 {
   font-size: 20px;
-  font-family: 'OpenSansBold';
+  font-family: 'Open Sans';
+  font-weight: 700px;
   text-align: left;
   padding-bottom: 10px;
   margin: 0;
@@ -39,7 +39,7 @@ h1 {
 
 
 p, footer, input, h5 {
-  font-family: 'OpenSansRegular';
+  font-family: 'Open Sans';
   font-weight: 400;
 }
 h5 {
@@ -51,7 +51,8 @@ p, i, footer {
 }
 h2, h3, h4 {
   font-size: 15px;
-  font-family: 'OpenSansBold';
+  font-family: 'Open Sans';
+  font-weight: 700px;
 }
 
 h3 {
@@ -74,7 +75,7 @@ input {
 
 body {
   background-image: url('black-Linen.png');
-  font-family: 'OpenSansRegular';
+  font-family: 'Open Sans';
   margin: 0;
 }
 
@@ -153,7 +154,7 @@ body {
 .nav li a {
   color: white;
   text-decoration: none;
-  font-family: 'OpenSansRegular';
+  font-family: 'Open Sans';
   font-size: 15px;
 }
 .nav li a:hover {
@@ -209,7 +210,8 @@ body {
 #sign_in, #sign_up  {
   font-size: 20px;
   margin-bottom: 40px;
-  font-family: 'OpenSansBold';
+  font-family: 'Open Sans';
+  font-weight: 700px;
 }
 
 label {
@@ -302,12 +304,13 @@ label {
   padding-left: 40px;
 }
 .skill-name {
-  font-family: 'OpenSansBold';
+  font-family: 'Open Sans';
+  font-weight: 700px;
   font-size: 14px;
 }
 .skill_description {
-    font-family: 'OpenSansItalic';
-    font-style: none;
+    font-family: 'Open Sans';
+    font-style: italic;
     font-size: 14px;
     margin-left: 50px;
     padding-top: 0;
@@ -317,7 +320,8 @@ textarea.skill_description{
   border-radius: 5px;
   box-shadow: none;
   border: 2px solid #104717;
-  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400px;
   font-size: 14px;
   padding-left: 4px;
 }

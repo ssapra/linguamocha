@@ -26,8 +26,10 @@
   <div class="label_responses grid_5">
 		<% if @user.my_skills != [] %>
 			<% @user.my_skills.each do |skill| %>
-			    <p class="skill"><%= skill.tag %></p> 
+        <div class="skill">
+			    <p class="skill-name"><%= skill.tag %></p> 
 			    <p class="skill_description"><%= skill.description %></p>
+        </div>
 			<% end %>
 		<% else %>
 			<p class="skill_description">No skills listed</p>
@@ -43,8 +45,10 @@
   <div class="label_responses grid_5">
 	<% if @user.interests != [] %>
 		<% @user.interests.each do |i| %>
-			<p class="learn"><%= i.tag%></p>
-      <p class="learn_description"></p>
+    <div class="skill">
+			<p class="skill-name"><%= i.tag%></p>
+      <p class="skill_description"></p>
+    </div>
 		<% end %>
 	<% else %>
 		<p class="learn_description">Not learning anything at the moment</p>

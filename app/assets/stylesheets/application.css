@@ -277,6 +277,9 @@ label {
     padding: 15px;
     border: 2px solid #6db776;
 }
+.currently_learning {
+  margin-top: 30px;
+}
 .bio, .skills, .currently_learning {
     float: right;
 }
@@ -293,16 +296,21 @@ label {
 .skills, .currently_learning {
   margin-right: 50px;
 }
-.skill, .learn {
+.skill {
+  border-left: 2px solid #6db776;
+  margin: 30px 0;
+  padding-left: 40px;
+}
+.skill-name {
   font-family: 'OpenSansBold';
   font-size: 14px;
 }
-.skill_description, .learn_description {
+.skill_description {
     font-family: 'OpenSansItalic';
     font-style: none;
     font-size: 14px;
-    padding-left: 20px;
-    padding-bottom: 20px;
+    margin-left: 50px;
+    padding-top: 0;
 }
 
 textarea.skill_description{
@@ -321,7 +329,6 @@ textarea.skill_description{
 
 .label_responses {
   margin-left: 160px;
-  margin-top: 20px;
 }
 
 

@@ -25,8 +25,7 @@
       <% @user.reviews_received.each do |r|%>
         <div class="reference grid_5">
           <div class="reviewer">
-            <a href="#">
-              <h5><%= link_to "#{r.sent_by.name}", user_path(r.sent_by.username) %></h5>
+              <h5><%= link_to "#{r.sent_by.name}", user_path(r.sent_by.username), :class => "reviewer-name" %></h5>
             </a>
           </div>
 

@@ -39,8 +39,11 @@ h1 {
 
 
 p, footer, input, h5 {
-    font-family: 'OpenSansRegular';
+  font-family: 'OpenSansRegular';
   font-weight: 400;
+}
+h5 {
+  
 }
 
 p, i, footer {
@@ -60,9 +63,6 @@ h4 {
   margin: 0;
 }
 
-h5 {
-    font-size: 13px;
-}
 
 input {
     border-radius: 5px;
@@ -80,7 +80,6 @@ body {
 
 .content {
   margin: 50px;
-  background-color: red;
 }
 
 
@@ -263,7 +262,6 @@ label {
   margin-left: 50px;
 }
 .name {
-  width: 100px;
 }
 
 .label {
@@ -362,8 +360,8 @@ td#remove{
 }
 .reviewer {
   padding: 0;
-}`
-.reviewer a {
+}
+.reviewer-name {
   text-decoration: none;
   text-align: left;
   font-size: 14px;

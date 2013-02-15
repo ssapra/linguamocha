@@ -28,10 +28,12 @@ class User < ActiveRecord::Base
                   :interests_attributes
 
   validates :name, presence: true
-  validates :username, presence: true, uniqueness: true, format: { with: /^[a-z0-9_-]{6,12}$/,
-                      message: "must be lowercase letters and numbers" }, length: { in: 6..12, too_short: "must have at least 6 characters",
-                          too_long: "must have at most 12 characters"}
+  # validates :username, presence: true, uniqueness: true, format: { with: /^[a-z0-9_-]{6,12}$/,
+  #                     message: "must be lowercase letters and numbers" }, length: { in: 6..12, too_short: "must have at least 6 characters",
+  #                         too_long: "must have at most 12 characters"}
   
+  after_create :set_username
+
   has_many :my_skills, dependent: :destroy
   has_many :interests, dependent: :destroy
   accepts_nested_attributes_for :my_skills, :allow_destroy => true
@@ -69,5 +71,10 @@ class User < ActiveRecord::Base
   
   def reviews_received
     Review.find_all_by_receiver_id(self.id)    
+  end
+    
+  def set_username
+    self.username = self.first_name.downcase + self.last_name.downcase
+    self.save
   end
 end

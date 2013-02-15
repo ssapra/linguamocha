@@ -74,7 +74,7 @@ input {
 }
 
 body {
-  background-image: url('bg14_3.jpg');
+  background-image: url('checkered_pattern.png');
   font-family: 'OpenSansRegular';
   margin: 0;
 }
@@ -190,8 +190,8 @@ body {
   top: 40px;
 }
 .container_12 {
-    border-left: 5px solid black;
-    border-right: 5px solid black;
+    border-left: 5px solid #44A350;
+    border-right: 5px solid #44A350;
     position: relative;
     width: 1060px;
     margin: 0 auto;

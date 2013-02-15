@@ -59,6 +59,13 @@ class RequestsController < ApplicationController
   def update
     @request = Request.find(params[:id])
     raw_request = params[:request]
+    # @request.location = params[:location].split(",")[1]
+    # @request.address = params[:location].split(",")[0]
+    logger.debug "Location: #{params[:location].split(",")}"
+    raw_location = params[:location].split(",")
+    location = raw_location.last
+    address = raw_location.first
+    city = raw_location[1]
     message = params["request"]["messages_attributes"]
     body = message[message.keys[0]]["body"]
     # params[:request][:date] = change_date(params[:request][:date])
@@ -69,11 +76,10 @@ class RequestsController < ApplicationController
           @request.messages.last.update_attributes(:user_id => current_user.id)
         elsif body == ""
           @request.messages.last.destroy
-          @request.update_attributes(:location => raw_request[:location],
-                                     :start_time => raw_request[:start_time],
-                                     :end_time => raw_request[:end_time])
         end
-        if params[:location] then @request.update_attributes(:location => params[:location]) end
+        @request.update_attributes(:location => location,
+                                     :address => address,
+                                     :city => city)
         format.html { redirect_to @request, notice: 'Request was successfully updated.' }
         format.json { head :no_content }
       else

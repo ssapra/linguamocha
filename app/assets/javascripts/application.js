@@ -126,63 +126,63 @@ $(function() {
 			    }
 			});
 		
-				// 	
-				// 	// $.loadGoogleMaps().done(function () {
-				// 		$.ajax({
-				// 	    url: "/mycoordinates",
-				//         dataType:'json',
-				// 		data: {'current_location': $("input#find").val()},
-				//  		type: 'GET',
-				// 	    success: function(data){
-				// 			var latitude = data.latitude;
-				// 			var longitude = data.longitude;
-				// 			var mapOptions = {
-				// 			    zoom: 13,
-				// 			    center: new google.maps.LatLng(latitude, longitude),
-				// 			    mapTypeId: google.maps.MapTypeId.ROADMAP
-				// 			}
-				// 			var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-				// 		
-				// 			var doc = document.getElementById("map_canvas");
-				// 			doc.style.height = "300px";
-				// 			doc.style.width = "300px";
-				// 		
-				// 			var image = "<%= asset_path 'redmarker.png' %>";
-				// 		
-				// 		
-				// 			// var marker = new MarkerWithLabel({
-				// 			// 				   position: new google.maps.LatLng(latitude, longitude),
-				// 			// 				   map: map,
-				// 			// 				   icon: image,
-				// 			// 				   labelContent: "A",
-				// 			// 				   labelAnchor: new google.maps.Point(3, 30),
-				// 			// 				   labelClass: "labels", // the CSS class for the label
-				// 			// 				   labelInBackground: false
-				// 			// 				 });
-				// 		
-				// 			// marker.setMap(map);
-				// 		
-				// 			// var myLatlng = new google.maps.LatLng(latitude,longitude);
-				// 			// 
-				// 			// var marker = new google.maps.Marker({
-				// 			//     position: myLatlng
-				// 			// });
-				// 		
-				// 			// var label = new Label({
-				// 			//     map: map
-				// 			// 			    });
-				// 			// 
-				// 			// marker.setMap(map);
-				// 			// 
-				// 			// label.set('zIndex', 1234);
-				// 			// 	            label.bindTo('position', marker, 'position');
-				// 			// 	            label.set('text', "A");
-				// 	    },
-				// 	    error: function(){
-				// 	        alert('fail');
-				// 	    }
-				// 	});
-				// // });
+					
+					// $.loadGoogleMaps().done(function () {
+						$.ajax({
+					    url: "/mycoordinates",
+				        dataType:'json',
+						data: {'current_location': $("input#find").val()},
+				 		type: 'GET',
+					    success: function(data){
+							var latitude = data.latitude;
+							var longitude = data.longitude;
+							var mapOptions = {
+							    zoom: 13,
+							    center: new google.maps.LatLng(latitude, longitude),
+							    mapTypeId: google.maps.MapTypeId.ROADMAP
+							}
+							var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+						
+							var doc = document.getElementById("map_canvas");
+							doc.style.height = "300px";
+							doc.style.width = "300px";
+						
+							var image = "<%= asset_path 'redmarker.png' %>";
+						
+						
+							// var marker = new MarkerWithLabel({
+							// 				   position: new google.maps.LatLng(latitude, longitude),
+							// 				   map: map,
+							// 				   icon: image,
+							// 				   labelContent: "A",
+							// 				   labelAnchor: new google.maps.Point(3, 30),
+							// 				   labelClass: "labels", // the CSS class for the label
+							// 				   labelInBackground: false
+							// 				 });
+						
+							// marker.setMap(map);
+						
+							// var myLatlng = new google.maps.LatLng(latitude,longitude);
+							// 
+							// var marker = new google.maps.Marker({
+							//     position: myLatlng
+							// });
+						
+							// var label = new Label({
+							//     map: map
+							// 			    });
+							// 
+							// marker.setMap(map);
+							// 
+							// label.set('zIndex', 1234);
+							// 	            label.bindTo('position', marker, 'position');
+							// 	            label.set('text', "A");
+					    },
+					    error: function(){
+					        alert('fail');
+					    }
+					});
+				// });
 		
 	});
 	

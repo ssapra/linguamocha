@@ -2,14 +2,15 @@
 
 <% if @request.pending_approval? %>
 
-	<i><%= "You have accepted #{@request.sent_by}'s request!" %></i><br />
-	<i><%= "Supply a location and a list of times" %><br />
-		Please pick a time and approve the request details.<br />
+	<i><%= "You have accepted #{@request.sent_by.first_name}'s request! Waiting for #{@request.sent_by.first_name} to approve the location and finalize the time." %></i><br />
 
-	<%= link_to "Choose time and approve location", "#" %><br />
+	<%= "Location chosen: #{@request.location}" %> <br />
+	<%= "Address: #{@request.address}" %><br />
+	<%= @request.csp %>
 
-	<%#= link_to "Accept Request", confirm_path(:id => @request.id) %> | <%#= link_to "Deny Request", deny_path(:id => @request.id)%>
-	
+<% elsif @request.receiver_confirmation && @request.location.nil? %>
+	<%= link_to "Choose a time and location that works for you", edit_request_path(@request.id) %><br />
+
 <% elsif @request.approved? == true && @request.date >= Date.today %>
 	<i><%= "This request has been approved by both sides!" %>
 	
@@ -17,7 +18,7 @@
 	<b>Location: <%= @request.location %></b><br /><br />
 
 <% elsif @request.receiver_confirmation == false %>
-	<%= "Sorry, #{@request.receiver} has denied your request"%>
+	<%= "You have denied this request"%>
 
 <% elsif @request.canceled? == true %>
 	<%= "#{@request.sent_by.name} canceled this request" %>
@@ -27,7 +28,9 @@
 
 <% elsif @request.approved? && @request.date < Date.today %>
 	<%= "Date: #{@request.date}" %><br />
-	<%= "Location: #{@request.location}" %>
+	<%= "Location: #{@request.location}" %><br />
+	<%= "Address: #{@request.address}" %><br />
+	<%= @request.csp %>
 
 <% end %>
 

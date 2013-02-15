@@ -1,5 +1,5 @@
 
-<% if current_user.name == @request.receiver %>
+<% if current_user == @request.receiver %>
   <%= render "/requests/receiver/edit" %>
 <% else %>
   <%= render "/requests/sender/edit" %>

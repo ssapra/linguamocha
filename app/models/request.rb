@@ -2,6 +2,10 @@ class Request < ActiveRecord::Base
   attr_accessible :date, 
                   :title,
                   :location, 
+                  :address,
+                  :city,
+                  :state,
+                  :postal_code,
                   :receiver_confirmation, 
                   :receiver_id, 
                   :sender_confirmation, 
@@ -37,6 +41,14 @@ class Request < ActiveRecord::Base
 
   def canceled?
     self.sender_confirmation == false
+  end
+
+  def csp
+    if self.city && self.state && self.postal_code
+      return "#{self.city}, #{self.state}, #{self.postal_code}"
+    else
+      return self.city
+    end
   end
   
 end

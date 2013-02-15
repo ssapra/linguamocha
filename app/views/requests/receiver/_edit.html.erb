@@ -19,39 +19,44 @@
 
   <%= "Title of Request: #{@request.title}"%>
 
-<div class="field">
-	<%= f.label :from %>
-	<%= f.text_field :start_time, :value => @start_time %>
+  <!-- <div class="field">
+  	<%= f.label :from %>
+  	<%= f.text_field :start_time, :value => @start_time %>
   </div>
 
   <div class="field">
 	<%= f.label :to %>
 	<%= f.text_field :end_time, :value => @end_time %>
-  </div>
+  </div> -->
 
-  <div class="availability">
+  <!-- <div class="availability">
 	<label for="available_times" id="availability_label">Please select the times you are available to meet:</label>
 	<input type="date" name="available_times" id="available_times" placeholder="2/30/2013">			
-  </div><br />
+  </div><br /> -->
 
-	<br /><%= "Location chosen: #{@request.location}" %><br />
+	<br />
+  <% if @request.location %>
+    <%= "Location chosen: #{@request.location}" %><br />
+    <%= @request.address %><br />
+    <%= @request.csp %><br />
+    <a href="#" class="find">Another location? Find more!</a>
+  <% else %>
+    <div class="meetup_place">
+  	  <h2>Find locations to meet:</h2>
 
-  <div class="meetup_place">
-	<h2>Find locations to meet:</h2>
+    	<label for="zipcode">Enter your zipcode:</label>
+    	<input type="text" id="find" value='<%= "#{@zipcode}" %>'>
+    	<a href="#" class="find">Find Locations</a>
+    </div>
+  <% end %>
+	
 
-	<label for="zipcode">Enter your zipcode:</label>
-	<input type="text" id="find" value='<%= "#{@zipcode}" %>'>
-	<a href="#" class="find">Find Locations</a>
-	<!-- <input type="input" name="zipcode" id="zipcode" value=<%="#{@zipcode}"%>>
+  <!-- <input type="input" name="zipcode" id="zipcode" value=<%="#{@zipcode}"%>>
 	<button class="yelp" id="find_locations">Find Locations</button><br /> -->
 
-  </div>
-
-  <%#= link_to image_tag("yelp.png", :id => "yelp"), "yelp.com" %><br />
-
   <div class="locations">
-	<%#= f.label :location %>
-	<%= f.hidden_field :location %>
+  	<%#= f.label :location %>
+  	<%= f.hidden_field :location %>
   </div>
 
 
@@ -72,9 +77,14 @@
 		<%= builder.text_area :body %>
 	<%end %>
   <% end %>
-
+  
   <div class="actions">
-     <%= f.submit "Update Request" %>
+    <% if @request.location %>
+        <%= f.submit "Update Request" %>
+    <% else %>
+        <%= f.submit "Submit Request" %>
+    <% end %>
   </div>
+
 
 <% end %>

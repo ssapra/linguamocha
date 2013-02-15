@@ -1,4 +1,4 @@
-<% if current_user.name == @request.sent_by %>
+<% if current_user == @request.sent_by %>
 	<%= render '/requests/sender/show' %>
 <% else %>
 	<%= render '/requests/receiver/show' %>

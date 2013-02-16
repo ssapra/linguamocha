@@ -54,16 +54,18 @@ $(function() {
 		}
 	});
 
-	$('.check').on('click',function(){
+	$('input.request').on('click',function(){
 		var options = []
 		$('td.time').each(function() {
 			if (this.style.backgroundColor == "rgb(83, 181, 106)"){
 				var id = this.id
 				var day = id.split("_")[1]
-				var option = [$('tr')[0].childNodes[2*(day-1)].innerHTML, this.innerHTML];
+				var option = []
+				option.push([$('tr')[0].childNodes[2*(day-1)].innerHTML, this.innerHTML, "|"]);
 				options.push(option);
 			}
 		});
-		alert(options);
+		// alert(options);
+		$('<input type="hidden" name="times" value="' + options + '">').appendTo('div.times');
 	});	
 });

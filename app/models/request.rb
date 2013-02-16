@@ -12,6 +12,7 @@ class Request < ActiveRecord::Base
                   :sender_id, 
                   :start_time,
                   :end_time,
+                  :times,
                   :messages_attributes
                   
   has_many :messages, dependent: :destroy

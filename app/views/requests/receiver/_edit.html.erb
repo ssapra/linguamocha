@@ -81,12 +81,16 @@
 		<%= builder.text_area :body %>
 	<%end %>
   <% end %>
+
+  <div class="times">
+
+  </div>
   
   <div class="actions">
     <% if @request.location %>
-        <%= f.submit "Update Request" %>
+        <%= f.submit "Update Request", :class=>"request" %>
     <% else %>
-        <%= f.submit "Submit Request" %>
+        <%= f.submit "Submit Request", :class=>"request" %>
     <% end %>
   </div>
 

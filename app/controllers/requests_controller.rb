@@ -26,9 +26,21 @@ class RequestsController < ApplicationController
     split_date = params[:request][:date].split("/")
     date = split_date[1] + "/" + split_date[0] + "/" + split_date[2]
     @request.date = Date.parse(date)
-    
-    logger.debug "#{@request.inspect}"
+    if params[:times]
+      times = params[:times]
+      times = times.split("|").each {|a| a.chop!}
+      time_hash = {}
+      times.each do |t|
+        t = t.split(",")
+        h = Hash.new
+        h[t[0]] = t[1]
+        time_hash.merge!(h)
+      end
 
+      logger.debug "TIMES: #{time_hash}"
+
+      @request.times = time_hash
+    end
     respond_to do |format|
       if @request.save
         @request.messages.last.update_attributes(:user_id => current_user.id)
@@ -59,13 +71,13 @@ class RequestsController < ApplicationController
   def update
     @request = Request.find(params[:id])
     raw_request = params[:request]
-    # @request.location = params[:location].split(",")[1]
-    # @request.address = params[:location].split(",")[0]
-    logger.debug "Location: #{params[:location].split(",")}"
-    raw_location = params[:location].split(",")
-    location = raw_location.last
-    address = raw_location.first
-    city = raw_location[1]
+    if params[:location]
+      raw_location = params[:location].split(",")
+      location = raw_location.last
+      address = raw_location.first
+      city = raw_location[1]
+    end
+
     message = params["request"]["messages_attributes"]
     body = message[message.keys[0]]["body"]
     # params[:request][:date] = change_date(params[:request][:date])
@@ -77,9 +89,33 @@ class RequestsController < ApplicationController
         elsif body == ""
           @request.messages.last.destroy
         end
+
+        if params[:times]
+          times = params[:times]
+          times = times.split(",|,")
+          logger.debug "Times : #{times}"
+          time_hash = {}
+          times.each do |t|
+            t = t.split(",")
+            if time_hash[t[0]]
+              time_hash[t[0]] << t[1]
+            else
+              h = Hash.new
+              h[t[0]] = [t[1]]
+              time_hash.merge!(h)
+            end
+            logger.debug "TIMES: #{time_hash}"
+          end
+
+          logger.debug "TIMES: #{time_hash}"
+
+          @request.update_attributes(:times => time_hash.to_s)
+        end
+        if params[:location]
         @request.update_attributes(:location => location,
                                      :address => address,
                                      :city => city)
+        end
         format.html { redirect_to @request, notice: 'Request was successfully updated.' }
         format.json { head :no_content }
       else

@@ -1,10 +1,9 @@
 <div class="content-left grid_6">
-  <div class="person grid_3">	
-  	<div class="name">       
-  		<h1><%= @user.name %></h1>
-  	</div>
 
-    <div class="prof_pic grid_3">
+  <div class="person">	
+		<h1 class="name"><%= @user.name %></h1>
+
+    <div class="prof_pic">
   		<% if false #@user.avatar_file_name %>
   			<%= image_tag @user.avatar.url, :class => "prof_image" %>
   		<% else %>
@@ -18,6 +17,9 @@
   		<%= link_to "Ask for Help", new_request_path(:sender_id => @current_user.id, :receiver_id => @user.id)%>
   	<% end %>
   </div>
+
+  <p class="occupation"><b>Occupation:</b><%= @user.occupation %></p>
+  <p class="education"><b>Education:</b><%= @user.college %>, <i><%= @user.degree %></i></p>
 
   <div class="reference_group grid_5">
     <h3>Latest Feedback</h3>

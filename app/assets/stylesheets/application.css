@@ -159,11 +159,12 @@ body {
 }
 
 
-/*
- ******************************
-   welcome page
- ******************************
-*/
+     
+/* ***********************
+*************************
+      =welcome
+**************************
+*********************** */
 
 #frontpage {
   height: 230px;
@@ -258,9 +259,16 @@ label {
   padding-right: 30px;
 }
 .person {
-  margin-left: 50px;
+  margin-left: 100px;
+  margin-bottom: 50px;
+  width: 240px;
+  float: none;
 }
-.name {
+.education {
+  margin-bottom: 50px;
+}
+b {
+  margin-right: 50px;
 }
 
 .label {
@@ -269,9 +277,6 @@ label {
 
 .label h3 {
   text-align: left;
-}
-.occupation {
-    margin-left: 30px;
 }
 
 .bio {
@@ -286,7 +291,7 @@ label {
 .bio, .skills, .currently_learning {
     float: right;
 }
-.currently_learning, .occupation, .education, {
+.currently_learning, {
   margin-bottom: 20px;
   margin-left: 0;
 }

@@ -15,9 +15,11 @@
 //= require jquery_ujs
 //= require jquery-custom	
 //= require jquery_nested_form
+//= require table
 
 
 $(function() {
+
     
 	$(document).on("focus",".skill", function() {
 		$.ajax({

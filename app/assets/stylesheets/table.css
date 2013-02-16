@@ -1,0 +1,27 @@
+table#thetable{
+	-moz-user-select: none;
+  	-khtml-user-select: none;
+  	-webkit-user-select: none;
+  	user-select: none;
+}
+
+
+table#thetable:hover{
+	cursor: pointer;
+}
+
+td.time {
+	background-color: rgb(171,171,171);
+}
+
+td.day {
+	background-color:#7A81FE; 
+	color: black;
+	text-align: center;
+}
+
+td { 
+	border-color: black; 
+	border-radius: 3px
+}
+

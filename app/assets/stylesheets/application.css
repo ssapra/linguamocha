@@ -12,6 +12,7 @@
  *= require normalize
  *= require 960_12_col
  *= require jquery-custom
+ *= require table
  *= require_self
  */
 

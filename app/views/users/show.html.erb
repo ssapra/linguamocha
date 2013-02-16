@@ -20,7 +20,7 @@
   </div>
 
   <div class="reference_group grid_5">
-    <h4>Latest Feedback</h4>
+    <h3>Latest Feedback</h3>
     <% if @user.reviews_received != [] %>
       <% @user.reviews_received.each do |r|%>
         <div class="reference grid_5">
@@ -33,7 +33,7 @@
             <p><%= r.body %></p>
           </div>
         </div>
-    <% end %>
+      <% end %>
     <% else %>
     <div class="reference grid_5">
       <p>No reviews have been written</p>
@@ -86,7 +86,7 @@
   <div class="bio grid_6">    
     <h3>Personal Bio</h3>
     <% if @user.bio %>
-      <%= @user.bio %>
+      <p><%= @user.bio %></p>
     <% else %>
       <i>No bio given</i>
     <% end %>

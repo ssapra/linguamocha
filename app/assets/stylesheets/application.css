@@ -58,10 +58,7 @@ h2, h3, h4 {
 h3 {
   text-decoration: none;
   margin: 0;
-}
-
-h4 {
-  margin: 0;
+  padding-bottom: 5px;
 }
 
 
@@ -267,7 +264,7 @@ label {
 }
 
 .label {
-  border-bottom: 1px solid #6db776;
+  border-bottom: 2px solid #6db776;
 }
 
 .label h3 {
@@ -299,7 +296,7 @@ label {
 }
 
 .skill {
-  border-left: 2px solid #6db776;
+  border-left: 1px solid #6db776;
   margin: 30px 0;
   padding-left: 40px;
 }
@@ -355,7 +352,7 @@ td#remove{
 
 
 .reference {
-  border-top: 1px solid #6db776;
+  border-top: 2px solid #6db776;
   padding-top: 30px;
 }
 .reference_group {

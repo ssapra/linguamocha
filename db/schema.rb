@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216162936) do
+ActiveRecord::Schema.define(:version => 20130216181555) do
 
   create_table "conversations", :force => true do |t|
     t.string   "subject",    :default => ""
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20130216162936) do
     t.string   "state"
     t.string   "postal_code"
     t.text     "times"
+    t.date     "deadline"
   end
 
   create_table "reviews", :force => true do |t|

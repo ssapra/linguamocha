@@ -23,22 +23,24 @@ class RequestsController < ApplicationController
   
   def create
     @request = Request.new(params[:request])
-    split_date = params[:request][:date].split("/")
+    split_date = params[:request][:deadline].split("/")
     date = split_date[1] + "/" + split_date[0] + "/" + split_date[2]
     @request.date = Date.parse(date)
     if params[:times]
       times = params[:times]
-      times = times.split("|").each {|a| a.chop!}
+      times = times.split(",|,")
+      logger.debug "Times : #{times}"
       time_hash = {}
       times.each do |t|
         t = t.split(",")
-        h = Hash.new
-        h[t[0]] = t[1]
-        time_hash.merge!(h)
+        if time_hash[t[0]]
+          time_hash[t[0]] << t[1]
+        else
+          h = Hash.new
+          h[t[0]] = [t[1]]
+          time_hash.merge!(h)
+        end
       end
-
-      logger.debug "TIMES: #{time_hash}"
-
       @request.times = time_hash
     end
     respond_to do |format|
@@ -104,10 +106,7 @@ class RequestsController < ApplicationController
               h[t[0]] = [t[1]]
               time_hash.merge!(h)
             end
-            logger.debug "TIMES: #{time_hash}"
           end
-
-          logger.debug "TIMES: #{time_hash}"
 
           @request.update_attributes(:times => time_hash.to_s)
         end

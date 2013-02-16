@@ -2,6 +2,7 @@ class Request < ActiveRecord::Base
   attr_accessible :date, 
                   :title,
                   :location, 
+                  :deadline,
                   :address,
                   :city,
                   :state,

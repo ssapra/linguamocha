@@ -7,10 +7,10 @@
 				<%= link_to "#{request.title}", request_path(request.id)%><%= "-- pending approval by #{request.receiver.name}"%>
 				<br />
 			<% elsif request.receiver_confirmation %>
-				<%= link_to "#{request.title}", request_path(request.id)%><%= "-- accepted by #{request.receiver}"%>
+				<%= link_to "#{request.title}", request_path(request.id)%><%= "-- accepted by #{request.receiver.name}"%>
 				<br />
 			<% else %>
-				<%= link_to "#{request.title}", request_path(request.id)%><%= "-- denied by #{request.receiver}"%>
+				<%= link_to "#{request.title}", request_path(request.id)%><%= "-- denied by #{request.receiver.name}"%>
 				<br />
 			<% end %>
 		</div>

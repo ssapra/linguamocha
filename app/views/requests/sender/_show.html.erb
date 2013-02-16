@@ -2,14 +2,20 @@
 
 <% if @request.pending_approval? == true %>
 
-	<i><%= "#{@request.receiver} has accepted your request!" %></i><br />
-	<i><%= "#{@request.receiver} has supplied a location and a list of times" %><br />
-		Please pick a time and approve the request details.<br />
-	
-	  <%= link_to "Choose time and approve location", "#" %><br />
+	<i><%= "#{@request.receiver.name} has accepted your request!" %></i><br />
+	<i><%= "#{@request.receiver.first_name} has supplied a location and a list of times" %><br />
+		
+		<p><%= "Do you still want to meet with #{@request.receiver.first_name}?" %></p>
 
-	  <%= link_to "Accept Request", confirm_path(:id => @request.id) %> | <%= link_to "Deny Request", deny_path(:id => @request.id)%>
+		<%= link_to "Accept Request", confirm_path(:id => @request.id) %> 
 	
+		<%= link_to "I need to cancel", deny_path(:id => @request.id)%>
+		<!-- Please pick a time and approve the request details.<br /> -->
+
+
+	  <%#= link_to "Choose time and approve location", "#" %><br />
+
+	  
 <% elsif  @request.approved? == true && @request.date >= Date.today %>
 	  <i><%= "This request has been approved by both sides!" %>
 	

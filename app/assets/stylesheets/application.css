@@ -119,6 +119,9 @@ body {
 #search_button {
   position: relative;
   top: -40px;
+}
+
+.btn {
   -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
   -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
   box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -129,13 +132,21 @@ body {
   -moz-border-radius:6px;
   -webkit-border-radius:6px;
   border-radius:6px;
-  border:1px solid #dcdcdc;
   display:inline;
   color:#104717;
   font-size:15px;
   text-decoration:none;
   text-shadow:1px 1px 0px #ffffff;
+  border: 2px solid #104717;
 }
+.btn:hover {
+  color: black;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+  background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+  background-color:#dfdfdf;
+}
+
 
 
 

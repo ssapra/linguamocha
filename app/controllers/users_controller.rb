@@ -48,6 +48,8 @@ class UsersController < ApplicationController
         @users << @q.result(:distinct => true)
         @q = User.search({"my_skills_tag_cont"=>param.downcase}) 
         @users << @q.result(:distinct => true)
+        @q = User.search({"interests_tag_cont"=>param.downcase}) 
+        @users << @q.result(:distinct => true)
       end
       @users = @users.flatten.uniq.select{|user| user.id != current_user.id}
     elsif params[:q]

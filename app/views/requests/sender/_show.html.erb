@@ -16,20 +16,25 @@
 	  <%#= link_to "Choose time and approve location", "#" %><br />
 
 	  
-<% elsif  @request.approved? == true && @request.date >= Date.today %>
+<% elsif  @request.approved? == true %> <!-- && @request.date >= Date.today %> -->
 	  <i><%= "This request has been approved by both sides!" %>
 	
 	<!-- <b>From: <%#= @request.start_time.strftime('%l:%M %P') %></b><br /> -->
 	<!-- <b>To: <%#= @request.end_time.strftime('%l:%M %P') %></b><br /> --><br />
-	<b>Date: <%= @request.date.strftime("%B %d, %Y") %></b><br />
+	<b>Date: <%= @request.date.strftime("%B %d, %Y") if @request.date %></b><br />
 	<b>Location: <%= @request.location %></b><br /><br />
+
+	<%= link_to "Edit request", edit_request_path(@request.id) %>
 
 <% elsif @request.receiver_confirmation == false %>
 	<%= "Sorry, #{@request.receiver} has denied your request"%>
+
 <% elsif @request.canceled? == true %>
 	You have canceled this request.
-<% elsif @request.date >= Date.today %>
+
+<% elsif @request.deadline >= Date.today %>
 	<i>Request Pending</i>
+
 <% end %>
 
 <h1>Messages</h1>

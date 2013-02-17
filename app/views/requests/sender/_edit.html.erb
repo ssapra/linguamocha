@@ -23,6 +23,9 @@
     </div>
   <% end %>
 
+  <%= render "week_table", :identity => "sender" %>
+
+  <p class="show">Show me the times </p>
 
   <% @request.messages << @message %>
 

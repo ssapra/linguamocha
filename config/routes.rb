@@ -2,6 +2,8 @@ Linguamocha::Application.routes.draw do
   
   get "/allskills" => "users#all_skills"
   
+  get "/loadtimes" => "requests#load_times"
+
   get "/nearby" => "requests#nearby_locations", as: :get_locations
   get "/coordinates" => "requests#coordinates", as: :coordinates
   get "/mycoordinates" => "requests#my_coordinates", as: :my_coordinates
@@ -33,5 +35,7 @@ Linguamocha::Application.routes.draw do
   get "/:username/edit" => "users#edit", as: :edit_user
   put "/:username" => "users#update", as: :user
   delete "/:username" => "users#destroy", as: :user
+
+
 
 end

@@ -41,19 +41,19 @@ class User < ActiveRecord::Base
   
   
   def sent_requests
-    Request.find_all_by_sender_id(self.id).select{|r| r.date > Date.today}
+    Request.find_all_by_sender_id(self.id).select{|r| r.deadline > Date.today}
   end
   
   def received_requests
-    Request.find_all_by_receiver_id(self.id).select{|r| r.date > Date.today}
+    Request.find_all_by_receiver_id(self.id).select{|r| r.deadline > Date.today}
   end
   
   def past_sent_requests
-    Request.find_all_by_sender_id(self.id).select{|r| r.date < Date.today}
+    Request.find_all_by_sender_id(self.id).select{|r| r.deadline < Date.today}
   end
   
   def past_received_requests
-    Request.find_all_by_receiver_id(self.id).select{|r| r.date < Date.today}    
+    Request.find_all_by_receiver_id(self.id).select{|r| r.deadline < Date.today}    
   end
   
   def requests

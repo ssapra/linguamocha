@@ -11,10 +11,10 @@
 <% elsif @request.receiver_confirmation && @request.location.nil? %>
 	<%= link_to "Choose a time and location that works for you", edit_request_path(@request.id) %><br />
 
-<% elsif @request.approved? == true && @request.date >= Date.today %>
-	<i><%= "This request has been approved by both sides!" %>
+<% elsif @request.approved? == true && @request.deadline >= Date.today %>
+	<i><%= "This request has been approved by both sides!" %><br />
 	
-	<b>Date: <%= @request.date.strftime("%B %d, %Y") %></b><br />
+	<b>Date: <%= @request.date.strftime("%B %d, %Y") if @request.date %></b><br />
 	<b>Location: <%= @request.location %></b><br /><br />
 
 <% elsif @request.receiver_confirmation == false %>
@@ -23,10 +23,10 @@
 <% elsif @request.canceled? == true %>
 	<%= "#{@request.sent_by.name} canceled this request" %>
 
-<% elsif @request.date >= Date.today %>
+<% elsif @request.deadline >= Date.today %>
 	<i>Request Pending</i>
 
-<% elsif @request.approved? && @request.date < Date.today %>
+<% elsif @request.approved? && @request.deadline >= Date.today %>
 	<%= "Date: #{@request.date}" %><br />
 	<%= "Location: #{@request.location}" %><br />
 	<%= "Address: #{@request.address}" %><br />
@@ -43,7 +43,7 @@
 
 <br />
 
-<% if @request.canceled? || @request.date < Date.today %>
+<% if @request.canceled? || @request.deadline < Date.today %>
 	<%=render "message_field" %><br />
 	<% if @review %>
 		<%= "#{@request.sent_by.first_name}'s review: #{@review.body}"%><br /><br />

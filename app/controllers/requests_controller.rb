@@ -25,7 +25,7 @@ class RequestsController < ApplicationController
     @request = Request.new(params[:request])
     split_date = params[:request][:deadline].split("/")
     date = split_date[1] + "/" + split_date[0] + "/" + split_date[2]
-    @request.date = Date.parse(date)
+    @request.deadline = Date.parse(date)
     if params[:times]
       times = params[:times]
       times = times.split(",|,")
@@ -65,6 +65,9 @@ class RequestsController < ApplicationController
     @request = Request.find_by_id(params[:id])
     @location = get_location
     @coordinates = get_coordinates
+
+    @days = (@request.deadline - Date.today).to_i
+
     @message = Message.new(:request_id => @request.id, :user_id => current_user.id)
     if @request.start_time then @start_time = @request.start_time.strftime("%l:%M %P") end
     if @request.end_time then @end_time = @request.end_time.strftime("%l:%M %P") end
@@ -169,20 +172,29 @@ class RequestsController < ApplicationController
   
   def deny
     @request = Request.find(params[:id])    
-    @request.update_attributes(:receiver_confirmation => true)
+    @request.update_attributes(:receiver_confirmation => false)
     redirect_to @request
   end
 
   def confirm
     @request = Request.find(params[:id])
     @request.update_attributes(:sender_confirmation => true)
-    redirect_to @request
+    redirect_to edit_request_path(@request)
   end
 
   def deny_request
     @request = Request.find(params[:id])    
-    @request.update_attributes(:sender_confirmation => true)
+    @request.update_attributes(:sender_confirmation => false)
     redirect_to @request
+  end
+
+  def load_times
+    request_id = params[:request_id].to_i
+    r = Request.find(request_id)
+    times = eval(r.times)
+    respond_to do |format|
+      format.json {render :json => times}
+    end
   end
   
   def get_location

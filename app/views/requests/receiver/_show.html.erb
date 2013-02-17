@@ -8,6 +8,8 @@
 	<%= "Address: #{@request.address}" %><br />
 	<%= @request.csp %>
 
+	<%= link_to "Edit request", edit_request_path(@request.id)%>
+
 <% elsif @request.receiver_confirmation && @request.location.nil? %>
 	<%= link_to "Choose a time and location that works for you", edit_request_path(@request.id) %><br />
 
@@ -49,8 +51,6 @@
 		<%= "#{@request.sent_by.first_name}'s review: #{@review.body}"%><br /><br />
 		<%= link_to "Delete review", delete_review_path(@review.id) %>
 	<% end %>
-<% else %>
-	<%= link_to "Edit request", edit_request_path(@request.id)%>
 <% end %>
 
 

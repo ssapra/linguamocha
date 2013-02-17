@@ -189,7 +189,7 @@ $(function() {
 	});
 	
 	
-	$("input#deadline_date").datepicker();
+	$("input#deadline_date").datepicker({ minDate: +0 });
 	$('input#request_start_time').timepicker({ 'step': 15 });
 	$('input#request_end_time').timepicker({ 'step': 15 });
 	$(function() {

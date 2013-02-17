@@ -95,6 +95,13 @@ class RequestsController < ApplicationController
           @request.messages.last.destroy
         end
 
+        if params[:request][:date]
+          split_date = params[:request][:date].split("/")
+          date = split_date[1] + "/" + split_date[0] + "/" + split_date[2]
+          rearranged_date = Date.parse(date)
+          @request.update_attributes(:date => rearranged_date)
+        end
+
         if params[:times]
           times = params[:times]
           times = times.split(",|,")

@@ -93,8 +93,8 @@ $(function() {
 					var change = (n_date - date)/(24*60*60*1000);
 
 					$.each(data[value], function(key, v) {
-						// console.log(v + "_" + change);
-						var o = v + "_" + change;
+						console.log(v + "_" + change);
+						var o = v + "_" + (change+1);
 						var obj = document.getElementById(o);
 						console.log(obj);
 						obj.style.backgroundColor = "rgb(83, 181, 106)";

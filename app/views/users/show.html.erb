@@ -1,22 +1,20 @@
 <div class="content-left grid_6">
 
-  <div class="person">	
-		<h1 class="name"><%= @user.name %></h1>
+	<h1 class="name"><%= @user.name %></h1>
 
-    <div class="prof_pic">
-  		<% if false #@user.avatar_file_name %>
-  			<%= image_tag @user.avatar.url, :class => "prof_image" %>
-  		<% else %>
-  			<%= image_tag "empty.png", :class => "prof_image" %>
-  		<% end %><br />
-    </div>
-  	
-  	<% if @user == current_user %>
-  		<%= link_to "Edit Profile", edit_user_path(@user.username), :class => "edit"%><br />
-  	<% else %>
-  		<%= link_to "Ask for Help", new_request_path(:sender_id => @current_user.id, :receiver_id => @user.id)%>
-  	<% end %>
+  <div class="prof_pic">
+		<% if false #@user.avatar_file_name %>
+			<%= image_tag @user.avatar.url, :class => "prof_image" %>
+		<% else %>
+			<%= image_tag "empty.png", :class => "prof_image" %>
+		<% end %><br />
   </div>
+	
+	<% if @user == current_user %>
+		<%= link_to "Edit Profile", edit_user_path(@user.username), :class => "edit"%><br />
+	<% else %>
+		<%= link_to "Ask for Help", new_request_path(:sender_id => @current_user.id, :receiver_id => @user.id)%>
+	<% end %>
 
   <p class="occupation"><b>Occupation:</b><%= @user.occupation %></p>
   <p class="education"><b>Education:</b><%= @user.college %>, <i><%= @user.degree %></i></p>
@@ -55,10 +53,11 @@
         <div class="skill">
 			    <p class="skill-name"><%= skill.tag %></p> 
 			    <p class="skill_description"><%= skill.description %></p>
+          <%= link_to "Add Skill!", "#{@user.username}/edit/#myskills", :class => "edit"%><br />
         </div>
 			<% end %>
 		<% else %>
-			<p class="skill_description">No skills listed</p>
+      <%= link_to "Add Skill!", "#{@user.username}/edit/#myskills", :class => "edit"%><br />
 		<% end %>
   </div>
 </div>
@@ -74,10 +73,11 @@
     <div class="skill">
 			<p class="skill-name"><%= i.tag%></p>
       <p class="skill_description"></p>
+      <%= link_to "Add Topic!", "#{@user.username}/edit/#myinterests", :class => "edit"%><br />
     </div>
 		<% end %>
 	<% else %>
-		<p class="learn_description">Not learning anything at the moment</p>
+    <%= link_to "Add Topic!", "#{@user.username}/edit/#myinterests", :class => "edit"%><br />
 	<% end %>
   </div>
 </div>
@@ -90,7 +90,7 @@
     <% if @user.bio %>
       <p><%= @user.bio %></p>
     <% else %>
-      <i>No bio given</i>
+    <%= link_to "Write a bit about yourself!", "#{@user.username}/edit/#mybio", :class => "edit"%><br />
     <% end %>
   </div>
 	

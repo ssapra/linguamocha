@@ -68,46 +68,53 @@ $(function() {
 		$('<input type="hidden" name="times" value="' + options + '">').appendTo('div.times');
 	});	
 
-	$('p.show').on("click", function(){
-		$.ajax({
-		    url: "/loadtimes",
-	        dataType:'json',
-	        data: {'request_id': $('form')[1].action.split("/").pop()},
-	 		type: 'GET',
-		    success: function(data){
-				// alert(data.each);
-				var keys = Object.keys(data);
-				var d = new Date();
-				var day = d.getDate();
-				var month = d.getMonth();
-				var year = d.getFullYear();
-				var date = new Date(year,month,day);
-				console.log(date);
-				$.each(keys, function(key, value) {
-					// console.log(value);
-					split = value.split("/");
-					var n_day = split[1];
-					var n_month = split[0] - 1;
-					var n_year = split[2];
-					var n_date = new Date(n_year,n_month,n_day);
-					var change = (n_date - date)/(24*60*60*1000);
+	$("a.edit").on("click", function(){
+		console.log("waiting");
+		$(document).ready(function(){
 
-					$.each(data[value], function(key, v) {
-						console.log(v + "_" + change);
-						var o = v + "_" + (change+1);
-						var obj = document.getElementById(o);
-						console.log(obj);
-						obj.style.backgroundColor = "rgb(83, 181, 106)";
-					});
+			var id = $('form')[1].action.split("/").pop();
+			console.log(id);
 
-					// console.log((n_date - date)/(24*60*60*1000));
-					// console.log(data[value]);
-		        });
-		    },
-		    error: function(){
-		        alert('error');
-		    }
+			$.ajax({
+			    url: "/loadtimes",
+		        dataType:'json',
+		        data: {'request_id': id},
+		 		type: 'GET',
+			    success: function(data){
+					// alert(data.each);
+					var keys = Object.keys(data);
+					var d = new Date();
+					var day = d.getDate();
+					var month = d.getMonth();
+					var year = d.getFullYear();
+					var date = new Date(year,month,day);
+					console.log(date);
+					$.each(keys, function(key, value) {
+						// console.log(value);
+						split = value.split("/");
+						var n_day = split[1];
+						var n_month = split[0] - 1;
+						var n_year = split[2];
+						var n_date = new Date(n_year,n_month,n_day);
+						var change = (n_date - date)/(24*60*60*1000);
+
+						$.each(data[value], function(key, v) {
+							console.log(v + "_" + change);
+							var o = v + "_" + (change+1);
+							var obj = document.getElementById(o);
+							console.log(obj);
+							obj.style.backgroundColor = "rgb(83, 181, 106)";
+						});
+
+						// console.log((n_date - date)/(24*60*60*1000));
+						// console.log(data[value]);
+			        });
+			    },
+			    error: function(){
+			        alert('error');
+			    }
+			});
+			
 		});
-		
 	});
 });

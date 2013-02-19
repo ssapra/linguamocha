@@ -32,18 +32,37 @@ class Request < ActiveRecord::Base
   def receiver
     User.find(self.receiver_id)
   end
-  
-  def pending_approval?
-    self.receiver_confirmation == true && self.sender_confirmation == nil
+
+  def whichever_date
+    if self.date
+      return self.date
+    end
+    return self.deadline
   end
-  
-  def approved?
-    self.receiver_confirmation && self.sender_confirmation
-  end  
+
+  def expired?
+    self.whichever_date < Date.today
+  end
+
+  def denied?
+    self.receiver_confirmation == false
+  end
 
   def canceled?
     self.sender_confirmation == false
   end
+
+  def pending_acceptance?
+    self.receiver_confirmation == nil
+  end
+
+  def pending_approval?
+    self.receiver_confirmation == true && self.sender_confirmation == nil
+  end
+
+  def approved?
+    self.receiver_confirmation && self.sender_confirmation
+  end  
 
   def csp
     if self.city && self.state && self.postal_code

@@ -1,4 +1,3 @@
-<!-- <h1>Allen Sanderson will be informed that you have accepted his request</h1> -->
 
 <%= form_for(@request, :url => {:controller => :requests, :action => :update}) do |f| %>
   <% if @request.errors.any? %>
@@ -12,31 +11,9 @@
     </div>
   <% end %>
 
-  <!-- <div class="field">
-  	<%#= f.label :title %>
-  	<%= f.text_field :title %>
-    </div> -->
-
   <%= "Title of Request: #{@request.title}"%>
 
   <%= render "week_table" , :identity => "receiver" %>
-
-  <p class="check">Click me</p>
-
-  <!-- <div class="field">
-  	<%= f.label :from %>
-  	<%= f.text_field :start_time, :value => @start_time %>
-  </div>
-
-  <div class="field">
-	<%= f.label :to %>
-	<%= f.text_field :end_time, :value => @end_time %>
-  </div> -->
-
-  <!-- <div class="availability">
-	<label for="available_times" id="availability_label">Please select the times you are available to meet:</label>
-	<input type="date" name="available_times" id="available_times" placeholder="2/30/2013">			
-  </div><br /> -->
 
 	<br />
   <% if @request.location %>
@@ -53,21 +30,14 @@
     	<a href="#" class="find">Find Locations</a>
     </div>
   <% end %>
-	
-
-  <!-- <input type="input" name="zipcode" id="zipcode" value=<%="#{@zipcode}"%>>
-	<button class="yelp" id="find_locations">Find Locations</button><br /> -->
 
   <div class="locations">
-  	<%#= f.label :location %>
   	<%= f.hidden_field :location %>
   </div>
 
 
   <!-- <div id="map_canvas" style="height:300px;width:300px;"></div> -->
 
-  <br />
-  <br />
   <br />
 
   <%= render 'messages' %>

@@ -1,38 +1,52 @@
 <h1><%= @request.title %></h1>	
 
-<% if @request.pending_approval? %>
+<% if @request.expired? %>
+
+	<%= "This request expired #{Today.date - @request.whichever_date} days ago" %>
+
+<% elsif @request.canceled? %>
+
+	This request has been canceled.
+
+<% elsif @request.denied? %>
+	
+	This request has been denied.
+
+<% elsif @request.pending_approval? %>
 
 	<i><%= "You have accepted #{@request.sent_by.first_name}'s request! Waiting for #{@request.sent_by.first_name} to approve the location and finalize the time." %></i><br />
 
 	<%= "Location chosen: #{@request.location}" %> <br />
 	<%= "Address: #{@request.address}" %><br />
 	<%= @request.csp %>
-
-	<%= link_to "Edit request", edit_request_path(@request.id)%>
-
-<% elsif @request.receiver_confirmation && @request.location.nil? %>
-	<%= link_to "Choose a time and location that works for you", edit_request_path(@request.id) %><br />
-
-<% elsif @request.approved? == true && @request.deadline >= Date.today %>
-	<i><%= "This request has been approved by both sides!" %><br />
 	
-	<b>Date: <%= @request.date.strftime("%B %d, %Y") if @request.date %></b><br />
+	<ul class="request_options">
+		<li><%= link_to "Cancel", deny_path(:id => @request.id) %></li>
+	</ul>
+
+	<%= link_to "Edit request", edit_request_path(@request.id), :class => "edit" %>
+
+<% elsif @request.pending_acceptance? %>
+	
+	This request is pending acceptance. You can choose to accept or deny this request.
+	<ul class="request_options">
+		<li><%= link_to "Accept", accept_path(:id => request.id) if request.receiver_confirmation != true%></li>
+		<li><%= link_to "Deny", deny_path(:id => request.id) %></li>
+				
+	</ul>
+	  
+<% elsif @request.approved? %>
+	<i><%= "This request has been approved by both sides!" %>
+	
+	<b>Date: <%= @request.date.strftime("%B %d, %Y") %></b><br />
 	<b>Location: <%= @request.location %></b><br /><br />
 
-<% elsif @request.receiver_confirmation == false %>
-	<%= "You have denied this request"%>
 
-<% elsif @request.canceled? == true %>
-	<%= "#{@request.sent_by.name} canceled this request" %>
+	<ul class="request_options">
+		<li><%= link_to "Cancel", deny_path(:id => @request.id) %></li>
+	</ul>
 
-<% elsif @request.deadline >= Date.today %>
-	<i>Request Pending</i>
-
-<% elsif @request.approved? && @request.deadline >= Date.today %>
-	<%= "Date: #{@request.date}" %><br />
-	<%= "Location: #{@request.location}" %><br />
-	<%= "Address: #{@request.address}" %><br />
-	<%= @request.csp %>
+	<%= link_to "Edit request", edit_request_path(@request.id), :class => "edit" %>
 
 <% end %>
 
@@ -45,12 +59,11 @@
 
 <br />
 
-<% if @request.canceled? || @request.deadline < Date.today %>
-	<%=render "message_field" %><br />
-	<% if @review %>
-		<%= "#{@request.sent_by.first_name}'s review: #{@review.body}"%><br /><br />
-		<%= link_to "Delete review", delete_review_path(@review.id) %>
-	<% end %>
+<%=render "message_field" %><br />
+
+<% if @review %>
+	<%= "#{@request.sent_by.first_name}'s review: #{@review.body}"%><br /><br />
+	<%= link_to "Delete review", delete_review_path(@review.id) %>
 <% end %>
 
 

@@ -1,6 +1,18 @@
 <h1><%= @request.title %></h1>	
 
-<% if @request.pending_approval? == true %>
+<% if @request.expired? %>
+
+	<%= "This request expired #{Today.date - @request.whichever_date} days ago" %>
+
+<% elsif @request.canceled? %>
+
+	This request has been canceled.
+
+<% elsif @request.denied? %>
+	
+	This request has been denied.
+
+<% elsif @request.pending_approval? %>
 
 	<i><%= "#{@request.receiver.name} has accepted your request!" %></i><br />
 	<i><%= "#{@request.receiver.first_name} has supplied a location and a list of times" %><br />
@@ -10,30 +22,18 @@
 		<%= link_to "Accept Request", confirm_path(:id => @request.id) %> 
 	
 		<%= link_to "I need to cancel", deny_path(:id => @request.id)%>
-		<!-- Please pick a time and approve the request details.<br /> -->
 
-
-	  <%#= link_to "Choose time and approve location", "#" %><br />
-
-	  
-<% elsif  @request.approved? == true %> <!-- && @request.date >= Date.today %> -->
-	  <i><%= "This request has been approved by both sides!" %>
+<% elsif @request.pending_acceptance? %>
 	
-	<!-- <b>From: <%#= @request.start_time.strftime('%l:%M %P') %></b><br /> -->
-	<!-- <b>To: <%#= @request.end_time.strftime('%l:%M %P') %></b><br /> --><br />
-	<b>Date: <%= @request.date.strftime("%B %d, %Y") if @request.date %></b><br />
+	This request is pending acceptance.
+	  
+<% elsif @request.approved? %>
+	<i><%= "This request has been approved by both sides!" %>
+	
+	<b>Date: <%= @request.date.strftime("%B %d, %Y") %></b><br />
 	<b>Location: <%= @request.location %></b><br /><br />
 
-	<%= link_to "Edit request", edit_request_path(@request.id) %>
-
-<% elsif @request.receiver_confirmation == false %>
-	<%= "Sorry, #{@request.receiver} has denied your request"%>
-
-<% elsif @request.canceled? == true %>
-	You have canceled this request.
-
-<% elsif @request.deadline >= Date.today %>
-	<i>Request Pending</i>
+	<%= link_to "Edit request", edit_request_path(@request.id), :class => "edit" %>
 
 <% end %>
 
@@ -47,7 +47,7 @@
 <% if @request.receiver_confirmation %>
   <%= render "message_field" %>
 <% else %>
-  <%= link_to "Edit request", edit_request_path(@request.id) %>
+  <%= link_to "Edit request", edit_request_path(@request.id), :class => "edit" %>
 <% end %><br /><br />
 
 <% if @review %>

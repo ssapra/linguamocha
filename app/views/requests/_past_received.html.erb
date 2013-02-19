@@ -21,14 +21,9 @@
 		<div class="request">
 			<p><%#= request.messages.first.body if request.messages.first %></p>
 		</div>
-
-		<!-- <ul class="request_options">
-			<li><%= link_to "Accept", accept_path(:id => request.id) if request.receiver_confirmation != true%></li>
-			<li><%= link_to "Deny", deny_path(:id => request.id) %></li>
-		</ul> -->
 		
 	
 	<% end %>
 <% else %>
-	<i>No requests have been received</i>
+	<i>No received requests in your history</i>
 <% end %>

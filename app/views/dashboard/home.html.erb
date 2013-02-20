@@ -1,3 +1,9 @@
-<h1>Welcome to LinguaMocha</h1>
+<h1 class="title">Welcome to LinguaMocha</h1>
 
-<%= image_tag("welcome.png", :id => "frontpage")%>
+<h2 class="subtitle">What do you know? What can you do?</h2>
+
+<%= form_tag "/users/sign_up", method: "get" do %>
+<%= text_field_tag :homeskill, nil, placeholder: "Spanish, Linear Algebra, Paintballing..." %>
+<%= image_submit_tag "20-glyph-icons/glyph-icons-black/video-play.png", id: "go" %> 
+<% end %>
+

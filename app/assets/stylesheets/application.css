@@ -25,17 +25,12 @@
 *********************** */
 
 h1, h2, h3, h4, h5, p, strong, em {
-    font-weight: normal;
-    font-style: normal;
+    font-family: 'Open Sans';
 }
 
 h1 {
-  font-size: 20px;
-  font-family: 'Open Sans';
-  font-weight: 700px;
-  text-align: left;
-  padding-bottom: 10px;
-  margin: 0;
+  font-size: 80px;
+  font-weight: 400;
 }
 
 
@@ -49,11 +44,6 @@ h5 {
 
 p, i, footer {
     font-size: 14px;
-}
-h2, h3, h4 {
-  font-size: 15px;
-  font-family: 'Open Sans';
-  font-weight: 700px;
 }
 
 h3 {
@@ -81,7 +71,40 @@ body {
   margin: 50px;
 }
 
+     
+/* ***********************
+*************************
+      =homepage
+**************************
+*********************** */
 
+.title {
+  font-weight: 600;
+  text-shadow: #44A350 0 0 3px;
+}
+.subtitle {
+  font-size: 50px;
+  margin-left: 150px;
+  font-weight: 200;
+  margin-top: 80px;
+  text-shadow: #44A350 0 0 3px;
+}
+
+#homeskill {
+  font-size: 30px;
+  padding: 10px;
+  width: 600px;
+  box-shadow: 0 0 20px 10px #44A350;
+  margin-left: 200px;
+}
+ #go {
+  height: 60px;
+  width: auto;
+  border: none;
+  position: relative;
+  margin-left: 30px;
+  top: 35px;
+ }
      
 /* ***********************
 *************************
@@ -558,13 +581,13 @@ ul.request_options a{
 .copyright {
   position: absolute;
   bottom: 0;
-  left: 10px;
+  left: 20px;
 }
-footer {
+footer p {
   padding-top: 50px;
   padding-right: 50px;
   padding-bottom: 10px;
   text-align: left;
-  font-size: 12px;
+  font-size: 15px;
 }
 

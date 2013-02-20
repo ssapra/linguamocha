@@ -71,6 +71,7 @@ body {
   margin: 50px;
 }
 
+
      
 /* ***********************
 *************************
@@ -87,7 +88,7 @@ body {
   margin-left: 150px;
   font-weight: 200;
   margin-top: 80px;
-  text-shadow: #44A350 0 0 3px;
+  text-shadow: #44A350 0 0 2px;
 }
 
 #homeskill {
@@ -145,41 +146,41 @@ body {
 }
 
 .btn {
-  -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-  -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-  box-shadow:inset 0px 1px 0px 0px #ffffff;
-  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
-  background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
-  background-color:#ededed;
-  -moz-border-radius:6px;
-  -webkit-border-radius:6px;
-  border-radius:6px;
-  display:inline;
-  color:#104717;
-  font-size:15px;
-  text-decoration:none;
-  text-shadow:1px 1px 0px #ffffff;
-  border: 2px solid #104717;
-}
-.btn:hover {
-  color: black;
-  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
-  background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
-  background-color:#dfdfdf;
+display: inline-block; 
+text-decoration: none; 
+color: black; 
+font-family: sans-serif; 
+font-weight: bold; 
+font-size: 20px; 
+border: 2px 
+solid #104717; 
+margin: 0; 
+padding: 10px; 
+border-radius: 5px; 
+background-color: #fff; 
+background-image: -webkit-linear-gradient(top, rgba(0,0,0,.1), rgba(0, 0, 0, .3));
+background-image: -moz-linear-gradient(top, rgba(0,0,0,.1), rgba(0, 0, 0, .3)); 
+box-shadow: inset 0 5px 5px rgba(255,255,255,.25), 0 1px 1px rgba(0,0,0,.15); 
+-webkit-transition: all .15s linear;
+-moz-transition: all .15s linear;
 }
 
+.btn:hover { background-color: #44A350; }
+}
 
+nav {
+  position: absolute;
+}
 
-
-.nav ul {
+.nav ul {  
   position: fixed;
   right: 0;
   top: 0;
   margin-top: 10px;
+
 }
 .nav li {
+
   display: inline;
   margin: 0 20px;
 }
@@ -236,14 +237,23 @@ body {
      
 /* ***********************
 *************************
+      =sign_u
+**************************
+*********************** */
+
+#sign-up-submit {
+  margin-bottom: 30px;
+}
+     
+/* ***********************
+*************************
       =sign_in
 **************************
 *********************** */
 
 #sign_in, #sign_up  {
-  font-size: 20px;
+  font-size: 50px;
   margin-bottom: 40px;
-  font-family: 'Open Sans';
   font-weight: 700px;
 }
 
@@ -253,25 +263,27 @@ label {
 }
 .remember_me label {
   display: inline;
+  font-size: 20px;
+  margin-left: 10px;
 }
 .remember_me {
   margin-bottom: 50px;
 }
 
 #sign_in_submit {
-  font-size: 15px;
+  font-size: 50px;
   margin-bottom: 30px;
 }
 #sign_in_submit:hover {
   cursor: pointer;
 }
 
-#user_email, #user_password {
-  height: 20px;
+#user_email, #user_password, #user_password_confirmation, #user_first_name, #user_last_name {
   border: 2px solid #104717;
-  border-radius: 3px;
-  font-size: 15px;
-  width: 200px;
+  border-radius: 5px;
+  font-size: 25px;
+  width: 300px;
+  padding: 5px;
 }
 
 .content a {

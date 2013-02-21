@@ -43,7 +43,7 @@ h5 {
 }
 
 p, i, footer {
-    font-size: 14px;
+    font-size: 16px;
 }
 
 h3 {
@@ -142,7 +142,10 @@ body {
 
 #search_button {
   position: relative;
+  font-size: 15px;
+  width: auto;
   top: -40px;
+  padding: 5px;
 }
 
 .btn {
@@ -237,7 +240,7 @@ nav {
      
 /* ***********************
 *************************
-      =sign_u
+      =sign_up
 **************************
 *********************** */
 
@@ -271,7 +274,6 @@ label {
 }
 
 #sign_in_submit {
-  font-size: 50px;
   margin-bottom: 30px;
 }
 #sign_in_submit:hover {
@@ -299,29 +301,36 @@ label {
 
 .name {
   font-size: 50px;
+  margin-top: 0;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 20px;
 }
 .prof_image {
   margin: 50px;
 }
 .edit {
   margin-left: 50px;
+  font-size: 20px;
+  margin-top: 30px;
 }
 
 #prof_pic img, #search_image {
     border: 3px solid #6db776;
     margin-bottom: 20px;
 }
-.content-left {
-  border-right: 1px solid gray;
-  padding-right: 30px;
+.content-right {
 }
 .person {
-  margin-left: 100px;
-  margin-bottom: 50px;
-  width: 240px;
-  float: none;
+  margin-left: 50px;
+
 }
-.education {
+.occupation-label {
+  margin-top: 50px;
+}
+.education-label {
   margin-bottom: 50px;
 }
 b {
@@ -352,9 +361,11 @@ b {
   margin-bottom: 20px;
   margin-left: 0;
 }
-
+.skill-label, .currently-learning-label {
+  font-size: 30px;
+}
 .skills {
-  margin-top: 30px;
+  margin-top: 100px;
 }
 
 .skill {
@@ -363,9 +374,10 @@ b {
   padding-left: 40px;
 }
 .skill-name {
-  font-family: 'Open Sans';
-  font-weight: 700px;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 20px;
+  display: inline;
+  text-align: left;
 }
 .skill_description {
     font-family: 'Open Sans';
@@ -373,6 +385,7 @@ b {
     font-size: 14px;
     margin-left: 50px;
     padding-top: 0;
+    display: inline;
 }
 
 textarea.skill_description{
@@ -415,6 +428,7 @@ td#remove{
 
 .reference {
   border-top: 2px solid #6db776;
+  border-right: 2px solid #6db776;
   padding-top: 30px;
 }
 .reference_group {

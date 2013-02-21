@@ -62,7 +62,7 @@
   <br />
   <br />
 
-  <h1><a name="myskills">My Skills</a></h1>
+  <h3><a name="myskills">My Skills</a></h3>
 
   <table>
   	<th>Skill</th>
@@ -76,15 +76,11 @@
 
   </table>
  
-  <br />
-  <br />
   
   <p><%= f.link_to_add "Add a skill", :my_skills %></p>
 
-  <br />
-  <br />
 
-  <h1><a name="myinterests">Currently Learning</a></h1> 
+  <h3><a name="myinterests">Currently Learning</a></h3> 
 
   <table>
 	<th>Interest</th>
@@ -94,14 +90,11 @@
     <% end %>
   </table>
 
-  <br />
-  <br />
-  <br />
+
   
   <p><%= f.link_to_add "Add a topic", :interests %></p>
 
-  <br />
-  <br />
+ 
 
   <% f.hidden_field :username%>
 

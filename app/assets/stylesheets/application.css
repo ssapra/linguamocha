@@ -25,7 +25,10 @@
 *********************** */
 
 h1, h2, h3, h4, h5, p, strong, em {
-    font-family: 'Open Sans';
+  font-family: 'Open Sans';
+  color: #381729;
+
+
 }
 
 h1 {
@@ -87,14 +90,14 @@ body {
 
 .title {
   font-weight: 600;
-  text-shadow: #44A350 0 0 3px;
+  text-shadow: #fff 0 2px 0px;
 }
 .subtitle {
   font-size: 50px;
   margin-left: 150px;
   font-weight: 200;
   margin-top: 80px;
-  text-shadow: #44A350 0 0 2px;
+  text-shadow: #fff 0 1px 0px;
 }
 
 #homeskill {
@@ -238,7 +241,7 @@ nav {
     width: 1200px;
     margin: 0 auto;
     z-index: 2;
-    background-color: white;
+    background-color: #e9ffec;
     min-height: 100%;
     top: 0;
     bottom: 0;
@@ -322,6 +325,12 @@ h3 {
   font-size: 20px;
   margin-top: 30px;
 }
+.add {
+  margin-right: 50px;
+  font-size: 20px;
+  margin-top: 30px;
+  text-align: right;
+}
 
 #prof_pic img, #search_image {
     border: 3px solid #6db776;
@@ -397,8 +406,9 @@ b {
 .skill_description {
   font-family: 'Open Sans';
   font-style: italic;
-  font-size: 20px;
+  font-size: 18px;
   display: inline;
+  width: 100px;
 }
 
 textarea.skill_description{
@@ -413,6 +423,7 @@ textarea.skill_description{
 
 .label_responses {
   margin-left: 20px;
+  width: 500px;
 
 }
 

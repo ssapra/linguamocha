@@ -3,7 +3,7 @@
   	<h1 class="name"><%= @user.name %></h1>
 
     <div class="prof_pic">
-  		<% if false #@user.avatar_file_name %>
+  		<% if @user.avatar_file_name %>
   			<%= image_tag @user.avatar.url, :class => "prof_image" %>
   		<% else %>
   			<%= image_tag "empty.png", :class => "prof_image" %>

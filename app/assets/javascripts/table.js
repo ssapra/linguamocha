@@ -16,7 +16,6 @@ function deselect_all() {
 function change_color(e)
 {
 	var obj = document.getElementById(e.id);
-	// if (obj. != "modified"){
 		
 		if (obj.style.backgroundColor == "" || obj.style.backgroundColor == "rgb(171, 171, 171)"){
 			obj.style.backgroundColor = "rgb(83, 181, 106)";
@@ -24,7 +23,6 @@ function change_color(e)
 		else{
 			obj.style.backgroundColor = "rgb(171, 171, 171)";
 		}
-	// }
 }
 
 
@@ -68,20 +66,18 @@ $(function() {
 		$('<input type="hidden" name="times" value="' + options + '">').appendTo('div.times');
 	});	
 
-	$("a.edit").on("click", function(){
-		console.log("waiting");
-		$(document).ready(function(){
+	$(document).ready(function(){
+
+		if($('table.times').length > 0){
 
 			var id = $('form')[1].action.split("/").pop();
 			console.log(id);
-
 			$.ajax({
 			    url: "/loadtimes",
 		        dataType:'json',
 		        data: {'request_id': id},
 		 		type: 'GET',
 			    success: function(data){
-					// alert(data.each);
 					var keys = Object.keys(data);
 					var d = new Date();
 					var day = d.getDate();
@@ -90,7 +86,6 @@ $(function() {
 					var date = new Date(year,month,day);
 					console.log(date);
 					$.each(keys, function(key, value) {
-						// console.log(value);
 						split = value.split("/");
 						var n_day = split[1];
 						var n_month = split[0] - 1;
@@ -105,16 +100,13 @@ $(function() {
 							console.log(obj);
 							obj.style.backgroundColor = "rgb(83, 181, 106)";
 						});
-
-						// console.log((n_date - date)/(24*60*60*1000));
-						// console.log(data[value]);
 			        });
 			    },
 			    error: function(){
 			        alert('error');
 			    }
 			});
-			
-		});
+			return false;
+		}
 	});
 });

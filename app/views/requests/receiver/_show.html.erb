@@ -2,7 +2,7 @@
 
 <% if @request.expired? %>
 
-	<%= "This request expired #{Today.date - @request.whichever_date} days ago" %>
+	<%= "This request expired #{Date.today - @request.whichever_date} days ago" %>
 
 <% elsif @request.canceled? %>
 
@@ -30,9 +30,8 @@
 	
 	This request is pending acceptance. You can choose to accept or deny this request.
 	<ul class="request_options">
-		<li><%= link_to "Accept", accept_path(:id => request.id) if request.receiver_confirmation != true%></li>
-		<li><%= link_to "Deny", deny_path(:id => request.id) %></li>
-				
+		<li><%= link_to "Accept", accept_path(:id => @request.id) if @request.receiver_confirmation != true%></li>
+		<li><%= link_to "Deny", deny_path(:id => @request.id) %></li>	
 	</ul>
 	  
 <% elsif @request.approved? %>

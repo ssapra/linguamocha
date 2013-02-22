@@ -2,7 +2,7 @@
 
 <% if @request.expired? %>
 
-	<%= "This request expired #{Today.date - @request.whichever_date} days ago" %>
+	<%= "This request expired #{Date.today - @request.whichever_date} days ago" %>
 
 <% elsif @request.canceled? %>
 

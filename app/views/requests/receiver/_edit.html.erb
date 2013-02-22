@@ -40,7 +40,12 @@
 
   <br />
 
-  <%= render 'messages' %>
+  <h1>Messages</h1>
+
+  <% @request.messages.each do |message| %>
+      <%= message.user %>:
+    <%= message.body %><br />
+  <% end %><br />
 
   <% @request.messages << @message %>
 
@@ -55,7 +60,7 @@
   <div class="times">
 
   </div>
-  
+  <br /><br /><br />
   <div class="actions">
     <% if @request.location %>
         <%= f.submit "Update Request", :class=>"request btn" %>
@@ -63,6 +68,8 @@
         <%= f.submit "Submit Request", :class=>"request btn" %>
     <% end %>
   </div>
+
+  <br /><br /><br />
 
 
 <% end %>

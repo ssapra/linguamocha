@@ -192,6 +192,7 @@ $(function() {
 	$("input#deadline_date").datepicker({ minDate: +0 });
 	$('input#request_start_time').timepicker({ 'step': 15 });
 	$('input#request_end_time').timepicker({ 'step': 15 });
+
 	$(function() {
 	    $("#tabs").tabs();
 	  });
@@ -204,6 +205,21 @@ $(function() {
 			$('td.' + this.id).hide();
 		}
 	);
+
+
+	// $('input#date_of_meeting').on("click", function(){
+	// 	var days = $('td.day');
+	// 	var length = days.length
+	// 	var start_date = days[0].id;
+	// 	var end_date = days[length-1].id;
+	// 	$('input#date_of_meeting').datepicker({minDate: start_date, maxDate: end_date});
+	// });
+
+	// $('input#request_start_time').on("click", function(){
+		
+	// 	console.log()
+	// });
+
 		
 });
 

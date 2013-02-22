@@ -95,6 +95,14 @@ class RequestsController < ApplicationController
           @request.messages.last.destroy
         end
 
+        if params[:date]
+          logger.debug "I'M HERE"
+          @request.update_attributes(:date => change_date(params[:date]),
+                                     :start_time => params[:start_time],
+                                     :end_time => params[:end_time])
+        end
+
+
         if params[:request][:date]
           split_date = params[:request][:date].split("/")
           date = split_date[1] + "/" + split_date[0] + "/" + split_date[2]

@@ -31,22 +31,56 @@ $(function() {
 
 	var mouseDown = 0;
 	var clicking = false;
+	var matching_id = -1;
 
 	$('#receiver_table td.time').on("mousedown",function(){
       $(change_color(this));
       mouseDown = 1;
     });
+
+    $('#sender_table td.time').on("mousedown",function(){
+       $('td.time').each(function() {
+       		if (this.style.backgroundColor == "yellow"){
+       			this.style.backgroundColor = "rgb(83, 181, 106)";
+       		}
+		});
+
+      if (this.style.backgroundColor == "rgb(83, 181, 106)"){
+      	mouseDown = 1;
+      	console.log(this.id.split("_")[1]);
+      	matching_id = this.id.split("_")[1];
+      	this.style.backgroundColor = "yellow";	
+      }
+    });
+
+    $('#sender_table td.time').on("mouseover", function(){
+		if (mouseDown == 1 && this.style.backgroundColor == "rgb(83, 181, 106)"){
+			var id = this.id.split("_")[1];
+			if(matching_id == id ){
+				this.style.backgroundColor = "yellow";	
+			}
+			else{
+				matching_id = -1;
+			}
+		}
+		if(this.style.backgroundColor == ""){
+			matching_id = -1;
+		}
+	});
+
+
     
     $('td.time').on("mouseup",function(){
     	mouseDown = 0;
     	clicking = false;
-		var cells = document.getElementsByClassName("time");
-		for (var c in cells){
-			cells[c].className = "time";
-		}
+    	matching_id = -1;
+		// var cells = document.getElementsByClassName("time");
+		// for (var c in cells){
+		// 	cells[c].className = "time";
+		// }
     });
 
-    $('td.time').on("mouseover", function(){
+    $('#receiver_table td.time').on("mouseover", function(){
 		if (mouseDown == 1){
 			change_color(this);
 		}
@@ -71,7 +105,6 @@ $(function() {
 		if($('table.times').length > 0){
 
 			var id = $('form')[1].action.split("/").pop();
-			console.log(id);
 			$.ajax({
 			    url: "/loadtimes",
 		        dataType:'json',
@@ -84,7 +117,6 @@ $(function() {
 					var month = d.getMonth();
 					var year = d.getFullYear();
 					var date = new Date(year,month,day);
-					console.log(date);
 					$.each(keys, function(key, value) {
 						split = value.split("/");
 						var n_day = split[1];
@@ -94,10 +126,8 @@ $(function() {
 						var change = (n_date - date)/(24*60*60*1000);
 
 						$.each(data[value], function(key, v) {
-							console.log(v + "_" + change);
 							var o = v + "_" + (change+1);
 							var obj = document.getElementById(o);
-							console.log(obj);
 							obj.style.backgroundColor = "rgb(83, 181, 106)";
 						});
 			        });
@@ -109,4 +139,21 @@ $(function() {
 			return false;
 		}
 	});
-});
+
+	$('input.btn').on('click',function(){
+		var times = [];
+		var date_id;
+		$('td.time').each(function() {
+			if (this.style.backgroundColor == "yellow"){
+				date_id = this.id.split("_")[1];
+				times.push(this.innerHTML);
+			}
+		});
+		var date = $('tr')[0].childNodes[2*(date_id-1)].id;
+		var length = times.length;
+		$('<input type="hidden" name="start_time" value="' + times[0] + '">').appendTo('div.hidden_fields');
+		$('<input type="hidden" name="end_time" value="' + times[length-1] + '">').appendTo('div.hidden_fields');
+		$('<input type="hidden" name="date" value="' + date + '">').appendTo('div.hidden_fields');
+	});
+
+});	

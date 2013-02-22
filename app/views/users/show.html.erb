@@ -48,14 +48,15 @@
 		<h3 class="skill-label">Skills</h3>
   </div>
 
-  <div class="label_responses grid_7">
+  <div class="label_responses">
 		<% if @user.my_skills != [] %>
+      <ul>
 			<% @user.my_skills.each do |skill| %>
-        <span class="skill-name"><%= skill.tag %></span>
-        <div class="skill">
-			    <span class="skill_description"><%= skill.description %></span>
-        </div>
+        <li class="skill">
+			    <span class="skill-name"><%= skill.tag %></span><span class="skill_description"><%= skill.description %></span>
+        </li>
 			<% end %>
+      </ul>
       <%= link_to "Add Skill!", "#{@user.username}/edit/#myskills", :class => "edit"%><br />
 		<% else %>
       <%= link_to "Add Skill!", "#{@user.username}/edit/#myskills", :class => "edit"%><br />
@@ -69,13 +70,14 @@
 	</div>
 
   <div class="label_responses grid_4">
-	<% if @user.interests != [] %>
-		<% @user.interests.each do |i| %>
-    <div class="skill">
-			<p class="skill-name"><%= i.tag%></p>
-      <p class="skill_description"></p>
-    </div>
-		<% end %>
+    <% if @user.interests != [] %>
+      <ul>
+      <% @user.interests.each do |i| %>
+        <li class="skill">
+          <span class="skill-name"><%= i.tag %></span></span>
+        </li>
+      <% end %>
+      </ul>
     <%= link_to "Add Topic!", "#{@user.username}/edit/#myinterests", :class => "edit"%><br />
 
 	<% else %>

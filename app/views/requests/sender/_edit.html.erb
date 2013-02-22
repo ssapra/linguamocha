@@ -21,24 +21,17 @@
     </div>
   <% end %>
 
+  Please highlight a single range for your meeting!
+
   <%= render "week_table", :identity => "sender" %>
 
-  <p class="show">Show me the times </p>
-
-  <%= f.label :date, "Date of Meeting" %>
-  <%= f.text_field :date, :id => "deadline_date"%>
-
-  <%= f.label :start_time %>
-  <%= f.text_field :start_time %>
-
-  <%= f.label :end_time %>
-  <%= f.text_field :end_time %>
+  <div class="hidden_fields"></div>
 
   <h1>Messages</h1>
 
   <% @request.messages.each do |message| %>
       <%= message.user %>:
-    <%= message.body %><br />
+      <%= message.body %><br />
   <% end %><br />
   
   <% @request.messages << @message %>
@@ -52,9 +45,13 @@
   	<% end %>
   <% end %>
 
+  <p id="show">Click me</p>
 
+  <br /><br /><br />
   <div class="actions">
-     <%= f.submit "Send message", :class => "btn" %>
+     <%= f.submit "Confirm Meeting", :class => "btn" %>
   </div>
+
+  <br /><br /><br />
 
 <% end %>

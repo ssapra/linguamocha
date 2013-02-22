@@ -1,20 +1,20 @@
 <div class="content-left grid_6">
   <div class="person">
-  	<h1 class="name"><%= @user.name %></h1>
+    <h1 class="name"><%= @user.name %></h1>
 
     <div class="prof_pic">
-  		<% if @user.avatar_file_name %>
-  			<%= image_tag @user.avatar.url, :class => "prof_image" %>
-  		<% else %>
-  			<%= image_tag "empty.png", :class => "prof_image" %>
-  		<% end %><br />
+      <% if @user.avatar_file_name %>
+        <%= image_tag @user.avatar.url, :class => "prof_image" %>
+      <% else %>
+        <%= image_tag "empty.png", :class => "prof_image" %>
+      <% end %><br />
     </div>
-  	
-  	<% if @user == current_user %>
-  		<%= link_to "Edit Profile", edit_user_path(@user.username), :class => "edit"%><br />
-  	<% else %>
-  		<%= link_to "Ask for Help", new_request_path(:sender_id => @current_user.id, :receiver_id => @user.id)%>
-  	<% end %>
+    
+    <% if @user == current_user %>
+      <%= link_to "Edit Profile", edit_user_path(@user.username), :class => "edit"%><br />
+    <% else %>
+      <%= link_to "Ask for Help", new_request_path(:sender_id => @current_user.id, :receiver_id => @user.id)%>
+    <% end %>
 
     <h3 class="occupation-label">Occupation: <span class="occupation"><%= @user.occupation %></span></h3>
     <h3 class="education-label">Education: <span class="education"><%= @user.college %>, <i><%= @user.degree %></i></span></h3>
@@ -44,45 +44,52 @@
 </div>
 
 <div class="skills grid_7">
-	<div class="label grid_7">
-		<h3 class="skill-label">Skills</h3>
+  <div class="label grid_7">
+    <h3 class="skill-label">Skills</h3>
   </div>
 
   <div class="label_responses">
-		<% if @user.my_skills != [] %>
+    <% if @user.my_skills != [] %>
       <ul>
-			<% @user.my_skills.each do |skill| %>
-        <li class="skill">
-			    <span class="skill-name"><%= skill.tag %></span><span class="skill_description"><%= skill.description %></span>
-        </li>
-			<% end %>
+        <% @user.my_skills.each do |skill| %>
+          <li class="skill">
+            <span class="skill-name"><%= skill.tag %></span><span class="skill_description"><%= skill.description %></span>
+          </li>
+        <% end %>
       </ul>
-      <%= link_to "Add Skill!", "#{@user.username}/edit/#myskills", :class => "add" %><br />
-		<% else %>
-      <%= link_to "Add Skill!", "#{@user.username}/edit/#myskills", :class => "add" %><br />
-		<% end %>
+    <% else %>
+       <p>No skills</p>
+    <% end %>
+
+    <% if @user == current_user %>
+      <%= link_to "Add Skill!", "#{@user.username}/edit/#myskills", :class => "edit"%><br />
+    <% end %>
+
   </div>
 </div>
 
 <div class="currently_learning grid_7">
-	<div class="label grid_7">
-		<h3 class="currently-learning-label">Currently Learning</h3>
-	</div>
+  <div class="label grid_7">
+    <h3 class="currently-learning-label">Currently Learning</h3>
+  </div>
 
-  <div class="label_responses">
+  <div class="label_responses grid_4">
     <% if @user.interests != [] %>
       <ul>
-      <% @user.interests.each do |i| %>
-        <li class="skill">
-          <span class="skill-name"><%= i.tag %></span></span>
-        </li>
-      <% end %>
+        <% @user.interests.each do |i| %>
+          <li class="skill">
+            <span class="skill-name"><%= i.tag %></span></span>
+          </li>
+        <% end %>
       </ul>
-    <%= link_to "Add Topic!", "#{@user.username}/edit/#myinterests", :class => "add"%><br />
+    <% else %>
+       <p>No skills</p>
+    <% end %>
 
-	<% else %>
-    <%= link_to "Add Topic!", "#{@user.username}/edit/#myinterests", :class => "add"%><br />
-	<% end %>
+    <% if @user == current_user %>
+      <%= link_to "Add Topic!", "#{@user.username}/edit/#myinterests", :class => "edit"%><br />
+    <% end %>
+    
   </div>
 </div>
 
@@ -98,7 +105,7 @@
   <% end %>
 </div>
 
-	
+  
 
 
 

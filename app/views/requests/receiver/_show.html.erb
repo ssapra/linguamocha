@@ -37,8 +37,8 @@
 <% elsif @request.approved? %>
 	<i><%= "This request has been approved by both sides!" %>
 	
-	<b>Date: <%= @request.date.strftime("%B %d, %Y") %></b><br />
-	<b>Location: <%= @request.location %></b><br /><br />
+	<b>Date: <%= @request.date.strftime("%B %d, %Y") if @request.date %></b><br />
+	<b>Location: <%= @request.location  if @request.location %></b><br /><br />
 
 
 	<ul class="request_options">

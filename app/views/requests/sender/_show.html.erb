@@ -28,9 +28,9 @@
 	This request is pending acceptance.
 	  
 <% elsif @request.approved? %>
-	<i><%= "This request has been approved by both sides!" %>
+	<i><%= "This request has been approved by both sides!" %><br />
 	
-	<b>Date: <%= @request.date.strftime("%B %d, %Y") %></b><br />
+	<b>Date: <%= @request.date.strftime("%B %d, %Y") if @request.date %></b><br />
 	<b>Location: <%= @request.location %></b><br /><br />
 
 	<%= link_to "Edit request", edit_request_path(@request.id), :class => "edit" %>

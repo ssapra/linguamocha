@@ -1,3 +1,5 @@
 class Interest < ActiveRecord::Base
-  attr_accessible :tag, :user_id
+  attr_accessible :tag, 
+  				  :description,
+  				  :user_id
 end

@@ -1,0 +1,4 @@
+$(".skill_field").hide();
+
+$("p#skill_<%= @note.id %>").replaceWith("<%= j(render('edit_skill')) %>")
+// $("a#skill-buttons").hide();

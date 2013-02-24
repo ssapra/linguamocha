@@ -50,11 +50,9 @@
 
   <div class="label_responses">
     <% if @user.my_skills != [] %>
-      <ul>
+      <ul class="skills">
         <% @user.my_skills.each do |skill| %>
-          <li class="skill">
-            <span class="skill-name"><%= skill.tag %></span><span class="skill_description"><%= skill.description %></span>
-          </li>
+          <%= render '/skills/skill', :skill => skill %>
         <% end %>
       </ul>
     <% else %>
@@ -62,7 +60,8 @@
     <% end %>
 
     <% if @user == current_user %>
-      <%= link_to "Add Skill!", "#{@user.username}/edit/#myskills", :class => "add"%><br />
+      <%= link_to "Add Skill!", "#", :class => "add" %><br />
+      <%= render '/skills/form', :skill => @skill %>
     <% end %>
 
   </div>
@@ -75,7 +74,7 @@
 
   <div class="label_responses">
     <% if @user.interests != [] %>
-      <ul>
+      <ul class="interests">
         <% @user.interests.each do |i| %>
           <li class="skill">
             <span class="skill-name"><%= i.tag %></span></span>

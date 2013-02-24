@@ -1,0 +1,21 @@
+<%= form_for(@skill, :url => {:controller => 'skills', :action => "update"}, :remote => true) do |f| %>
+  <% if @skill.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@skill.errors.count, "error") %> prohibited this skill from being saved:</h2>
+
+      <ul>
+      <% @skill.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="skill_field">
+   	<%= f.text_field :tag %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%#= f.submit %>
+  </div>
+<% end %>

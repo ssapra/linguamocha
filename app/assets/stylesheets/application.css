@@ -16,7 +16,9 @@
  *= require_self
  */
 
-
+form#new_my_skill{
+  display: none;
+}
      
 /* ***********************
 *************************

@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.find_by_username(params[:username])
     @current_user = current_user
     @education = [@user.high_school, @user.college, @user.degree]
+    @skill = MySkill.new
   end
   
   def edit

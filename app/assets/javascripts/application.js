@@ -21,13 +21,13 @@
 $(function() {
 
     
-	$(document).on("focus",".skill", function() {
+	$(document).on("focus","input#my_skill_tag", function() {
 		$.ajax({
 		    url: "/allskills",
 	        dataType:'json',
 	 		type: 'GET',
 		    success: function(data){
-				$(".skill").autocomplete({
+				$("input#my_skill_tag").autocomplete({
 					minLength: 2,
 					source: function( request, response ) {
 					    	var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
@@ -205,6 +205,10 @@ $(function() {
 			$('td.' + this.id).hide();
 		}
 	);
+
+	$("a.add").on("click", function() {
+		$("form").toggle("slow");
+	});
 
 
 	// $('input#date_of_meeting').on("click", function(){

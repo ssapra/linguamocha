@@ -17,6 +17,9 @@ Linguamocha::Application.routes.draw do
   post "/search" => "users#search"
   
   resources :requests
+
+  resources :skills
+
   
   get "/review/:id" => "reviews#new", as: :review
   post "/review/:id" => "reviews#create"

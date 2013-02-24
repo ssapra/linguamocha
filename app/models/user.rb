@@ -11,7 +11,10 @@ class User < ActiveRecord::Base
   attr_accessible :avatar
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "30x30>" },
                     :url => "/system/:attachment/:id/:style/:basename.:extension",
-                    :path => ":rails_root/public/system/:attachment/:id/:style/:basename.:extension"
+                    :path => ":rails_root/public/system/:attachment/:id/:style/:basename.:extension",
+                    :storage => :s3,
+                    :s3_credentials => "#{Rails.root}/config/s3.yml",
+                    :path => "/:style/:id/:filename"
                     
   attr_accessible :first_name,
                   :last_name,

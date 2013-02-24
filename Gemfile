@@ -32,6 +32,10 @@ gem "ransack"
 # Yelp API Usage
 gem 'oauth'
 
+# Amazon S3 Storage
+gem 'aws-s3'
+gem 'aws-sdk'
+
 group :development, :test do
 	gem 'sqlite3'
 end

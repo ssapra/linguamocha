@@ -1,0 +1,14 @@
+development:
+  bucket: LM_profile_pics
+  access_key_id: <%= ENV['AMAZON_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['AMAZON_SECRET_ACCESS_KEY'] %>
+
+test:
+  bucket: LM_profile_pics
+  access_key_id: <%= ENV['AMAZON_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['AMAZON_SECRET_ACCESS_KEY'] %>
+  
+production:
+  bucket: LM_profile_pics
+  access_key_id: <%= ENV['AMAZON_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['AMAZON_SECRET_ACCESS_KEY'] %>

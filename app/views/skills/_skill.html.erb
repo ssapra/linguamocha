@@ -1,6 +1,8 @@
-<li class="skill <%= skill.id %>" >
-  <span class="skill-name"><%= skill.tag %></span><span class="skill_description"><%= skill.description %></span>
-</li>
+<fieldset id="skill_<%= skill.id %>" >
+	<li class="skill <%= skill.id %>" >
+	  <span class="skill-name"><%= skill.tag %></span><span class="skill_description"><%= skill.description %></span>
+	</li>
 
-<%= image_tag('trash-can-icon.jpg', size: '20x20' ) %>
-<%= image_tag('pencil.png', size: '20x20') %>
+	<%= link_to image_tag('trash-can-icon.jpg', size: '20x20' ), skill_path(skill.id), method: 'delete', remote: :true %>
+	<%= link_to image_tag('pencil.png', size: '20x20'), edit_skill_path(skill.id), remote: :true %> 
+</fieldset>

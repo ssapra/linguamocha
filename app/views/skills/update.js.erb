@@ -1,11 +1,5 @@
-$("#edit_skill_<%= @skill.id %>").replaceWith("<%= j(render('form', skill: @skill)) %>"); // ## Replaces current Note container with a new Note form-field
+$(".edit_my_skill").remove();
 
-// $("fieldset#note_<%= @note.id %>.demoBackground").remove(); // ** Removes empty Note container following Updated Note
-
-// $("#edit_note_<%= @note.id %>").hide(); // ## Not sure what this is doing
-
-$("ul#skills").prepend("<%= j(render('skill', :skill => @skill)) %>"); // ** Container with newly created Edited Note
-
-//$("#note_info").show();
+$("ul.skills").prepend("<%= j(render('skill', :skill => @skill)) %>");
 
 $("a").show();

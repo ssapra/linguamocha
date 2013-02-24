@@ -43,13 +43,13 @@ $(function() {
 		});
 	});
 	
-	$(document).on("focus",".interest", function() {
+	$(document).on("focus","#interest_tag", function() {
 		$.ajax({
 		    url: "/allskills",
 	        dataType:'json',
 	 		type: 'GET',
 		    success: function(data){
-				$(".interest").autocomplete({
+				$("#interest_tag").autocomplete({
 					minLength: 2,
 					source: function( request, response ) {
 					    	var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
@@ -206,10 +206,13 @@ $(function() {
 		}
 	);
 
-	$("a.add").on("click", function() {
-		$("form").toggle("slow");
+	$("a#skills").on("click", function() {
+		$("form#new_my_skill").toggle("slow");
 	});
 
+	$("a#interests").on("click", function() {
+		$("form#new_interest").toggle("slow");
+	});
 
 	// $('input#date_of_meeting').on("click", function(){
 	// 	var days = $('td.day');

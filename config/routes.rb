@@ -19,6 +19,7 @@ Linguamocha::Application.routes.draw do
   resources :requests
 
   resources :skills
+  resources :interests
 
   
   get "/review/:id" => "reviews#new", as: :review

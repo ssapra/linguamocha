@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @current_user = current_user
     @education = [@user.high_school, @user.college, @user.degree]
     @skill = MySkill.new
+    @interest = Interest.new
   end
   
   def edit

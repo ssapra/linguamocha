@@ -1,0 +1,4 @@
+$("a.add").hide();
+
+$("fieldset#interest_<%= @interest.id %>").replaceWith("<%= j(render('edit_interest')) %>")
+// $("a#interest-buttons").hide();

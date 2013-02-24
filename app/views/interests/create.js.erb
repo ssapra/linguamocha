@@ -1,0 +1,7 @@
+$("ul.interests").prepend("<%= escape_javascript(render('interest', :interest => @interest)) %>"); 
+
+$("#interest_tag").val("");
+$("#interest_description").val("");
+
+$("form#new_interest").hide();
+

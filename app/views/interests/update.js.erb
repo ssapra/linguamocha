@@ -1,0 +1,5 @@
+$(".edit_interest").remove();
+
+$("ul.interests").prepend("<%= j(render('interest', :interest => @interest)) %>");
+
+$("a").show();

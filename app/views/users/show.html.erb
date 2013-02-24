@@ -60,7 +60,7 @@
     <% end %>
 
     <% if @user == current_user %>
-      <%= link_to "Add Skill!", "#", :class => "add" %><br />
+      <%= link_to "Add Skill!", "#", :class => "add", :id => "skills" %><br />
       <%= render '/skills/form', :skill => @skill %>
     <% end %>
 
@@ -76,17 +76,16 @@
     <% if @user.interests != [] %>
       <ul class="interests">
         <% @user.interests.each do |i| %>
-          <li class="skill">
-            <span class="skill-name"><%= i.tag %></span></span>
-          </li>
+          <%= render '/interests/interest', :interest => i %>
         <% end %>
       </ul>
     <% else %>
-       <p>No skills</p>
+       <p>No interests</p>
     <% end %>
 
     <% if @user == current_user %>
-      <%= link_to "Add Topic!", "#{@user.username}/edit/#myinterests", :class => "add"%><br />
+      <%= link_to "Add Topic!", "#", :class => "add" , :id => "interests" %><br />
+      <%= render '/interests/form', :interest => @interest %>
     <% end %>
     
   </div>

@@ -19,6 +19,10 @@
 form#new_my_skill{
   display: none;
 }
+
+form#new_interest{
+  display: none;
+}
      
 /* ***********************
 *************************

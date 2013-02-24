@@ -62,7 +62,7 @@
     <% end %>
 
     <% if @user == current_user %>
-      <%= link_to "Add Skill!", "#{@user.username}/edit/#myskills", :class => "edit"%><br />
+      <%= link_to "Add Skill!", "#{@user.username}/edit/#myskills", :class => "add"%><br />
     <% end %>
 
   </div>
@@ -73,7 +73,7 @@
     <h3 class="currently-learning-label">Currently Learning</h3>
   </div>
 
-  <div class="label_responses grid_4">
+  <div class="label_responses">
     <% if @user.interests != [] %>
       <ul>
         <% @user.interests.each do |i| %>
@@ -87,7 +87,7 @@
     <% end %>
 
     <% if @user == current_user %>
-      <%= link_to "Add Topic!", "#{@user.username}/edit/#myinterests", :class => "edit"%><br />
+      <%= link_to "Add Topic!", "#{@user.username}/edit/#myinterests", :class => "add"%><br />
     <% end %>
     
   </div>

@@ -24,11 +24,9 @@
 **************************
 *********************** */
 
-h1, h2, h3, h4, h5, p, strong, em {
-  font-family: 'Open Sans';
+h1, h2, h3, h4, h5, li, p, input, .btn, strong, em {
+  font-family: 'Open Sans', sans-serif;
   color: #381729;
-
-
 }
 
 h1 {
@@ -114,6 +112,12 @@ body {
   position: relative;
   margin-left: 30px;
   top: 35px;
+ }
+
+ .popular-skills {
+  color: #425044;
+  margin-left: 200px;
+  margin-top: 20px;
  }
      
 /* ***********************
@@ -297,10 +301,6 @@ label {
   padding: 5px;
 }
 
-.content a {
-  display: block;
-} 
-
      
 /* ***********************
 *************************
@@ -324,12 +324,15 @@ h3 {
   margin-left: 50px;
   font-size: 20px;
   margin-top: 30px;
+  display: inline-block;
 }
 .add {
   margin-right: 50px;
   font-size: 20px;
   margin-top: 30px;
-  text-align: right;
+  float: right;
+  display: inline-block;
+
 }
 
 #prof_pic img, #search_image {

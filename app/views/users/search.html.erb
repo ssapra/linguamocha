@@ -2,19 +2,39 @@ Search results for <%= @params %>: <br /><br />
 
 <% if @users != []%>
 	<% @users.each_with_index do |user, i| %>
-		<% if user.avatar_updated_at %>
-			<%= image_tag user.avatar.url(:thumb) %><br />
-		<% else %>
-			<%= link_to image_tag("empty.png", :id => "search_image"), user_path(user.username) %>
-		<% end %>
-		<%= link_to "#{user.name}", user_path(user.username), :class => "search_name" %><br />
-		<% if user.my_skills != [] %>
-	 		<% user.my_skills.each do |s|%>
-				<%= s.tag %>
+		<div class="search_result">
+			<% if user.avatar_updated_at %>
+				<%= link_to image_tag(user.avatar.url(:medium), :id=>"search_image"), user_path(user.username) %><br />
+			<% else %>
+				<%= link_to image_tag("empty.png", :id => "search_image"), user_path(user.username) %>
 			<% end %>
-		<% end %>
-		<%= user.occupation %><br /><br /><br />
+			<div class="result"
+				<%= link_to "#{user.name}", user_path(user.username), :class => "search_name" %><br />
+				<p>Skills</p>
+				<% if user.my_skills != [] %>
+					<ul>
+			 			<% user.my_skills.each do |s|%>
+							<li><%= s.tag %></li>
+						<% end %>
+					</ul>
+				<% else %>
+					<p>None listed</p>
+				<% end %>
+				<p>Interests</p>
+				<% if user.interests != [] %>
+					<ul>
+			 			<% user.interests.each do |i|%>
+							<li><%= i.tag %></li>
+						<% end %>
+					</ul>
+				<% else %>
+					<p>None listed</p>
+				<% end %>
+				<%= user.occupation %><br /><br /><br />
+			</div>
+		</div>
 	<% end %>
+	</div>
 <% else %>
 	<p>No results found</p>
 <% end %>

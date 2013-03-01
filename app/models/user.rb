@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   attr_accessible :avatar
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "30x30>" },
-                    :url => "/system/:attachment/:id/:style/:basename.:extension",
-                    :path => ":rails_root/public/system/:attachment/:id/:style/:basename.:extension",
+  has_attached_file :avatar, :styles => { :medium => "250x250>"},
+                    :url => "/system/:attachment/:basename.:extension",
+                    #:path => ":rails_root/public/system/:attachment/:id/:style/:basename.:extension",
                     :storage => :s3,
                     :s3_credentials => "#{Rails.root}/config/s3.yml",
                     :path => "/:style/:id/:filename"
@@ -31,9 +31,6 @@ class User < ActiveRecord::Base
                   :interests_attributes
 
   validates :name, presence: true
-  # validates :username, presence: true, uniqueness: true, format: { with: /^[a-z0-9_-]{6,12}$/,
-  #                     message: "must be lowercase letters and numbers" }, length: { in: 6..12, too_short: "must have at least 6 characters",
-  #                         too_long: "must have at most 12 characters"}
   
   after_create :set_username
 
@@ -84,4 +81,18 @@ class User < ActiveRecord::Base
       return nil
     end
   end
+
+  def review_count
+    Review.find_all_by_receiver_id(self.id).count
+  end
+
+  def num_of_meetings
+    sent = Requests.find_all_by_sender_id(self.id)
+    received = Requests.find_all_by_receiver_id(self.id)
+    all = [sent,received].flatten
+    count = 0
+    all.each {|r| count+=1 if r.approved?}
+    return count
+  end
+
 end

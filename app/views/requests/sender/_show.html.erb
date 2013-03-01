@@ -31,7 +31,8 @@
 	<i><%= "This request has been approved by both sides!" %><br />
 	
 	<b>Date: <%= @request.date.strftime("%B %d, %Y") if @request.date %></b><br />
-	<b>Location: <%= @request.location %></b><br /><br />
+	<b>Location: <%= @request.location %></b><br/>
+	<b>Time: <%= "#{@request.start_time.strftime('%l:%M %p')} - #{@request.end_time.strftime('%l:%M %p')}" %></b><br/>
 
 	<%= link_to "Edit request", edit_request_path(@request.id), :class => "edit" %>
 

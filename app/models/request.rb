@@ -71,5 +71,39 @@ class Request < ActiveRecord::Base
       return self.city
     end
   end
-  
+
+  def self.save_times(times)
+    times = times.split(",|,")
+    time_hash = {}
+    times.each do |t|
+      t = t.split(",")
+      if time_hash[t[0]]
+        time_hash[t[0]] << t[1]
+      else
+        h = Hash.new
+        h[t[0]] = [t[1]]
+        time_hash.merge!(h)
+      end
+    end
+    return time_hash.to_s
+  end
+
+  def self.update_location(r, location)
+    raw_location = location.split(",")
+    location = raw_location.last
+    address = raw_location.first
+    city = raw_location[1]
+    r.update_attributes(:location => location,
+                        :address => address,
+                        :city => city)
+  end
+
+  def self.deal_with_message(r, body, id)
+    if body != ""
+      r.messages.last.update_attributes(:user_id => id)
+    elsif body == ""
+      r.messages.last.destroy
+    end
+  end
+
 end

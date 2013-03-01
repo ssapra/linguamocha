@@ -329,8 +329,8 @@ nav {
   margin-left: 50px;
 }
 .prof_image {
-  width: 150px;
-  height: 150px;
+  /*width: 150px;*/
+  /*height: 150px;*/
   margin-bottom: 20px;
 }
 
@@ -557,6 +557,19 @@ ul.request_options a{
 
 .search_name{
   text-decoration: none
+}
+
+#search_image{
+  float: left;
+}
+
+.result{
+  float: left;
+}
+
+.search_result{
+  border-bottom: 1px solid black;
+  clear: both;
 }
  
 /* ***********************

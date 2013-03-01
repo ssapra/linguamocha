@@ -26,23 +26,8 @@ class RequestsController < ApplicationController
     split_date = params[:request][:deadline].split("/")
     date = split_date[1] + "/" + split_date[0] + "/" + split_date[2]
     @request.deadline = Date.parse(date)
-    if params[:times]
-      times = params[:times]
-      times = times.split(",|,")
-      logger.debug "Times : #{times}"
-      time_hash = {}
-      times.each do |t|
-        t = t.split(",")
-        if time_hash[t[0]]
-          time_hash[t[0]] << t[1]
-        else
-          h = Hash.new
-          h[t[0]] = [t[1]]
-          time_hash.merge!(h)
-        end
-      end
-      @request.times = time_hash
-    end
+    # @request.times = Request.save_times(params[:times]) if params[:times]
+
     respond_to do |format|
       if @request.save
         @request.messages.last.update_attributes(:user_id => current_user.id)
@@ -65,7 +50,6 @@ class RequestsController < ApplicationController
     @request = Request.find_by_id(params[:id])
     @location = get_location
     @coordinates = get_coordinates
-
     @days = (@request.deadline - Date.today).to_i
 
     @message = Message.new(:request_id => @request.id, :user_id => current_user.id)
@@ -76,63 +60,19 @@ class RequestsController < ApplicationController
   def update
     @request = Request.find(params[:id])
     raw_request = params[:request]
-    if params[:location]
-      raw_location = params[:location].split(",")
-      location = raw_location.last
-      address = raw_location.first
-      city = raw_location[1]
-    end
+    Request.update_location(@request, params[:location]) if params[:location]
+    @request.update_attributes(:times => (Request.save_times(params[:times]))) if params[:times]
 
     message = params["request"]["messages_attributes"]
     body = message[message.keys[0]]["body"]
-    # params[:request][:date] = change_date(params[:request][:date])
+    Request.deal_with_message(@request, body, current_user.id)
+
+    @request.update_attributes(:date => change_date(params[:date]),
+                               :start_time => params[:start_time],
+                               :end_time => params[:end_time]) if params[:date]
+
     respond_to do |format|
       if @request
-        if body != ""
-          @request.update_attributes(params[:request]) 
-          @request.messages.last.update_attributes(:user_id => current_user.id)
-        elsif body == ""
-          @request.messages.last.destroy
-        end
-
-        if params[:date]
-          logger.debug "I'M HERE"
-          @request.update_attributes(:date => change_date(params[:date]),
-                                     :start_time => params[:start_time],
-                                     :end_time => params[:end_time])
-        end
-
-
-        if params[:request][:date]
-          split_date = params[:request][:date].split("/")
-          date = split_date[1] + "/" + split_date[0] + "/" + split_date[2]
-          rearranged_date = Date.parse(date)
-          @request.update_attributes(:date => rearranged_date)
-        end
-
-        if params[:times]
-          times = params[:times]
-          times = times.split(",|,")
-          logger.debug "Times : #{times}"
-          time_hash = {}
-          times.each do |t|
-            t = t.split(",")
-            if time_hash[t[0]]
-              time_hash[t[0]] << t[1]
-            else
-              h = Hash.new
-              h[t[0]] = [t[1]]
-              time_hash.merge!(h)
-            end
-          end
-
-          @request.update_attributes(:times => time_hash.to_s)
-        end
-        if params[:location]
-        @request.update_attributes(:location => location,
-                                     :address => address,
-                                     :city => city)
-        end
         format.html { redirect_to @request, notice: 'Request was successfully updated.' }
         format.json { head :no_content }
       else
@@ -206,7 +146,8 @@ class RequestsController < ApplicationController
   def load_times
     request_id = params[:request_id].to_i
     r = Request.find(request_id)
-    times = eval(r.times)
+    times = []
+    times = eval(r.times) if r.times
     respond_to do |format|
       format.json {render :json => times}
     end
@@ -219,7 +160,6 @@ class RequestsController < ApplicationController
     else 
       nil
     end
-    # logger.debug "Results: #{@zipcode}"
   end
   
   def search

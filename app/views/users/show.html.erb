@@ -4,7 +4,7 @@
 
     <div class="prof_pic">
       <% if @user.avatar_file_name %>
-        <%= image_tag @user.avatar.url, :class => "prof_image" %>
+        <%= image_tag @user.avatar.url(:medium), :class => "prof_image" %>
       <% else %>
         <%= image_tag "empty.png", :class => "prof_image" %>
       <% end %><br />

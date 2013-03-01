@@ -39,8 +39,8 @@
 	
 	<b>Date: <%= @request.date.strftime("%B %d, %Y") if @request.date %></b><br />
 	<b>Location: <%= @request.location  if @request.location %></b><br /><br />
-
-
+	<b>Time: <%= "#{@request.start_time.strftime('%l:%M %p')} - #{@request.end_time.strftime('%l:%M %p')}" %></b><br/>
+	
 	<ul class="request_options">
 		<li><%= link_to "Cancel", deny_path(:id => @request.id) %></li>
 	</ul>

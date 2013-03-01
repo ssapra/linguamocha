@@ -1,4 +1,6 @@
 Linguamocha::Application.routes.draw do
+
+  post "/search" => "users#search"
   
   get "/allskills" => "users#all_skills"
   
@@ -13,8 +15,6 @@ Linguamocha::Application.routes.draw do
   
   get "/confirm/:id" => "requests#confirm", as: :confirm
   get "/deny/:id" => "requests#deny_request", as: :deny_request
-
-  post "/search" => "users#search"
   
   resources :requests
 

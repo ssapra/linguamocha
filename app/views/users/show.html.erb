@@ -16,8 +16,29 @@
       <%= link_to "Ask for Help", new_request_path(:sender_id => @current_user.id, :receiver_id => @user.id)%>
     <% end %>
 
-    <h3 class="occupation-label">Occupation: <span class="occupation"><%= @user.occupation %></span></h3>
-    <h3 class="education-label">Education: <span class="education"><%= @user.college %>, <i><%= @user.degree %></i></span></h3>
+    <h3 class="occupation-label">Occupation: 
+      <span class="occupation">
+        <% if @user.occupation %>
+          <%= @user.occupation %>
+        <% else %>
+          <i>None</i>
+        <% end %>
+      </span>
+    </h3>
+    
+    <h3 class="education-label">Education: 
+      <span class="education">
+        <% if @user.college && @user.education %>
+          <%= @user.college %>, <i><%= @user.degree %></i>
+        <% elsif @user.college %>
+          <%= @user.college %>
+        <% elsif @user.degree %>
+          <%= @user.degree %>
+        <% else %>
+          <i>None listed</i>
+        <% end %>
+      </span>
+    </h3>
   </div>
 
   <div class="reference_group grid_5">
@@ -91,9 +112,6 @@
   </div>
 </div>
 
-
-
-
 <div class="bio grid_6">    
   <h3>Personal Bio</h3>
   <% if @user.bio %>
@@ -102,9 +120,6 @@
   <%= link_to "Write a bit about yourself!", "#{@user.username}/edit/#mybio", :class => "edit"%><br />
   <% end %>
 </div>
-
-  
-
 
 
 <!-- People That Can Help You:<br /> -->

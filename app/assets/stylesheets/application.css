@@ -417,18 +417,22 @@ fieldset {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 }
+.skill a {
+  float: right;
+  margin-right: 10px;
+}
 .skill-name {
   font-weight: 700;
   font-size: 25px;
   padding-right: 20px;
   width: 300px; 
-  margin: 0 0 5px 0;
+  margin: 0 0 0px 0;
 }
 .skill-description {
   font-family: 'Open Sans';
   font-style: italic;
   font-size: 18px;
-  margin: 0 20px;
+  margin: 5px 20px 0 20px;
 
 }
 textarea.skill-description{

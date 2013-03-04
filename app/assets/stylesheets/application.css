@@ -426,6 +426,7 @@ fieldset {
   font-size: 25px;
   padding-right: 20px;
   width: 300px; 
+  display: inline-block;
   margin: 0 0 0px 0;
 }
 .skill-description {
@@ -433,7 +434,7 @@ fieldset {
   font-style: italic;
   font-size: 18px;
   margin: 5px 20px 0 20px;
-
+  display: inline-block;
 }
 textarea.skill-description{
   border-radius: 5px;

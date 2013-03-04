@@ -2,7 +2,7 @@
 <div class="fixed_bar">
 	<div class="header_container">
 		
-	<%= link_to(image_tag("logo.png", :class => "logo"), root_url) %>
+	<h1><%= link_to 'linguamocha', root_url, :class => "logo" %></h1>
 	
 	<% if user_signed_in? %>
 		<%= form_tag :controller => 'users', :action => 'search' do %>

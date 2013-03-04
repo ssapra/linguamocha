@@ -1,6 +1,7 @@
 <fieldset id="skill_<%= skill.id %>" >
 	<li class="skill <%= skill.id %>" >
-	  <span class="skill-name"><%= skill.tag %></span><span class="skill_description"><%= skill.description %></span>
+	  <p class="skill-name"><%= skill.tag %></p>
+    <p class="skill-description"><%= skill.description %></p>
 	</li>
 
 	<%= link_to image_tag('trash-can-icon.jpg', size: '20x20' ), skill_path(skill.id), method: 'delete', remote: :true %>

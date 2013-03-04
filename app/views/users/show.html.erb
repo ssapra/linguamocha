@@ -70,15 +70,14 @@
   </div>
 
   <div class="label_responses">
-    <% if @user.my_skills != [] %>
+    <% if @user.my_skills == [] %>
+       <p class="none-listed">No skills currently listed</p>
+    <% end %>
       <ul class="skills">
         <% @user.my_skills.each do |skill| %>
           <%= render '/skills/skill', :skill => skill %>
         <% end %>
       </ul>
-    <% else %>
-       <p class="none-listed">No skills currently listed</p>
-    <% end %>
 
     <% if @user == current_user %>
       <%= link_to "Add Skill!", "#", :class => "add", :id => "skills" %><br />
@@ -94,15 +93,14 @@
   </div>
 
   <div class="label_responses">
-    <% if @user.interests != [] %>
+    <% if @user.interests == [] %>
+       <p class="none-listed">No interests currently listed</p>
+    <% end %>
       <ul class="interests">
         <% @user.interests.each do |i| %>
           <%= render '/interests/interest', :interest => i %>
         <% end %>
       </ul>
-    <% else %>
-       <p class="none-listed">No interests currently listed</p>
-    <% end %>
 
     <% if @user == current_user %>
       <%= link_to "Add Topic!", "#", :class => "add" , :id => "interests" %><br />

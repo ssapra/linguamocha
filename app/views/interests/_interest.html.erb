@@ -1,6 +1,7 @@
 <fieldset id="interest_<%= interest.id %>" >
 	<li class="interest <%= interest.id %>" >
-	  <span class="interest-name"><%= interest.tag %></span><span class="interest_description"><%= interest.description %></span>
+	   <p class="skill-name"><%= interest.tag %></p>
+       <p class="skill-description"><%= interest.description %></p>
 	</li>
 
 	<%= link_to image_tag('trash-can-icon.jpg', size: '20x20' ), interest_path(interest.id), method: 'delete', remote: :true %>

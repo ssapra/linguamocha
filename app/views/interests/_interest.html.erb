@@ -1,5 +1,5 @@
 <fieldset id="interest_<%= interest.id %>" >
-	<li class="interest <%= interest.id %> skill" >
+	<li class="interest" >
 
 	  <span class="skill-name"><%= interest.tag %></span>
     <%= link_to image_tag('bin.png', size: '20x20' ), interest_path(interest.id), method: 'delete', remote: :true %>

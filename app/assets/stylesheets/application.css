@@ -113,6 +113,11 @@ body {
   top: 0;
   bottom: 0;
 }
+.content-left {
+}
+.content-right {
+  float: right;
+}
 h1, h2, h3, h4, h5, li, p, input, .btn, strong, em {
   font-family: 'Open Sans', sans-serif;
   color: #381729;
@@ -330,15 +335,33 @@ nav {
   margin-top: 30px;
   float: right;
   display: inline-block;
+  font-weight: 700;
+  text-decoration: none;
+}
+.add:hover {
+  text-decoration: underline;
 }
 .bio {
-    padding: 15px;
-    border: 2px solid #6db776;
-    margin-bottom: 100px;
-    margin-top: 50px;
+  padding: 15px;
+  margin-bottom: 100px;
+  margin-top: 50px;
+  margin-right: 50px;
+  background-color: #C799DD;
+  border-radius: 5px;
+}
+.bio h3 {
+  font-size: 25px;
 }
 .bio, .skills, .currently_learning {
     float: right;
+}
+.bio-description {
+  margin-left: 50px;
+  font-size: 20px;
+  margin-top: 0px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-block;
 }
 .currently_learning {
   margin-top: 30px;
@@ -348,7 +371,12 @@ nav {
   margin-left: 50px;
   font-size: 20px;
   margin-top: 30px;
+  font-weight: 700;
+  text-decoration: none;
   display: inline-block;
+}
+.edit:hover {
+  text-decoration: underline;
 }
 .education-label {
   margin-bottom: 50px;
@@ -356,6 +384,14 @@ nav {
 fieldset {
   border: none;
   margin-top: 0;
+}
+.interest {
+  padding: 20px 0px 20px 20px;
+  background-color: #92D1D7;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 .label {
   border-bottom: 2px solid #6db776;
@@ -401,19 +437,11 @@ fieldset {
 .skill-label, .currently-learning-label {
   font-size: 30px;
 }
-.skills {
-}
 .skill {
   padding: 20px 0px 20px 20px;
-  background-color: #76D181;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-.skill:first-child {
-  border-top-left-radius: 5px;
+  background-color: #9CE8A6;
   border-top-right-radius: 5px;
-}
-.skill:last-child {
+  border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 }
@@ -454,7 +482,6 @@ td#remove{
   position: relative;
   top: 4px;
 }
-
      
 /* ***********************
 *************************
@@ -582,7 +609,6 @@ td#remove{
     margin-right: 50px;
     padding-bottom: 10px;
 }
-
 .request p{
   font-size: 16px;
 }

@@ -21,7 +21,7 @@
         <% if @user.occupation %>
           <%= @user.occupation %>
         <% else %>
-          <i>None</i>
+          <i>None listed</i>
         <% end %>
       </span>
     </h3>
@@ -64,61 +64,63 @@
   </div>
 </div>
 
-<div class="skills grid_7">
-  <div class="label grid_7">
-    <h3 class="skill-label">Skills</h3>
+<div class="content-right grid_6">
+
+  <div class="skills grid_7">
+    <div class="label grid_7">
+      <h3 class="skill-label">Skills</h3>
+    </div>
+
+    <div class="label_responses">
+      <% if @user.my_skills == [] %>
+         <p class="none-listed">No skills currently listed</p>
+      <% end %>
+        <ul class="skills">
+          <% @user.my_skills.each do |skill| %>
+            <%= render '/skills/skill', :skill => skill %>
+          <% end %>
+        </ul>
+
+      <% if @user == current_user %>
+        <%= link_to "Add Skill!", "#", :class => "add", :id => "skills" %><br />
+        <%= render '/skills/form', :skill => @skill %>
+      <% end %>
+
+    </div>
   </div>
 
-  <div class="label_responses">
-    <% if @user.my_skills == [] %>
-       <p class="none-listed">No skills currently listed</p>
-    <% end %>
-      <ul class="skills">
-        <% @user.my_skills.each do |skill| %>
-          <%= render '/skills/skill', :skill => skill %>
-        <% end %>
-      </ul>
+  <div class="currently_learning grid_7">
+    <div class="label grid_7">
+      <h3 class="currently-learning-label">Currently Learning</h3>
+    </div>
 
-    <% if @user == current_user %>
-      <%= link_to "Add Skill!", "#", :class => "add", :id => "skills" %><br />
-      <%= render '/skills/form', :skill => @skill %>
-    <% end %>
+    <div class="label_responses">
+      <% if @user.interests == [] %>
+         <p class="none-listed">No interests currently listed</p>
+      <% end %>
+        <ul class="interests">
+          <% @user.interests.each do |i| %>
+            <%= render '/interests/interest', :interest => i %>
+          <% end %>
+        </ul>
 
+      <% if @user == current_user %>
+        <%= link_to "Add Interest!", "#", :class => "add" , :id => "interests" %><br />
+        <%= render '/interests/form', :interest => @interest %>
+      <% end %>
+      
+    </div>
+  </div>
+
+  <div class="bio grid_6">    
+    <h3>Personal Bio</h3>
+    <% if @user.bio %>
+      <p><%= @user.bio %></p>
+    <% else %>
+    <%= link_to "Write a bit about yourself!", "#{@user.username}/edit/#mybio", :class => "bio-description"%><br />
+    <% end %>
   </div>
 </div>
-
-<div class="currently_learning grid_7">
-  <div class="label grid_7">
-    <h3 class="currently-learning-label">Currently Learning</h3>
-  </div>
-
-  <div class="label_responses">
-    <% if @user.interests == [] %>
-       <p class="none-listed">No interests currently listed</p>
-    <% end %>
-      <ul class="interests">
-        <% @user.interests.each do |i| %>
-          <%= render '/interests/interest', :interest => i %>
-        <% end %>
-      </ul>
-
-    <% if @user == current_user %>
-      <%= link_to "Add Topic!", "#", :class => "add" , :id => "interests" %><br />
-      <%= render '/interests/form', :interest => @interest %>
-    <% end %>
-    
-  </div>
-</div>
-
-<div class="bio grid_6">    
-  <h3>Personal Bio</h3>
-  <% if @user.bio %>
-    <p><%= @user.bio %></p>
-  <% else %>
-  <%= link_to "Write a bit about yourself!", "#{@user.username}/edit/#mybio", :class => "edit"%><br />
-  <% end %>
-</div>
-
 
 <!-- People That Can Help You:<br /> -->
 

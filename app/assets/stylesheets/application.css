@@ -445,7 +445,7 @@ fieldset {
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
 }
-.skill a {
+.skill a, .interest a {
   float: right;
   margin-right: 10px;
 }
@@ -638,7 +638,18 @@ ul.request_options a{
   -moz-transform: scale(1.07);
   -ms-transform: scale(1.07);
 }
+
      
+/* ***********************
+*************************
+      =edit_profile
+**************************
+*********************** */
+
+.actions {
+  margin-bottom: 100px;
+}
+
 /* ***********************
 *************************
       =search_page
@@ -679,6 +690,7 @@ ul.request_options a{
   position: absolute;
   bottom: 0;
   left: 20px;
+  z-index: -1;
 }
 footer p {
   padding-top: 50px;

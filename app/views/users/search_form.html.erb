@@ -1,17 +1,13 @@
-<h1>Advanced Search</h1>
+<h1>Find People</h1>
 
 <%= search_form_for @search, :url => search_path, :html => {:method => :post} do |f| %>
-  <%= f.label :first_name_cont, "First Name" %>
-  <%= f.text_field :first_name_cont %><br />
+  <%= f.text_field :first_name_cont, placeholder: "First Name", :class => "search-field" %>
 
-  <%= f.label :last_name_cont, "Last Name" %>
-  <%= f.text_field :last_name_cont %><br />
+  <%= f.text_field :last_name_cont, placeholder: "Last Name", :class => "search-field" %>
 
-  <%= f.label :my_skills_tag_cont, "Skill" %>
-  <%= f.text_field :my_skills_tag_cont %><br />
+  <%= f.text_field :my_skills_tag_cont, placeholder: "Skill", :class => "search-field" %>
 
-  <%= f.label :interests_tag_cont, "Currently Learning" %>
-  <%= f.text_field :interests_tag_cont %><br />
+  <%= f.text_field :interests_tag_cont, placeholder: "Currently Learning", :class => "search-field" %>
 
 
   <%= f.submit :class => "btn" %>

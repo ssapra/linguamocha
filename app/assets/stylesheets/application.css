@@ -349,6 +349,9 @@ nav {
   background-color: #C799DD;
   border-radius: 5px;
 }
+.bio a:hover {
+  text-decoration: underline;
+}
 .bio h3 {
   font-size: 25px;
 }
@@ -383,10 +386,9 @@ nav {
 }
 fieldset {
   border: none;
-  margin-top: 0;
 }
 .interest {
-  padding: 20px 0px 20px 20px;
+  padding: 20px 0px 30px 20px;
   background-color: #92D1D7;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
@@ -438,16 +440,18 @@ fieldset {
   font-size: 30px;
 }
 .skill {
-  padding: 20px 0px 20px 20px;
+  padding: 20px 0px 30px 20px;
   background-color: #9CE8A6;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
+  position: relative;
 }
 .skill a, .interest a {
   float: right;
-  margin-right: 10px;
+  margin-right: 15px;
+
 }
 .skill-name {
   font-weight: 700;
@@ -515,6 +519,17 @@ td#remove{
   text-align: left;
   font-size: 14px;
   margin: 0;
+}
+     
+/* ***********************
+*************************
+      =search
+**************************
+*********************** */
+.search-field {
+  display: block;
+  padding: 3px;
+  font-size: 20px;
 }
      
 /* ***********************

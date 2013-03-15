@@ -1,0 +1,12 @@
+<p class="my_bio">
+	<% if user.bio %>
+		<%= user.bio %>
+	<% else %>
+		<i> Write something about yourself! </i>
+	<% end %>
+</p>
+
+<div class="bio_buttons">
+ <%= link_to image_tag('bin.png', size: '20x20' ), remove_bio_path(:username => user.username), method: 'delete', remote: :true if user.bio %>
+ <%= link_to image_tag('pencil.png', size: '20x20'), edit_bio_path(:username => user.username), remote: :true %>
+</div>

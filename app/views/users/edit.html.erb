@@ -1,4 +1,4 @@
-<%= nested_form_for(@user, :url => :user, :html => {:multipart => true}) do |f| %>
+<%= form_for(@user, :url => :user, :html => {:multipart => true}) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -10,17 +10,13 @@
       </ul>
     </div>
   <% end %>
- 
+
   <% if @user.avatar_file_name %>
 	<%= image_tag @user.avatar.url(:medium) %>
   <% end %><br />
 
   <div class="field">
 	<%= f.file_field :avatar %>
-  </div>
-
-  <div class="field">
-     <a name="#mybio"><%= f.text_area :bio, :size => "30x10", :placeholder => "Write your bio here" %></a>  
   </div>
 
   <div class="field">
@@ -57,7 +53,7 @@
 	<%= f.label :state %>
 	<%= f.text_field :state %>
   </div>
- 
+
   <% f.hidden_field :username %>
 
   <div class="actions">

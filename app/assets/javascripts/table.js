@@ -16,7 +16,7 @@ function deselect_all() {
 function change_color(e)
 {
 	var obj = document.getElementById(e.id);
-		
+
 		if (obj.style.backgroundColor == "" || obj.style.backgroundColor == "rgb(171, 171, 171)"){
 			obj.style.backgroundColor = "rgb(83, 181, 106)";
 		}
@@ -49,7 +49,7 @@ $(function() {
       	mouseDown = 1;
       	console.log(this.id.split("_")[1]);
       	matching_id = this.id.split("_")[1];
-      	this.style.backgroundColor = "yellow";	
+      	this.style.backgroundColor = "yellow";
       }
     });
 
@@ -57,7 +57,7 @@ $(function() {
 		if (mouseDown == 1 && this.style.backgroundColor == "rgb(83, 181, 106)"){
 			var id = this.id.split("_")[1];
 			if(matching_id == id ){
-				this.style.backgroundColor = "yellow";	
+				this.style.backgroundColor = "yellow";
 			}
 			else{
 				matching_id = -1;
@@ -69,7 +69,7 @@ $(function() {
 	});
 
 
-    
+
     $('td.time').on("mouseup",function(){
     	mouseDown = 0;
     	clicking = false;
@@ -98,7 +98,7 @@ $(function() {
 			}
 		});
 		$('<input type="hidden" name="times" value="' + options + '">').appendTo('div.times');
-	});	
+	});
 
 	$(document).ready(function(){
 
@@ -140,7 +140,7 @@ $(function() {
 		}
 	});
 
-	$('input.btn').on('click',function(){
+	$('input#confirm').on('click',function(){
 		var times = [];
 		var date_id;
 		$('td.time').each(function() {
@@ -156,4 +156,4 @@ $(function() {
 		$('<input type="hidden" name="date" value="' + date + '">').appendTo('div.hidden_fields');
 	});
 
-});	
+});

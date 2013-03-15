@@ -1,0 +1,15 @@
+<% if !user %>
+	<% user = @user %>
+<% end %>
+
+<%= form_for(user, :url => :bio_path, :method => :put, :remote => true) do |f| %>
+
+	<div class="field">
+		<%= f.text_area :bio, :size => "30x10", :placeholder => "Write your bio here" %></a>
+	</div>
+
+  	<div class="actions">
+     	<%= f.submit "Update Profile", :class => "btn" %>
+  	</div>
+
+<% end %>

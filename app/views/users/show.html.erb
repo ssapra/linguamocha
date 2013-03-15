@@ -9,14 +9,14 @@
         <%= image_tag "empty.png", :class => "prof_image" %>
       <% end %><br />
     </div>
-    
+
     <% if @user == current_user %>
       <%= link_to "Edit Profile", edit_user_path(@user.username), :class => "edit"%><br />
     <% else %>
       <%= link_to "Ask for Help", new_request_path(:sender_id => @current_user.id, :receiver_id => @user.id)%>
     <% end %>
 
-    <h3 class="occupation-label">Occupation: 
+    <h3 class="occupation-label">Occupation:
       <span class="occupation">
         <% if @user.occupation %>
           <%= @user.occupation %>
@@ -25,18 +25,10 @@
         <% end %>
       </span>
     </h3>
-    
-    <h3 class="education-label">Education: 
+
+    <h3 class="education-label">Education:
       <span class="education">
-        <% if @user.college && @user.education %>
-          <%= @user.college %>, <i><%= @user.degree %></i>
-        <% elsif @user.college %>
-          <%= @user.college %>
-        <% elsif @user.degree %>
-          <%= @user.degree %>
-        <% else %>
-          <i>None listed</i>
-        <% end %>
+        <%= @user.education %>
       </span>
     </h3>
   </div>
@@ -108,17 +100,13 @@
         <%= link_to "Add Interest!", "#", :class => "add" , :id => "interests" %><br />
         <%= render '/interests/form', :interest => @interest %>
       <% end %>
-      
+
     </div>
   </div>
 
-  <div class="bio grid_6">    
+  <div class="bio grid_6">
     <h3>Personal Bio</h3>
-    <% if @user.bio %>
-      <p><%= @user.bio %></p>
-    <% else %>
-    <%= link_to "Write a bit about yourself!", "#{@user.username}/edit/#mybio", :class => "bio-description"%><br />
-    <% end %>
+    <%= render "bio", :user => @user %>
   </div>
 </div>
 

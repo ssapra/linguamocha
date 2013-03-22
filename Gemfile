@@ -13,6 +13,9 @@ gem 'devise'
 # Profile Picture
 gem "paperclip", "~> 3.0"
 
+# Heroku New Relic
+gem 'newrelic_rpm'
+
 # Scraping LinkedIn skills
 gem 'nokogiri'
 
@@ -40,7 +43,7 @@ group :development, :test do
 	gem 'sqlite3'
 end
 
-group :production do 
+group :production do
 	gem 'pg'
 end
 

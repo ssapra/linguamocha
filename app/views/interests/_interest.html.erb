@@ -3,7 +3,9 @@
 
 	  <span class="skill-name"><%= interest.tag %></span>
     <p class="skill-description"><%= interest.description %></p>
-    <%= link_to image_tag('bin.png', size: '20x20' ), interest_path(interest.id), method: 'delete', remote: :true %>
-    <%= link_to image_tag('pencil.png', size: '20x20'), edit_interest_path(interest.id), remote: :true %> 
+    <% if current_user == @user %>
+    	<%= link_to image_tag('bin.png', size: '20x20' ), interest_path(interest.id), method: 'delete', remote: :true %>
+    	<%= link_to image_tag('pencil.png', size: '20x20'), edit_interest_path(interest.id), remote: :true %>
+    <% end %>
 	</li>
 </fieldset>
